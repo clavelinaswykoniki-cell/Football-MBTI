@@ -7,16 +7,28 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
-      {/* Background split */}
+      {/* Background split — Messi (Barça blue) vs Ronaldo (Portugal red / Madrid wine) */}
       <div className="absolute inset-0 flex">
-        <div className="w-1/2 bg-gradient-to-br from-[#552583]/30 to-[#552583]/10" />
-        <div className="w-1/2 bg-gradient-to-bl from-[#860038]/30 to-[#860038]/10" />
+        <div
+          className="w-1/2"
+          style={{
+            background:
+              "linear-gradient(to bottom right, color-mix(in srgb, var(--kobe-purple) 30%, transparent), color-mix(in srgb, var(--kobe-purple) 10%, transparent))",
+          }}
+        />
+        <div
+          className="w-1/2"
+          style={{
+            background:
+              "linear-gradient(to bottom left, color-mix(in srgb, var(--lebron-wine) 30%, transparent), color-mix(in srgb, var(--lebron-wine) 10%, transparent))",
+          }}
+        />
       </div>
 
       <div className="relative z-10 text-center max-w-2xl">
         <div className="flex items-center justify-center gap-6 mb-8">
           <span className="text-6xl sm:text-8xl font-black text-kobe-gold tracking-tighter">
-            #24
+            #10
           </span>
           <span
             className="text-4xl sm:text-6xl font-black text-white/60"
@@ -25,18 +37,21 @@ export default function Landing() {
             VS
           </span>
           <span className="text-6xl sm:text-8xl font-black text-lebron-gold tracking-tighter">
-            #23
+            #7
           </span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-black mb-4 bg-gradient-to-r from-kobe-gold via-white to-lebron-gold bg-clip-text text-transparent">
-          GOAT DEBATE
+          GOAT FOOTBALL DEBATE
         </h1>
         <p className="text-lg sm:text-xl text-white/60 mb-2">
-          科比 vs 詹姆斯 — 史上最大争议，你来投票
+          足球史上最大争议对决，你来投票
         </p>
-        <p className="text-sm text-white/40 mb-10">
-          12 个最热争议话题 · 选边站 · 逐轮 PK · 最终裁决
+        <p className="text-sm text-white/40 mb-2">
+          8 组传奇对决 · 12 轮辩论 · AI 深度人格分析
+        </p>
+        <p className="text-xs text-white/25 mb-10">
+          梅西vsC罗 · 贝利vs马拉多纳 · 齐达内vs罗纳尔多 · 罗纳尔迪尼奥vs卡卡 · 内马尔vs姆巴佩 · 贝克汉姆vs菲戈 · 亨利vs伊布 · 哈兰德vs姆巴佩
         </p>
 
         <button
@@ -49,7 +64,7 @@ export default function Landing() {
         </button>
 
         <p className="mt-8 text-xs text-white/30">
-          纯粹为了好玩 · 拒绝上纲上线 · 两位都是传奇
+          纯粹为了好玩 · 拒绝上纲上线 · 每位都是传奇
         </p>
       </div>
     </div>

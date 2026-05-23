@@ -13,12 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GOAT Debate | Kobe vs LeBron",
+  title: "GOAT 足球辩论场 · Messi vs Ronaldo",
   description:
-    "科比 vs 詹姆斯——12 个最热争议话题，选边站，逐轮 PK，你来决定谁是 GOAT。",
+    "8 场史诗级足球对决·12 轮辩论·AI 深度人格分析·测出你的足球人格",
   openGraph: {
-    title: "GOAT Debate | Kobe vs LeBron",
-    description: "12 个最热争议话题，选边站 PK，谁才是真正的 GOAT？",
+    title: "GOAT 足球辩论场 · Messi vs Ronaldo",
+    description:
+      "8 场史诗级足球对决·12 轮辩论·AI 深度人格分析·测出你的足球人格",
     type: "website",
   },
 };

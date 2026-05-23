@@ -3,11 +3,13 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --kobe-purple: #552583;
-  --kobe-gold: #FDB927;
-  --lebron-wine: #860038;
-  --lebron-gold: #FDBB30;
-  --laker-purple: #552583;
+  /* Token names preserved for slot-based theming.
+     Values rebranded to football: Messi (Argentina/Barça) vs Ronaldo (Portugal/Real Madrid). */
+  --kobe-purple: #2C3E8C;   /* Barça deep blue — Messi accent dark */
+  --kobe-gold:   #75AADB;   /* Argentina sky blue — Messi primary */
+  --lebron-wine: #8B0000;   /* Portugal red / Real Madrid base — Ronaldo accent dark */
+  --lebron-gold: #FFD700;   /* Real Madrid gold — Ronaldo primary */
+  --laker-purple: #2C3E8C;  /* mirrors kobe-purple */
 }
 
 @theme inline {
@@ -28,8 +30,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(253, 185, 39, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(253, 185, 39, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
 }
 
 @keyframes slide-in-left {
@@ -50,4 +52,42 @@ body {
 @keyframes vs-pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.15); }
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer-rotate {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Shimmer effect for basketball IQ score circle */
+.shimmer-ring {
+  position: relative;
+}
+.shimmer-ring::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-rotate 3s linear infinite;
+  pointer-events: none;
 }

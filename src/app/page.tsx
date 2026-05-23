@@ -2,6 +2,8 @@
 
 import { GameProvider, useGame } from "@/components/GameProvider";
 import Landing from "@/components/Landing";
+import MatchupSelect from "@/components/MatchupSelect";
+import PlayerPicker from "@/components/PlayerPicker";
 import PickSide from "@/components/PickSide";
 import BattleArena from "@/components/BattleArena";
 import BonusIntro from "@/components/BonusIntro";
@@ -12,6 +14,10 @@ function GameRouter() {
   switch (phase) {
     case "landing":
       return <Landing />;
+    case "matchup-select":
+      return <MatchupSelect />;
+    case "custom-picker":
+      return <PlayerPicker />;
     case "pick":
       return <PickSide />;
     case "battle":
