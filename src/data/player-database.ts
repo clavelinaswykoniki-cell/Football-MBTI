@@ -35,6 +35,7 @@ export interface Player {
   controversies: string[];
   quote: string;
   philosophicalAngle: string;
+  fanCultureHook?: string;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -76,6 +77,7 @@ export const players: Player[] = [
     ],
     quote: "我不是来当最好的。我是来享受足球的。如果足球给了我奖杯，那是额外的礼物。",
     philosophicalAngle: "足球诗人——比赛是即兴创作，球场是画布，进球和助攻都是艺术品",
+    fanCultureHook: "八金球加冕，第三代球王。流传梗无数，如梅老八、给你两拳（A que miras bobo）。",
   },
 
   // ── 2. Cristiano Ronaldo ──
@@ -112,6 +114,7 @@ export const players: Player[] = [
     ],
     quote: "天赋不够就用努力补。努力不够就用更多努力补。没有捷径。",
     philosophicalAngle: "自律机器——足球是意志力的游戏，天赋有上限，努力没有",
+    fanCultureHook: "SIUUU 已经成全球最具辨识度的庆祝动作。永不服输的代名词，常被称为欧冠之王。",
   },
 
   // ── 3. Pelé ──
@@ -148,6 +151,7 @@ export const players: Player[] = [
     ],
     quote: "足球是上帝赐给我的礼物。每一个进球都是对他的感恩。",
     philosophicalAngle: "足球之神——足球不需要复杂的战术理论，天赋就是最好的战术",
+    fanCultureHook: "乌鸦嘴属性拉满，每届世界杯预测谁夺冠谁就倒霉，成了球迷津津乐道的玄学毒奶。",
   },
 
   // ── 4. Diego Maradona ──
@@ -184,6 +188,7 @@ export const players: Player[] = [
     ],
     quote: "我在球场上犯过错，但足球从来没有惩罚过我。",
     philosophicalAngle: "天才叛逆者——足球是穷人的战争，用一只左脚对抗整个世界",
+    fanCultureHook: "上帝之手与连过五人的神魔合体，那不勒斯的城市图腾，桀骜不驯的无冕之王代言人。",
   },
 
   // ── 5. Zinédine Zidane ──
@@ -220,6 +225,7 @@ export const players: Player[] = [
     ],
     quote: "足球是我表达自己的方式。当我踢球的时候，我是自由的。",
     philosophicalAngle: "足球美学——技术是优雅的极致，每一脚触球都应该是一件艺术品",
+    fanCultureHook: "2006决赛头撞马特拉齐成永恒画面，执教皇马玄学三连冠，被中国球迷尊称为齐玄宗。",
   },
 
   // ── 6. Ronaldo Nazário ──
@@ -256,6 +262,7 @@ export const players: Player[] = [
     ],
     quote: "上帝给了我踢球的天赋，然后给了我考验天赋的膝盖。",
     philosophicalAngle: "天赋的极限——足球是天才的独舞，最纯粹的天赋可以碾压一切战术",
+    fanCultureHook: "外星人代名词，钟摆过人极为震撼。球迷常讨论如果没有伤病，大罗的上限会是谁。",
   },
 
   // ── 7. Ronaldinho ──
@@ -292,6 +299,7 @@ export const players: Player[] = [
     ],
     quote: "足球应该是快乐的。当你不再快乐，你就不再是自己了。",
     philosophicalAngle: "快乐足球——踢球不是工作，是游戏。让所有人开心才是足球的意义",
+    fanCultureHook: "足球精灵，牛尾巴和不看人传球信手拈来，桑巴足球最后的灵动代表，退役后因假护照坐过牢。",
   },
 
   // ── 8. Kaká ──
@@ -328,6 +336,7 @@ export const players: Player[] = [
     ],
     quote: "我属于耶稣。（I belong to Jesus.）",
     philosophicalAngle: "优雅骑士——足球是带球狂奔的自由，速度和优雅可以共存",
+    fanCultureHook: "绝代双骄前最后一位地球金球奖得主，白马银枪大步流星，虔诚的信仰和外表迷倒无数人。",
   },
 
   // ── 9. Neymar ──
@@ -364,6 +373,7 @@ export const players: Player[] = [
     ],
     quote: "足球是我的生命，但生活不仅仅是足球。",
     philosophicalAngle: "桑巴精灵——足球是街头的艺术，华丽就是力量",
+    fanCultureHook: "中国球迷亲切称为马儿，彩虹过人极具观赏性，曾因世界杯夸张倒地被做成内马尔滚。",
   },
 
   // ── 10. Kylian Mbappé ──
@@ -400,6 +410,7 @@ export const players: Player[] = [
     ],
     quote: "我不想成为下一个谁。我要成为第一个姆巴佩。",
     philosophicalAngle: "速度就是一切——足球正在变得更快，谁最快谁就是未来的王",
+    fanCultureHook: "因长相酷似忍者神龟被戏称为姆总或神龟，双手插进腋下的庆祝动作，新一代流量担当。",
   },
 
   // ── 11. David Beckham ──
@@ -436,6 +447,7 @@ export const players: Player[] = [
     ],
     quote: "我的右脚是上帝给我的礼物。其他一切都是我自己赚来的。",
     philosophicalAngle: "弧线之美——足球最美的瞬间是球在空中画出完美弧线的那一刻",
+    fanCultureHook: "贝氏弧线任意球独步天下，颜值出圈，是足坛最早的全球顶流偶像",
   },
 
   // ── 12. Luís Figo ──
@@ -472,6 +484,7 @@ export const players: Player[] = [
     ],
     quote: "我离开巴塞罗那是因为我想赢得一切。我做到了。",
     philosophicalAngle: "野心驱动——足球是竞争，选择更强的舞台才能证明自己",
+    fanCultureHook: "当年揣着皇马合同回诺坎普被扔猪头。世纪转会的绝对主角，巴萨球迷心中永远的叛徒。",
   },
 
   // ── 13. Thierry Henry ──
@@ -508,6 +521,7 @@ export const players: Player[] = [
     ],
     quote: "在阿森纳，我学会了如何从一个跑得快的人变成一个球员。",
     philosophicalAngle: "优雅杀手——进球不需要狰狞面孔，最致命的射手永远保持从容",
+    fanCultureHook: "阿森纳不败夺冠的枪王，著名的护球下底护球，因央视《天下足球》护球帝专题名震天下。",
   },
 
   // ── 14. Zlatan Ibrahimović ──
@@ -544,6 +558,7 @@ export const players: Player[] = [
     ],
     quote: "我来的时候，这里什么都没有。我走的时候，这里有了一座纪念碑。",
     philosophicalAngle: "自信即力量——足球需要霸气，嘴上说自己是神的人最终真的变成了神",
+    fanCultureHook: "人称吕奉先，足坛神锋。语录极其狂妄，足球需要上帝，那就是我，蝎子摆尾专业户。",
   },
 
   // ── 15. Erling Haaland ──
@@ -580,6 +595,7 @@ export const players: Player[] = [
     ],
     quote: "我不想做下一个谁。我只想进更多的球。",
     philosophicalAngle: "纯粹射手——足球的本质是进球，一切花活都是多余的",
+    fanCultureHook: "身体素质逆天被称魔人布欧，单赛季英超进36球，打破尘封多年的纪录",
   },
 
   // ── 16. Johan Cruyff ──
@@ -616,6 +632,7 @@ export const players: Player[] = [
     ],
     quote: "踢球很简单，但踢简单的足球是最难的事。",
     philosophicalAngle: "足球哲学家——足球不是体力运动，是思维运动。位置是流动的，空间是创造的",
+    fanCultureHook: "全攻全守的无冕之王，战术大师和巴萨教父，那记永载史册的克鲁伊夫转身极为优雅。",
   },
 
   // ── 17. Franz Beckenbauer ──
@@ -652,6 +669,7 @@ export const players: Player[] = [
     ],
     quote: "球到了我脚下，我比任何中场都踢得好。我只是碰巧站在后卫的位置上。",
     philosophicalAngle: "位置革命——足球不应被位置限制，后卫也可以是场上最有创造力的人",
+    fanCultureHook: "开创了自由人战术，贝皇一词的由来，无论作为球员还是教练都拿到了世界杯冠军。",
   },
 
   // ── 18. Alfredo Di Stéfano ──
@@ -688,6 +706,7 @@ export const players: Player[] = [
     ],
     quote: "如果你在皇家马德里踢球，你就必须赢得一切。没有第二名。",
     philosophicalAngle: "全能即王道——足球没有固定位置，最好的球员应该无处不在",
+    fanCultureHook: "皇马欧冠五连冠奠基人，足坛唯一的超级金球奖得主，全能前锋的远古终极模板。",
   },
 
   // ── 19. Michel Platini ──
@@ -724,6 +743,7 @@ export const players: Player[] = [
     ],
     quote: "足球不是科学，是艺术。你不能用公式解释一脚完美的任意球。",
     philosophicalAngle: "浪漫主义——足球是法兰西式的优雅，任意球弧线就是最美的诗行",
+    fanCultureHook: "金球奖三连霸的中场大师，后来当了欧足联主席，中国球迷常调侃其任内的各种普氏签表。",
   },
 
   // ── 20. Eusébio ──
@@ -760,6 +780,7 @@ export const players: Player[] = [
     ],
     quote: "我不需要用脑子踢球。球到了我脚下，我的腿自己知道该做什么。",
     philosophicalAngle: "本能射手——进球不需要思考，最纯粹的天赋就是最好的技术",
+    fanCultureHook: "葡萄牙初代球王，上帝赐予本菲卡的黑豹，常在C罗被讨论国家队历史地位时作为标杆提起。",
   },
 
   // ── 21. Paolo Maldini ──
@@ -796,6 +817,7 @@ export const players: Player[] = [
     ],
     quote: "如果我需要铲球，说明我的位置已经错了。",
     philosophicalAngle: "防守美学——最好的防守不是铲断，是让对手根本找不到空间",
+    fanCultureHook: "一生一队的红黑传奇，颜值与防守艺术的完美结合。3号球衣在米兰永久退役，只留给其子嗣。",
   },
 
   // ── 22. Marco van Basten ──
@@ -832,6 +854,7 @@ export const players: Player[] = [
     ],
     quote: "脚踝夺走了我的职业生涯，但没有人能夺走我的那些进球。",
     philosophicalAngle: "射门是艺术——一脚完美的射门可以让时间静止，让所有人屏住呼吸",
+    fanCultureHook: "米兰荷兰三剑客的核心，因遭遇毁灭性铲球31岁被迫退役，是足坛最令人痛惜的白月光。",
   },
 
   // ── 23. Luka Modrić ──
@@ -868,6 +891,7 @@ export const players: Player[] = [
     ],
     quote: "当人们说你太矮太瘦不能踢球的时候，你只需要证明他们错了。",
     philosophicalAngle: "中场大师——足球的精髓在中场，控制节奏就是控制比赛",
+    fanCultureHook: "外号魔笛，在梅罗全盛期抢走一枚金球奖。标志性的外脚背传球堪称艺术品，仍在中场奔跑。",
   },
 
   // ── 24. Robert Lewandowski ──
@@ -904,6 +928,7 @@ export const players: Player[] = [
     ],
     quote: "9分钟可以改变一切。不仅仅是比赛，还有你对足球的理解。",
     philosophicalAngle: "效率即正义——足球不需要花里胡哨，用最少的动作进最多的球",
+    fanCultureHook: "对沃尔夫斯堡 9 分钟 5 球的神迹至今无人复刻，被誉为这个时代最稳定的禁区终结者。30 + 岁还在欧洲射手榜屠榜。",
   },
 
   // ── 25. Gianluigi Buffon ──
@@ -940,6 +965,7 @@ export const players: Player[] = [
     ],
     quote: "门将是最后一道防线。当所有人都犯错的时候，你不能犯错。",
     philosophicalAngle: "最后防线——足球的伟大不只属于进球者，守护球门同样是一种伟大",
+    fanCultureHook: "中国球迷口中的布冯小将，调侃其超长的职业寿命，熬退了几代前锋却唯独缺少一座欧冠。",
   },
 
   // ── 26. Xavi Hernández ──
@@ -976,6 +1002,7 @@ export const players: Player[] = [
     ],
     quote: "在中场，你只需要做一件事：让球到达正确的人脚下。",
     philosophicalAngle: "传控至上——足球是11个人的运动，最好的进攻是永不丢球",
+    fanCultureHook: "梦三巴萨与西班牙王朝的节拍器，被称为自带100%传球成功率传球机，退役后也曾执教巴萨。",
   },
 
   // ── 27. Andrés Iniesta ──
@@ -1012,6 +1039,7 @@ export const players: Player[] = [
     ],
     quote: "足球教会了我一件事：在最黑暗的时刻，总有一条路可以找到光。",
     philosophicalAngle: "关键先生——足球最美的瞬间是在最重要的时刻做出最正确的选择",
+    fanCultureHook: "大场面先生，油炸丸子过人无解。2010绝杀后脱衣致敬已故好友哈尔克，感动全世界。",
   },
 
   // ── 28. Andrea Pirlo ──
@@ -1048,6 +1076,7 @@ export const players: Player[] = [
     ],
     quote: "足球不复杂。你只需要把球传给正确的人。困难的是知道谁是正确的人。",
     philosophicalAngle: "不动如山——足球最高境界是不需要跑动，一脚传球就能解决一切",
+    fanCultureHook: "被称睡皮，前腰后置开创全新战术，落叶球任意球让门将望球兴叹",
   },
 
   // ── 29. Roberto Carlos ──
@@ -1084,6 +1113,7 @@ export const players: Player[] = [
     ],
     quote: "那脚任意球？我也不知道球为什么会那样飞。可能上帝在帮我。",
     philosophicalAngle: "力量美学——足球最震撼的瞬间是一脚大力抽射让球网和观众同时颤抖",
+    fanCultureHook: "1997 年那记 35 米电梯球破法国大门，门将望球兴叹至今物理学家还在研究轨迹。香蕉球+大力抽射，左路黑色闪电的代名词。",
   },
 
   // ── 30. Mohamed Salah ──
@@ -1120,6 +1150,7 @@ export const players: Player[] = [
     ],
     quote: "我是来自埃及的男孩。每一个进球都是为了那些相信我的人。",
     philosophicalAngle: "逆袭者——足球是给失败者的第二次机会，被放弃的人更知道珍惜机会",
+    fanCultureHook: "埃及法老，曾单赛季英超进32球拿金靴，偶尔也会出现快乐吐饼",
   },
 ];
 

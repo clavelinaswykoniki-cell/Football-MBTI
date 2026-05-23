@@ -970,6 +970,11 @@ type LetterT = "T" | "W";
 type LetterS = "S" | "L";
 type LetterN = "N" | "E";
 
+type AxisA = "持球大核" | "角色球员";
+type AxisB = "数据党" | "情怀党";
+type AxisC = "头条派" | "冷门派";
+type AxisD = "一城派" | "冠军派";
+
 interface BasketballType {
   name: string;
   emoji: string;
@@ -1151,6 +1156,7 @@ function analyzePsychology(input: PsychInput): PsychologyReport {
   // --- Axis breakdowns (for UI rendering) ---
   const axes: PsychologyReport["axes"] = [
     {
+      letter: axisA === "持球大核" ? "O" : "D",
       label: "进攻哲学",
       value: axisA,
       explanation: axisA === "持球大核"
@@ -1158,6 +1164,7 @@ function analyzePsychology(input: PsychInput): PsychologyReport {
         : `你投票时偏爱"团队拼图"叙事——团队话题里你${Math.round(teamOwnRate * 100)}%站${sideName}`,
     },
     {
+      letter: axisB === "数据党" ? "N" : "E",
       label: "判断依据",
       value: axisB,
       explanation: axisB === "数据党"
@@ -1165,6 +1172,7 @@ function analyzePsychology(input: PsychInput): PsychologyReport {
         : `情绪话题你的投入度(${Math.round(emotionalOwnRate * 100)}%)高于数据话题(${Math.round(statsOwnRate * 100)}%)——情感优先`,
     },
     {
+      letter: axisC === "头条派" ? "T" : "W",
       label: "舆论关系",
       value: axisC,
       explanation: mainstreamScored >= 3
@@ -1176,6 +1184,7 @@ function analyzePsychology(input: PsychInput): PsychologyReport {
             : "你天生有逆反心理，看见所有人都同意一件事就开始怀疑"),
     },
     {
+      letter: axisD === "一城派" ? "L" : "S",
       label: "忠诚模式",
       value: axisD,
       explanation: axisD === "一城派"
@@ -1262,21 +1271,27 @@ function analyzePsychology(input: PsychInput): PsychologyReport {
   const atWork = buildAtWork(lifeInput);
   const spiritAnimal = buildSpiritAnimal(lifeInput);
 
+  // Derive proper 4-letter MBTI-style code from axes
+  const letter1 = axisA === "持球大核" ? "O" : "D";
+  const letter2 = axisC === "头条派" ? "T" : "W";
+  const letter3 = axisD === "一城派" ? "L" : "S";
+  const letter4 = axisB === "数据党" ? "N" : "E";
+  const mbtiCode = `${letter1}${letter2}${letter3}${letter4}`;
+  const codeMeaning = `${axisA}·${axisC}·${axisD}·${axisB}`;
+
   return {
-    type: typeKey,
+    code: mbtiCode,
+    codeMeaning,
+    axes,
     name: archetype.name,
     emoji: archetype.emoji,
     soulPlayer: archetype.soulPlayer,
     tagline: archetype.tagline,
-    axes,
     traits,
     decisionStyle,
     inRelationship,
     atWork,
     spiritAnimal,
-    // Backwards-compatible legacy fields
-    code: `${archetype.emoji} ${archetype.name}`,
-    codeMeaning: archetype.tagline,
     inLove: inRelationship,
   };
 }
@@ -1583,19 +1598,18 @@ export function generatePersonalityReport(
         killerInsight: "致命洞察：你连选边都不肯，却想要一个深度人格分析——你要的不是了解自己，是一份带着权威感的肯定。",
       },
       psychology: {
-        type: emptyType,
+        code: "----",
+        codeMeaning: "未上场",
+        axes: [],
         name: "未上场球员",
         emoji: "🪑",
         soulPlayer: "板凳席",
         tagline: "你把「不选择」当成了一种选择。",
-        axes: [],
         traits: ["数据不足：你需要至少投一轮票才能生成心理画像"],
         decisionStyle: "决策风格：不决策。",
         inRelationship: "你不进入关系，因为进入就意味着可能失败。",
         atWork: "你永远在「考虑机会」，但从不真的接受。",
         spiritAnimal: "看戏的观众——存在但不参与",
-        code: "🪑 未上场球员",
-        codeMeaning: "你把「不选择」当成了一种选择。",
         inLove: "你不进入关系，因为进入就意味着可能失败。",
       },
       basketballIQ: {
