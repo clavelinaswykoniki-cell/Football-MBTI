@@ -70,6 +70,27 @@ body {
   100% { background-position: 200% 0; }
 }
 
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 100;
+  animation: confetti-fall linear forwards;
+}
+
 /* Shimmer effect for basketball IQ score circle */
 .shimmer-ring {
   position: relative;

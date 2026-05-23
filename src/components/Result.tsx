@@ -1,12 +1,51 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useGame } from "./GameProvider";
 import { getDebatesForMatchup } from "@/data/debate-loader";
 import { getPersona, getRoast } from "@/data/personas";
 import { generatePersonalityReport } from "@/data/personality-analysis";
+import { getMatchupMemes } from "@/data/matchup-memes";
 import AiJudge from "./AiJudge";
 import PersonalityReportCard from "./PersonalityReport";
+
+const CONFETTI_COLORS = ["#FFD700", "#A50044", "#FFFFFF", "#0052B4", "#E32119", "#85B3D1", "#6CABDD"];
+
+function Confetti() {
+  const [pieces] = useState(() =>
+    Array.from({ length: 60 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 1.2,
+      duration: 2.5 + Math.random() * 2,
+      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+      rotate: Math.random() * 360,
+    })),
+  );
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(false), 5000);
+    return () => clearTimeout(t);
+  }, []);
+  if (!visible) return null;
+  return (
+    <div aria-hidden className="pointer-events-none">
+      {pieces.map((p) => (
+        <span
+          key={p.id}
+          className="confetti-piece"
+          style={{
+            left: `${p.left}%`,
+            backgroundColor: p.color,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.duration}s`,
+            transform: `rotate(${p.rotate}deg)`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function Result() {
   const { kobeScore, lebronScore, votes, side, restart, backToMatchupSelect, totalRounds, elapsedSeconds, matchupId, currentMatchup } = useGame();
@@ -37,13 +76,15 @@ export default function Result() {
     return `${nameB}胜出！`;
   };
 
+  const soulPlayer = personalityReport?.psychology?.soulPlayer;
+  const matchupMemes = getMatchupMemes(matchupId);
   const shareText = persona
-    ? `我是「${persona.title}」${persona.emoji}\n${nameA} ${kobeScore} : ${lebronScore} ${nameB}\n忠诚度 ${loyalty}%\n"${roast}"\n来 GOAT 足球辩论 测测你是什么足球迷 ⚽`
-    : `${nameA} ${kobeScore} : ${lebronScore} ${nameB}\n来 GOAT 足球辩论 投票 ⚽`;
+    ? `🎯 测出来了，我是「${persona.title}」${persona.emoji}${soulPlayer ? `（灵魂球员：${soulPlayer}）` : ""}\n\n${nameA} ${kobeScore} : ${lebronScore} ${nameB} · 忠诚度 ${loyalty}%\n"${roast}"\n\n你是哪种球迷？1 分钟测出来 👇\n足球 MBTI ⚽`
+    : `${nameA} ${kobeScore} : ${lebronScore} ${nameB}\n你站哪边？来 足球 MBTI 测测 ⚽`;
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({ title: "GOAT 足球辩论", text: shareText, url: window.location.href });
+      navigator.share({ title: "足球 MBTI · 我的球迷人格", text: shareText, url: window.location.href });
     } else {
       navigator.clipboard.writeText(shareText + "\n" + window.location.href);
       alert("已复制到剪贴板！分享给你的球友看看");
@@ -52,6 +93,7 @@ export default function Result() {
 
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-10">
+      <Confetti />
       {/* Persona card — top priority */}
       {persona && (
         <div
@@ -65,6 +107,11 @@ export default function Result() {
           <p className="text-white/70 mb-4 text-sm sm:text-base">
             {persona.description}
           </p>
+          {matchupMemes && (
+            <p className="text-xs sm:text-sm text-white/50 italic mb-3 mt-2">
+              ⚔️ {matchupMemes.tagline}
+            </p>
+          )}
           <div className="border-t border-white/10 pt-4 mt-4">
             <p className="text-xs text-white/40 mb-1">忠诚度 {loyalty}% · {side === "kobe" ? `${nameA}粉` : `${nameB}粉`}</p>
           </div>

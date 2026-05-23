@@ -1043,14 +1043,6 @@ const TYPE_TABLE: Record<string, BasketballType> = {
     soulPlayer: "哈维·埃尔南德斯",
     tagline: "你信传控、信三角站位、信「正确的足球」——任何长传冲吊都让你皱眉。",
   },
-  // NOTE: legacy typo key "数据球"——algorithm never produces this key (always "数据党"),
-  // kept only to avoid breaking any external snapshot. Real one below.
-  "角色球员-数据球-头条派-冠军派": {
-    name: "瓜式无锋信徒",
-    emoji: "🌊",
-    soulPlayer: "伊涅斯塔",
-    tagline: "你信化学反应、空间、跑位——一个英雄打死所有人？过时了，靠的是11个人的舞蹈。",
-  },
   "角色球员-数据党-头条派-冠军派": {
     name: "瓜式无锋信徒",
     emoji: "🌊",

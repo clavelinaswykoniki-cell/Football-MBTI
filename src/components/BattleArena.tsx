@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useGame } from "./GameProvider";
 import { statBombs } from "@/data/personas";
 import { recordVote } from "@/lib/voteStats";
@@ -17,11 +17,15 @@ export default function BattleArena() {
   const [voted, setVoted] = useState<"kobe" | "lebron" | null>(null);
   const [animKey, setAnimKey] = useState(0);
   const [countdown, setCountdown] = useState<number | null>(null);
+  // Synchronous lock: prevents double-vote when React state hasn't flushed
+  // between two rapid clicks (touch double-tap, accidental double-click).
+  const votingLockedRef = useRef(false);
 
   useEffect(() => {
     setVoted(null);
     setAnimKey((k) => k + 1);
     setCountdown(null);
+    votingLockedRef.current = false;
   }, [currentRound]);
 
   useEffect(() => {
@@ -55,6 +59,10 @@ export default function BattleArena() {
       nextRound();
       return;
     }
+    // Synchronous guard against race conditions (rapid double-click can
+    // bypass the React state-based `voted` check because state hasn't flushed).
+    if (votingLockedRef.current) return;
+    votingLockedRef.current = true;
     setVoted(winner);
     vote(winner);
     if (currentTopic) recordVote(currentTopic.id, winner);
