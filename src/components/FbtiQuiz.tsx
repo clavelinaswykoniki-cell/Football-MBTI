@@ -70,7 +70,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
           setCurrent((c) => c + 1);
           setAnimating(false);
         }
-      }, 500);
+      }, 280);
     },
     [animating, current, total, onComplete],
   );
@@ -168,7 +168,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
       {/* ─── Progress bar ───────────────────────────────── */}
       <div className="w-full max-w-xl mb-8">
         <div className="flex justify-between text-xs text-white/30 mb-2">
-          <span>FBTI 篮球人格测试</span>
+          <span>FBTI 足球人格测试</span>
           <span>第 {current + 1}/{total} 题</span>
         </div>
         <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
@@ -181,11 +181,11 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
 
       {/* ─── Question card ──────────────────────────────── */}
       <div
-        className="w-full max-w-xl"
+        className="w-full max-w-xl min-h-[420px] flex flex-col justify-center"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(-16px)",
-          transition: "opacity 0.35s ease, transform 0.35s ease",
+          transition: "opacity 0.2s ease, transform 0.2s ease",
         }}
       >
         {/* Question text */}
