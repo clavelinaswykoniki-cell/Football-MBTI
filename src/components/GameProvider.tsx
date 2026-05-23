@@ -4,10 +4,23 @@ import { createContext, useContext, useState, useCallback, useMemo, type ReactNo
 import type { DebateTopic } from "@/data/debates";
 import { getMatchupById, type Matchup } from "@/data/matchups";
 import { getDebatesForMatchup } from "@/data/debate-loader";
+import type { FbtiAnswer } from "@/data/fbti";
 
 type Side = "kobe" | "lebron";
+type FbtiMode = "quick" | "full";
 
-type Phase = "landing" | "matchup-select" | "custom-picker" | "pick" | "battle" | "bonus-intro" | "bonus" | "result";
+type Phase =
+  | "landing"
+  | "matchup-select"
+  | "custom-picker"
+  | "pick"
+  | "battle"
+  | "bonus-intro"
+  | "bonus"
+  | "result"
+  | "fbti-entry"
+  | "fbti-quiz"
+  | "fbti-result";
 
 export const CUSTOM_MATCHUP_PREFIX = "custom:";
 export const CUSTOM_MATCHUP_SEP = "__vs__";
@@ -41,6 +54,9 @@ interface GameState {
   kobeScore: number;
   lebronScore: number;
   gameStartTime: number | null;
+  fbtiMode: FbtiMode;
+  fbtiCode: string | null;
+  fbtiAnswers: FbtiAnswer[];
 }
 
 interface GameContextType extends GameState {
@@ -61,6 +77,9 @@ interface GameContextType extends GameState {
   skipToResult: () => void;
   backToMatchupSelect: () => void;
   elapsedSeconds: number;
+  openFbtiEntry: () => void;
+  startFbti: (mode: FbtiMode) => void;
+  submitFbti: (code: string, answers: FbtiAnswer[]) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -73,14 +92,17 @@ export function useGame() {
 
 export function GameProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<GameState>({
-    phase: "pick",
-    matchupId: "messi-vs-ronaldo",
+    phase: "landing",
+    matchupId: null,
     side: null,
     currentRound: 0,
     votes: [],
     kobeScore: 0,
     lebronScore: 0,
     gameStartTime: null,
+    fbtiMode: "quick",
+    fbtiCode: null,
+    fbtiAnswers: [],
   });
 
   const { main: debates, bonus: bonusDebates } = useMemo(
@@ -177,7 +199,22 @@ export function GameProvider({ children }: { children: ReactNode }) {
       kobeScore: 0,
       lebronScore: 0,
       gameStartTime: null,
+      fbtiMode: "quick",
+      fbtiCode: null,
+      fbtiAnswers: [],
     });
+  }, []);
+
+  const openFbtiEntry = useCallback(() => {
+    setState((s) => ({ ...s, phase: "fbti-entry" }));
+  }, []);
+
+  const startFbti = useCallback((mode: FbtiMode) => {
+    setState((s) => ({ ...s, fbtiMode: mode, fbtiAnswers: [], fbtiCode: null, phase: "fbti-quiz" }));
+  }, []);
+
+  const submitFbti = useCallback((code: string, answers: FbtiAnswer[]) => {
+    setState((s) => ({ ...s, fbtiCode: code, fbtiAnswers: answers, phase: "fbti-result" }));
   }, []);
 
   const currentTopic = useMemo(() => {
@@ -216,6 +253,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
         skipToResult,
         backToMatchupSelect,
         elapsedSeconds,
+        openFbtiEntry,
+        startFbti,
+        submitFbti,
       }}
     >
       {children}

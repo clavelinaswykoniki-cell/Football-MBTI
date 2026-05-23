@@ -3,7 +3,7 @@
 import { useGame } from "./GameProvider";
 
 export default function Landing() {
-  const { startGame } = useGame();
+  const { startGame, openFbtiEntry } = useGame();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
@@ -54,14 +54,23 @@ export default function Landing() {
           梅西vsC罗 · 贝利vs马拉多纳 · 齐达内vs罗纳尔多 · 罗纳尔迪尼奥vs卡卡 · 内马尔vs姆巴佩 · 贝克汉姆vs菲戈 · 亨利vs伊布 · 哈兰德vs姆巴佩
         </p>
 
-        <button
-          onClick={startGame}
-          className="px-10 py-4 bg-gradient-to-r from-kobe-purple to-lebron-wine text-white text-xl font-bold rounded-full
-            hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-          style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
-        >
-          开始辩论
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button
+            onClick={startGame}
+            className="px-10 py-4 bg-gradient-to-r from-kobe-purple to-lebron-wine text-white text-xl font-bold rounded-full
+              hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
+          >
+            ⚽ 开始辩论
+          </button>
+          <button
+            onClick={openFbtiEntry}
+            className="px-10 py-4 bg-white/10 border-2 border-white/30 text-white text-xl font-bold rounded-full
+              hover:bg-white/20 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+          >
+            📋 测足球 MBTI
+          </button>
+        </div>
 
         <p className="mt-8 text-xs text-white/30">
           纯粹为了好玩 · 拒绝上纲上线 · 每位都是传奇
