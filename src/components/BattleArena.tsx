@@ -8,6 +8,11 @@ import VoteReveal from "./VoteReveal";
 import GlobalWar from "./GlobalWar";
 
 export default function BattleArena() {
+  const { currentRound } = useGame();
+  return <BattleArenaRound key={currentRound} />;
+}
+
+function BattleArenaRound() {
   const { currentTopic, currentRound, totalRounds, mainRounds, isBonus, vote, nextRound, kobeScore, lebronScore, currentMatchup, restart } =
     useGame();
   const pA = currentMatchup?.playerA;
@@ -22,15 +27,7 @@ export default function BattleArena() {
   const votingLockedRef = useRef(false);
 
   useEffect(() => {
-    setVoted(null);
-    setAnimKey((k) => k + 1);
-    setCountdown(null);
-    votingLockedRef.current = false;
-  }, [currentRound]);
-
-  useEffect(() => {
     if (!voted) return;
-    setCountdown(5);
     const interval = setInterval(() => {
       setCountdown((c) => {
         if (c === null || c <= 1) {
@@ -63,7 +60,9 @@ export default function BattleArena() {
     // bypass the React state-based `voted` check because state hasn't flushed).
     if (votingLockedRef.current) return;
     votingLockedRef.current = true;
+    setAnimKey((k) => k + 1);
     setVoted(winner);
+    setCountdown(5);
     vote(winner);
     if (currentTopic) recordVote(currentTopic.id, winner);
   };
@@ -216,7 +215,7 @@ export default function BattleArena() {
 
       {/* Global vote reveal */}
       {voted && currentTopic && (
-        <VoteReveal topicId={currentTopic.id} votedFor={voted} />
+        <VoteReveal key={currentTopic.id} topicId={currentTopic.id} votedFor={voted} />
       )}
 
       {voted && (

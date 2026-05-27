@@ -965,11 +965,6 @@ function analyzePhilosophy(input: PhiloInput): PhilosophyReport {
  * 16 combinations → 16 named archetypes with 灵魂球员 + emoji.
  */
 
-type LetterO = "O" | "D";
-type LetterT = "T" | "W";
-type LetterS = "S" | "L";
-type LetterN = "N" | "E";
-
 type AxisA = "持球大核" | "角色球员";
 type AxisB = "数据党" | "情怀党";
 type AxisC = "头条派" | "冷门派";
@@ -1577,7 +1572,6 @@ export function generatePersonalityReport(
   const configKnown = config !== null;
 
   if (votes.length === 0) {
-    const emptyType = "未参与";
     return {
       philosophy: {
         school: "虚无主义者",

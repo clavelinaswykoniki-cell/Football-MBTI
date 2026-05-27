@@ -12,17 +12,12 @@ export interface Persona {
   color: string;
 }
 
-// Messi 阵营（kobe slot）：技术/金球/巴萨忠诚/关键战
-const KOBE_TOPIC_IDS = ["clutch", "skill", "mvp", "defense", "loyalty", "iconic"];
-// Ronaldo 阵营（lebron slot）：欧冠/进球数/自律/大场面/影响力
-const LEBRON_TOPIC_IDS = ["rings", "mentality", "finals", "teammates", "era", "goat"];
-
 // Emotional / heart topics
 const EMOTIONAL_IDS = ["mentality", "loyalty", "clutch", "iconic"];
 // Stats / resume topics
 const STATS_IDS = ["mvp", "finals", "rings", "goat"];
 
-export function getPersona(side: Side, votes: Vote[], totalRounds: number, elapsedSeconds?: number): Persona {
+export function getPersona(side: Side, votes: Vote[], totalRounds: number): Persona {
   const ownVotes = votes.filter((v) => v.winner === side).length;
   const loyalty = ownVotes / totalRounds;
   const otherSide: Side = side === "kobe" ? "lebron" : "kobe";

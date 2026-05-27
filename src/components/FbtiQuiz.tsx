@@ -48,13 +48,6 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
   const progress = total > 0 ? (current / total) * 100 : 0;
   const isLast = current + 1 >= total;
 
-  // Reset per-question state on question change
-  useEffect(() => {
-    setVisible(true);
-    setOpenText("");
-    setSelectedFlash(null);
-  }, [current]);
-
   // ── Advance to next question or finish ────────────────────
   const advance = useCallback(
     (newAnswers: FbtiAnswer[]) => {
@@ -68,6 +61,9 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
           onComplete({ code, answers: newAnswers });
         } else {
           setCurrent((c) => c + 1);
+          setVisible(true);
+          setOpenText("");
+          setSelectedFlash(null);
           setAnimating(false);
         }
       }, 280);

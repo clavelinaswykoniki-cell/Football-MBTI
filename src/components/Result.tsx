@@ -60,7 +60,7 @@ export default function Result() {
   );
 
   const winner = kobeScore > lebronScore ? "kobe" : lebronScore > kobeScore ? "lebron" : "tie";
-  const persona = side ? getPersona(side, votes, totalRounds, elapsedSeconds) : null;
+  const persona = side ? getPersona(side, votes, totalRounds) : null;
   const roast = side ? getRoast(side, votes) : "";
   const loyalty = side && votes.length > 0
     ? Math.round((votes.filter((v) => v.winner === side).length / votes.length) * 100)

@@ -1,19 +1,28 @@
 @AGENTS.md
 
-# Messi vs Ronaldo — GOAT 足球辩论场
+# 足球 MBTI — GOAT 足球辩论场
 
 ## Scope
-互动式足球辩论网站，pick-a-side PK 格式。
+互动式足球人格测试与辩论网站，pick-a-side PK 格式。
 8 场对决：梅西vsC罗、贝利vs马拉多纳、齐达内vsR9、罗纳尔迪尼奥vs卡卡、内马尔vs姆巴佩、贝克汉姆vs菲戈、亨利vs伊布、哈兰德vs姆巴佩。
 部署目标：Railway（web）。
 
 ## Current State (v0.1 — soccer fork)
-- 8 个 matchup 已配置；首要详细的是 Messi vs Ronaldo
+- 8 个 matchup 已配置；核心产品方向是足球 MBTI / FBTI
 - 12 主辩论话题 + 3 bonus What-If
 - 16 型心理画像（基于 4 轴投票模式）+ 灵魂球员
 - 直播吧风格 persona / 毒舌 / stat bombs
 - AI Judge: template-based verdict
 - 投票统计 localStorage 种子数据
+
+## Active Handoff
+当前任务交给 `反重力` agent 继续。不要依赖旧聊天上下文，先读：
+- `docs/CURRENT_TASK.md`
+- `docs/DECISIONS.md`
+- `docs/FACT_RULES.md`
+- `docs/MATERIALS.md`
+- `docs/TODO.md`
+- `docs/HANDOFF.md`
 
 ## Tech Stack
 - Next.js 16 (App Router, Turbopack)

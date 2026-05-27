@@ -54,6 +54,7 @@ interface GameState {
   kobeScore: number;
   lebronScore: number;
   gameStartTime: number | null;
+  elapsedSeconds: number;
   fbtiMode: FbtiMode;
   fbtiCode: string | null;
   fbtiAnswers: FbtiAnswer[];
@@ -100,6 +101,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
     kobeScore: 0,
     lebronScore: 0,
     gameStartTime: null,
+    elapsedSeconds: 0,
     fbtiMode: "quick",
     fbtiCode: null,
     fbtiAnswers: [],
@@ -132,7 +134,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const pickSide = useCallback((side: Side) => {
-    setState((s) => ({ ...s, side, phase: "battle", currentRound: 0, gameStartTime: Date.now() }));
+    setState((s) => ({ ...s, side, phase: "battle", currentRound: 0, gameStartTime: Date.now(), elapsedSeconds: 0 }));
   }, []);
 
   const vote = useCallback((winner: Side) => {
@@ -155,11 +157,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
       const { main: d, bonus: bd } = getDebatesForMatchup(s.matchupId);
       const all = [...d, ...bd];
       const next = s.currentRound + 1;
+      const elapsedSeconds = s.gameStartTime ? Math.round((Date.now() - s.gameStartTime) / 1000) : s.elapsedSeconds;
       if (s.phase === "battle" && next >= d.length) {
-        return { ...s, phase: bd.length > 0 ? "bonus-intro" : "result" as Phase };
+        return { ...s, phase: bd.length > 0 ? "bonus-intro" : "result" as Phase, elapsedSeconds };
       }
       if (s.phase === "bonus" && next >= all.length) {
-        return { ...s, phase: "result" };
+        return { ...s, phase: "result", elapsedSeconds };
       }
       return { ...s, currentRound: next };
     });
@@ -173,7 +176,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const skipToResult = useCallback(() => {
-    setState((s) => ({ ...s, phase: "result" }));
+    setState((s) => ({
+      ...s,
+      phase: "result",
+      elapsedSeconds: s.gameStartTime ? Math.round((Date.now() - s.gameStartTime) / 1000) : s.elapsedSeconds,
+    }));
   }, []);
 
   const backToMatchupSelect = useCallback(() => {
@@ -186,6 +193,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       kobeScore: 0,
       lebronScore: 0,
       gameStartTime: null,
+      elapsedSeconds: 0,
     }));
   }, []);
 
@@ -199,6 +207,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       kobeScore: 0,
       lebronScore: 0,
       gameStartTime: null,
+      elapsedSeconds: 0,
       fbtiMode: "quick",
       fbtiCode: null,
       fbtiAnswers: [],
@@ -225,8 +234,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
   const isBonus = state.phase === "bonus";
   const totalRounds = state.phase === "bonus" ? allTopics.length : debates.length;
-  const elapsedSeconds = state.gameStartTime ? Math.round((Date.now() - state.gameStartTime) / 1000) : 0;
-
   const currentMatchup = useMemo(
     () => (state.matchupId ? getMatchupById(state.matchupId) ?? null : null),
     [state.matchupId],
@@ -252,7 +259,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
         startBonus,
         skipToResult,
         backToMatchupSelect,
-        elapsedSeconds,
         openFbtiEntry,
         startFbti,
         submitFbti,

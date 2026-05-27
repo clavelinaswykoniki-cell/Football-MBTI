@@ -2,6 +2,7 @@ import type { DebateTopic } from "./debates";
 import { debates, bonusDebates } from "./debates";
 import { getPlayerById } from "./player-database";
 import { generateMatchupDebates } from "./universal-debates";
+import { fixedMatchupDebates } from "./matchup-debates";
 
 interface MatchupDebates {
   main: DebateTopic[];
@@ -13,8 +14,7 @@ const CUSTOM_SEP = "__vs__";
 
 // matchup id → [playerA_id, playerB_id] in player-database.ts
 // messi-vs-ronaldo keeps its hand-polished debates; the other 7 are generated
-// from universal-debates templates at runtime so each pair gets pair-specific
-// stats/quotes/philosophical-angles instead of falling back to Messi/Ronaldo.
+// from universal-debates templates at runtime if they are not defined in fixedMatchupDebates.
 const FIXED_MATCHUP_PLAYERS: Record<string, [string, string]> = {
   "pele-vs-maradona": ["pele", "maradona"],
   "zidane-vs-r9": ["zidane", "ronaldo-r9"],
@@ -58,9 +58,19 @@ export function getDebatesForMatchup(matchupId: string | null): MatchupDebates {
   if (matchupId === "messi-vs-ronaldo") {
     return { main: debates, bonus: bonusDebates };
   }
+  
+  // 1. Try to load from handcrafted fixed matchup debates first
+  if (matchupId && fixedMatchupDebates[matchupId]) {
+    return fixedMatchupDebates[matchupId];
+  }
+  
+  // 2. Fallback to templates/generators if not handcrafted
   const fixed = generateForFixedMatchup(matchupId);
   if (fixed) return fixed;
   const custom = loadCustomDebates(matchupId);
   if (custom) return custom;
+  
+  // 3. Ultimate fallback to messi-vs-ronaldo
   return { main: debates, bonus: bonusDebates };
 }
+

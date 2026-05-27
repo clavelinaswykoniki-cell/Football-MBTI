@@ -101,24 +101,27 @@ export default function VoteReveal({ topicId, votedFor }: VoteRevealProps) {
   const { currentMatchup } = useGame();
   const nameA = currentMatchup?.playerA.nameZh ?? "科比";
   const nameB = currentMatchup?.playerB.nameZh ?? "詹姆斯";
-  const [mounted, setMounted] = useState(false);
   const [stats, setStats] = useState<TopicStats | null>(null);
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const s = getTopicStats(topicId);
-    setStats(s);
-    // Trigger animation on next frame so the transition actually fires
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+    let animateFrame = 0;
+    const statsFrame = requestAnimationFrame(() => {
+      const s = getTopicStats(topicId);
+      setStats(s);
+      // Trigger animation on next frame so the transition actually fires
+      animateFrame = requestAnimationFrame(() => {
         setAnimating(true);
       });
     });
+    return () => {
+      cancelAnimationFrame(statsFrame);
+      cancelAnimationFrame(animateFrame);
+    };
   }, [topicId]);
 
   // Pre-mount: render nothing to avoid hydration mismatch
-  if (!mounted || !stats) return null;
+  if (!stats) return null;
 
   const callout = getCallout(votedFor, stats, topicId);
 

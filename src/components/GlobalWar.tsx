@@ -5,7 +5,7 @@ import { getGlobalStats, type GlobalStats } from "@/lib/voteStats";
 import { useGame } from "./GameProvider";
 
 /**
- * Compact one-line banner showing the overall Messi vs Ronaldo war status.
+ * Compact one-line banner showing the overall playerA vs playerB war status.
  * Designed to sit at the top of the battle arena.
  * Reads from localStorage on mount — no props needed.
  */
@@ -13,16 +13,15 @@ export default function GlobalWar() {
   const { currentMatchup } = useGame();
   const nameA = currentMatchup?.playerA.nameZh ?? "梅西";
   const nameB = currentMatchup?.playerB.nameZh ?? "C罗";
-  const [mounted, setMounted] = useState(false);
   const [stats, setStats] = useState<GlobalStats | null>(null);
 
   useEffect(() => {
-    setMounted(true);
-    setStats(getGlobalStats());
+    const frame = requestAnimationFrame(() => setStats(getGlobalStats()));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   // SSR / pre-mount: neutral skeleton to avoid hydration mismatch
-  if (!mounted || !stats) {
+  if (!stats) {
     return (
       <div className="w-full max-w-3xl mx-auto px-4 py-2">
         <div className="h-8 rounded-full bg-white/5 animate-pulse" />
