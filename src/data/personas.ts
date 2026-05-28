@@ -17,7 +17,13 @@ const EMOTIONAL_IDS = ["mentality", "loyalty", "clutch", "iconic"];
 // Stats / resume topics
 const STATS_IDS = ["mvp", "finals", "rings", "goat"];
 
-export function getPersona(side: Side, votes: Vote[], totalRounds: number): Persona {
+export function getPersona(
+  side: Side, 
+  votes: Vote[], 
+  totalRounds: number,
+  nameA: string = "梅西",
+  nameB: string = "C罗"
+): Persona {
   const ownVotes = votes.filter((v) => v.winner === side).length;
   const loyalty = ownVotes / totalRounds;
   const otherSide: Side = side === "kobe" ? "lebron" : "kobe";
@@ -40,84 +46,116 @@ export function getPersona(side: Side, votes: Vote[], totalRounds: number): Pers
   // --- 100% loyalty ---
   if (loyalty >= 1.0) {
     return side === "kobe"
-      ? { title: "梅吹原教旨主义者", emoji: "🐐", description: "12轮全投梅西，一票都没给对面。你跟梅西的关系比他跟巴萨还忠诚——不，比他跟马黛茶还忠诚。你的手机壁纸是不是梅西举大力神杯？别回答了，是的。", color: "text-kobe-gold" }
-      : { title: "SIUUU 永动机", emoji: "👑", description: "12轮全投C罗，忠诚度拉满。你每天是不是对着镜子练 SIUUU 起跳？别不承认，你连梦里进球了都要转体一圈半再落地。C 罗本人看到你的投票都得说一句：这哥们比我还自律。", color: "text-lebron-gold" };
+      ? { 
+          title: `${nameA}吹原教旨主义者`, 
+          emoji: "🐐", 
+          description: `12轮全投${nameA}，一票都没给对面。你跟${nameA}的关系比他跟昔日俱乐部还忠诚——不，比铁石还坚硬。你的手机壁纸是不是${nameA}捧杯？别回答了，是的。`, 
+          color: "text-kobe-gold" 
+        }
+      : { 
+          title: nameB === "C罗" ? "SIUUU 永动机" : `${nameB}起步永动机`, 
+          emoji: "👑", 
+          description: nameB === "C罗" 
+            ? "12轮全投C罗，忠诚度拉满。你每天是不是对着镜子练 SIUUU 起跳？别不承认，你连梦里进球了都要转体一圈半再落地。C 罗本人看到你的投票都得说一句：这哥们比我还自律。"
+            : `12轮全投${nameB}，忠诚度拉满。你每天是不是在回放${nameB}的经典集锦？别不承认，你连梦里都在大喊${nameB}的名字。${nameB}本人看到你的投票都得给你点赞。`, 
+          color: "text-lebron-gold" 
+        };
   }
 
-  // --- 门德斯亲儿子: high-loyalty Ronaldo fan locked on off-pitch resume ---
+  // --- High-loyalty Player B fan locked on off-pitch resume ---
   if (side === "lebron" && loyalty >= 0.85 && v("era") === "lebron" && v("teammates") === "lebron" && v("mvp") === "lebron") {
-    return { title: "门德斯亲儿子", emoji: "🤝", description: "票几乎全给 C 罗，时代影响力+队友功劳+金球先生一个不落。你不是看球的，你是看合同的——下次 C 罗续约你比他经纪人还激动，手抖到打不开转会窗。", color: "text-lebron-gold" };
+    return { 
+      title: `${nameB}的王牌合伙人`, 
+      emoji: "🤝", 
+      description: `票几乎全给 ${nameB}，时代影响力+队友功劳+个人荣誉一个不落。你不是看球的，你是看商业合同的——下次 ${nameB} 续约或签新代言你比谁都激动，手抖到打不开财务报表。`, 
+      color: "text-lebron-gold" 
+    };
   }
 
-  // --- 马黛茶续杯王: high-loyalty Messi fan locked on Argentine vibes ---
+  // --- High-loyalty Player A fan locked on extreme vibes ---
   if (side === "kobe" && loyalty >= 0.85 && v("loyalty") === "kobe" && v("iconic") === "kobe") {
-    return { title: "马黛茶续杯王", emoji: "🧉", description: "梅西的票几乎一张不落，忠诚和经典时刻更是闭眼投。看球必备马黛茶，吸管不离嘴；C 罗一发健身 INS 你立刻举报营销号。家里墙上贴的不是梅西海报——是阿根廷国旗，正中间手绘 10 号。", color: "text-kobe-gold" };
+    return { 
+      title: `${nameA}的精神守护者`, 
+      emoji: "🧉", 
+      description: `${nameA}的票几乎一张不落，忠诚和经典时刻更是闭眼投。看球具备专属信仰，吸管不离嘴；对面一发健身视频你立刻举报营销号。家里墙上贴的不是普通海报——是${nameA}的超级巨幅画像。`, 
+      color: "text-kobe-gold" 
+    };
   }
 
   // --- Against own side on BOTH rings and goat (the two biggest topics) ---
   if (votedForRings === otherSide && votedForGoat === otherSide) {
     return side === "kobe"
-      ? { title: "深柜罗密", emoji: "🚪", description: "国家队大赛荣誉和 GOAT 都投了 C 罗——你为什么不直接换边？最重要的两题都反水你还自称梅吹？兄弟出柜吧，皇马青训等着你。", color: "text-red-400" }
-      : { title: "深柜梅密", emoji: "🚪", description: "国家队大赛荣誉和 GOAT 全投了梅西——你站 C 罗站了个寂寞。最重要的两题都倒戈，你的忠诚度比 C 罗换队还频繁。", color: "text-red-400" };
+      ? { 
+          title: `深柜${nameB}粉`, 
+          emoji: "🚪", 
+          description: `国家队大赛荣誉和 GOAT 都投了 ${nameB}——你为什么不直接换边？最重要的两题都反水你还自称${nameA}吹？兄弟出柜吧，${nameB}的球迷会等着你。`, 
+          color: "text-red-400" 
+        }
+      : { 
+          title: `深柜${nameA}粉`, 
+          emoji: "🚪", 
+          description: `国家队大赛荣誉和 GOAT 全投了 ${nameA}——你站 ${nameB} 站了个寂寞。最重要的两题都倒戈，你的忠诚度比教练换战术还频繁。`, 
+          color: "text-red-400" 
+        };
   }
 
-  // --- All emotional topics for Messi, all stats topics for Ronaldo ---
+  // --- All emotional topics for Player A, all stats topics for Player B ---
   const allEmotionalKobe = EMOTIONAL_IDS.every((id) => v(id) === "kobe");
   const allStatsLebron = STATS_IDS.every((id) => v(id) === "lebron");
   if (allEmotionalKobe && allStatsLebron) {
     return {
       title: "理性与感性分裂体",
       emoji: "🧠💔",
-      description: "感情上全站梅西，数据上全站 C 罗——白天打开 Opta 看进球数默默点头，晚上关灯看梅西过五人偷偷抹泪。你的内心每天都在踢一场梅罗大战，而且永远踢不完。",
+      description: `感情上全站 ${nameA}，数据上全站 ${nameB}——白天打开数据中心看进球和奖杯数默默点头，晚上关灯看 ${nameA} 的优雅艺术集锦偷偷抹泪。你的内心每天都在踢一场双雄大战，而且永远踢不完。`,
       color: "text-purple-400",
     };
   }
 
-  // --- Messi everything EXCEPT goat (can't commit) ---
+  // --- Player A everything EXCEPT goat (can't commit) ---
   const mainTopicIds = ["rings", "clutch", "skill", "mvp", "mentality", "defense", "finals", "teammates", "era", "iconic", "loyalty"];
   const allMainKobeExceptGoat = mainTopicIds.every((id) => v(id) === "kobe") && votedForGoat === "lebron";
   if (allMainKobeExceptGoat) {
     return {
-      title: "万年老二推崇者",
+      title: "临门一脚退缩者",
       emoji: "🥈",
-      description: "11轮全投了一边，就 GOAT 这一轮投了对面。你心里啥都明白，就是历史地位上不敢拍板。这比无脑吹还扎心——你承认你心爱的那位差那么一丢丢。",
+      description: `11轮全投了一边，就 GOAT 这一轮投了对面。你心里啥都明白，就是历史地位上不敢拍板。这比无脑吹还扎心——你承认你心爱的那位差那么一丢丢。`,
       color: "text-kobe-gold",
     };
   }
 
-  // --- 巴萨原教旨 (positive): all Barcelona-era qualities locked on Messi ---
+  // --- Club dinosaur: all-era qualities locked on Player A ---
   if (side === "kobe" && loyalty >= 0.75 && v("skill") === "kobe" && v("loyalty") === "kobe" && v("iconic") === "kobe" && v("teammates") === "kobe") {
     return {
-      title: "巴萨原教旨",
+      title: `${nameA}时代的见证者`,
       emoji: "💙",
-      description: "技术、忠诚、经典、队友体系全给梅西——你不是普通梅密，你是只认 2008-2015 那段巴萨味儿的考古派。瓜帅 tiki-taka、哈维伊涅斯塔三角传切、诺坎普三连星——这些词从你嘴里说出来比念家谱还顺。",
+      description: `技术、忠诚、经典、队友体系全给${nameA}——你不是普通粉丝，你是只认${nameA}最巅峰黄金岁月的那段古典味儿的考古派。看他在场上过人调度，比念家谱还顺。`,
       color: "text-kobe-gold",
     };
   }
 
-  // --- 国家队党 (positive): rings + clutch + iconic locked on chosen side ---
+  // --- National team purist: rings + clutch + iconic locked on chosen side ---
   if (v("rings") === side && v("clutch") === side && v("iconic") === side && loyalty >= 0.6) {
     return side === "kobe"
       ? {
-          title: "卡塔尔之夜信徒",
+          title: "国家队巅峰信徒",
           emoji: "🏆",
-          description: "国家队荣誉、关键球、经典时刻全投梅西——你不在乎西甲冠军和金球，你只看大赛。2022 卡塔尔那一夜你至少回看了 30 遍，每一遍都在 121 分钟那个点球大战时停下来喝口水稳住情绪。",
+          description: `国家队荣誉、关键球、经典时刻全投${nameA}——你不在乎俱乐部那些零碎，你只看大赛。夺冠那一夜你至少回看了 30 遍，每一次都在最后决定性瞬间停下来喝口水稳住情绪。`,
           color: "text-kobe-gold",
         }
       : {
-          title: "里斯本之鹰",
+          title: "国家队荣誉铁粉",
           emoji: "🦅",
-          description: "国家队荣誉、关键球、经典时刻全投 C 罗——你不在乎欧冠和金球，你只看葡萄牙队大赛。2016 欧洲杯那座奖杯是你心里 C 罗职业生涯的全部，就算他第 25 分钟就受伤下场了。",
+          description: `国家队荣誉、关键球、经典时刻全投${nameB}——你不在乎俱乐部商业吹捧，你只看${nameB}代表国家队的大赛表现。那座国家队大赛奖杯是你心里${nameB}职业生涯的全部。`,
           color: "text-lebron-gold",
         };
   }
 
-  // --- 银河战舰难民: gave teammates to Messi but main resume items to Ronaldo ---
+  // --- Heavy teammate card: gave teammates to Player A but main resume items to Player B ---
   if (v("teammates") === "kobe" && v("mvp") === "lebron" && v("finals") === "lebron" && v("rings") === "lebron") {
     return {
-      title: "银河战舰难民",
+      title: "黄金体系推崇者",
       emoji: "🚀",
-      description: "队友功劳给了梅西，但金球、决赛、国家队荣誉全给 C 罗。你承认 BBC+莫德里奇+克罗斯是奢侈品阵容——同时坚称 C 罗是独狼。建议你先把「独狼」这俩字查一下字典，然后再去看一下皇马 13/14/16/17/18 五年四欧冠的首发名单。",
+      description: `队友功劳给了${nameA}，但个人荣誉、决赛、国家队荣誉全给${nameB}。你承认${nameB}身边的阵容极其强大，同时坚称他是独立解决战斗的战术核心。这逻辑值得细细琢磨。`,
       color: "text-purple-400",
     };
   }
@@ -125,91 +163,191 @@ export function getPersona(side: Side, votes: Vote[], totalRounds: number): Pers
   // --- Traitor: <25% loyalty ---
   if (loyalty <= 0.25) {
     return side === "kobe"
-      ? { title: "卧底罗密", emoji: "🕵️", description: "嘴上说站梅西，投票全给了 C 罗。你比菲戈从巴萨转会皇马还丝滑——人家好歹纠结了一下，你是直接穿着巴萨球衣进了伯纳乌还坐到了主席台。", color: "text-red-400" }
-      : { title: "卧底梅密", emoji: "🕵️", description: "选了罗密的身份，票全投给了梅西。你的心口不一程度堪比 C 罗发 INS 说「团队精神最重要」然后镜头拍到他没进球在场边叹气。", color: "text-red-400" };
+      ? { 
+          title: `卧底${nameB}粉`, 
+          emoji: "🕵️", 
+          description: `嘴上说站${nameA}，投票全给了${nameB}。你这转换比叛逃死敌还丝滑——人家好歹纠结了一下，你是直接穿着${nameA}球衣进了${nameB}粉丝会还坐到了主席台。`, 
+          color: "text-red-400" 
+        }
+      : { 
+          title: `卧底${nameA}粉`, 
+          emoji: "🕵️", 
+          description: `选了${nameB}的身份，票全投给了${nameA}。你的心口不一程度堪比嘴上说「团队利益最重要」然后镜头拍到自己没进球就在场边郁闷叹气。`, 
+          color: "text-red-400" 
+        };
   }
 
-  // --- Data nerd: admits Messi is more skilled but bows to stats ---
+  // --- Data nerd: admits Player A is more skilled but bows to stats ---
   if (votedForClutch === "kobe" && votedForSkill === "kobe" && votedForGoat === "lebron") {
-    return { title: "Opta 球迷", emoji: "📊", description: "承认梅西更有技术更能在禁区里把人晃晕，但最后还是跪在了进球数面前。你是不是做什么决定都要先打开懂球帝数据中心？老哥，足球不是 Excel 表。", color: "text-blue-400" };
+    return { 
+      title: "数据统计原教旨", 
+      emoji: "📊", 
+      description: `承认${nameA}更有技术更能在小空间里把人晃晕，但最后还是跪在了硬核数据面前。你做决策是不是都要先打开数据中心对比一下？老哥，足球不是 Excel 报表。`, 
+      color: "text-blue-400" 
+    };
   }
 
-  // --- 苏神牙印: skill + iconic to Messi but goat to Ronaldo ---
+  // --- Skill + iconic to Player A but goat to Player B ---
   if (votedForSkill === "kobe" && votedForIconic === "kobe" && votedForGoat === "lebron") {
-    return { title: "苏神牙印", emoji: "🦷", description: "技术和经典时刻都给了梅西，但 GOAT 最后还是给了 C 罗。你像被苏亚雷斯咬过一口的基耶利尼——伤口在心里，赛后还得对着记者镜头硬挤出一句「没事，C 罗才是历史第一」。", color: "text-blue-400" };
+    return { 
+      title: "技术美学俘虏", 
+      emoji: "🦷", 
+      description: `技术和经典时刻都给了${nameA}，但 GOAT 最后还是给了${nameB}。你的理智在跟你的审美打架，伤口在心里，赛后还得硬挤出一句「没事，其实${nameB}才是历史第一」。`, 
+      color: "text-blue-400" 
+    };
   }
 
   // --- Split personality: clutch=lebron but loyalty=kobe ---
   if (votedForClutch === "lebron" && votedForLoyalty === "kobe") {
-    return { title: "自相矛盾本盾", emoji: "🤯", description: "梅西更忠诚但关键球更差？2022 卡塔尔决赛点球是谁进的来着？你的投票逻辑像一场点球大战——左脑踢左边，右脑踢右边，最后球打到门柱弹回来砸自己脸上。", color: "text-purple-400" };
+    return { 
+      title: "逻辑自我盾对决", 
+      emoji: "🤯", 
+      description: `${nameA}更忠诚但关键球更差？你的投票逻辑像一场点球大战——左脑踢左边，右脑踢右边，最后球打到门柱弹回来砸自己脸上。`, 
+      color: "text-purple-400" 
+    };
   }
 
-  // --- Stubborn Messi fan: gave MVP + finals to Ronaldo but won't switch ---
+  // --- Stubborn Player A fan: gave MVP + finals to Player B but won't switch ---
   if (votedForFinals === "lebron" && votedForMvp === "lebron" && side === "kobe") {
-    return { title: "嘴硬型梅密", emoji: "😤", description: "金球和大场面都给了 C 罗，但立场纹丝不动。你的嘴硬程度堪比瓜迪奥拉赛后发布会——数据全输了还能面不改色地说「我们控制了比赛」。", color: "text-kobe-gold" };
+    return { 
+      title: `倔强型${nameA}粉`, 
+      emoji: "😤", 
+      description: `硬核荣誉和大场面都给了${nameB}，但立场纹丝不动。你的嘴硬程度堪比主教练发布会——虽然数据全输了还能面不改色地说「我们控制了比赛」。`, 
+      color: "text-kobe-gold" 
+    };
   }
 
-  // --- Reverse stubborn: Ronaldo fan who gave clutch + mentality + loyalty to Messi ---
+  // --- Reverse stubborn: Player B fan who gave clutch + mentality + loyalty to Player A ---
   if (votedForClutch === "kobe" && votedForMentality === "kobe" && votedForLoyalty === "kobe" && side === "lebron") {
-    return { title: "嘴硬型罗密", emoji: "😤", description: "关键球、精神力、忠诚全投了梅西——你内心住着一个梅吹但嘴上偏要喊 SIUUU。这叫什么，傲娇？还是 C 罗式自律——嘴上不承认但身体很诚实？", color: "text-lebron-gold" };
+    return { 
+      title: `倔强型${nameB}粉`, 
+      emoji: "😤", 
+      description: `关键球、精神力、忠诚全投了${nameA}——你内心住着一个${nameA}吹但嘴上偏要喊支持${nameB}。这叫什么？傲娇？嘴上不承认但身体很诚实。`, 
+      color: "text-lebron-gold" 
+    };
   }
 
-  // --- SIUUU 起跳膝盖响: high-loyalty Ronaldo fan who concedes defense to Messi ---
+  // --- High-loyalty Player B fan who concedes defense to Player A ---
   if (side === "lebron" && loyalty >= 0.75 && votedForDefense === "kobe") {
-    return { title: "SIUUU 起跳膝盖响", emoji: "🦵", description: "大部分票都给 C 罗，但回防你诚实地给了梅西——这点很罕见。每次进球你都对着镜子练那个 SIUUU 起跳，落地一声闷响，楼下邻居以为又装修。诚实是好事，但你妈不一定觉得。", color: "text-lebron-gold" };
+    return { 
+      title: `${nameB}的理性拥趸`, 
+      emoji: "🦵", 
+      description: `大部分票都给${nameB}，但回防和防守你诚实地给了${nameA}——这点在铁粉里很罕见。每次进攻你都极度狂热，但你心里其实知道两边的优缺点。诚实是好事。`, 
+      color: "text-lebron-gold" 
+    };
   }
 
-  // --- 菲戈转会综合症: Messi fan who gave loyalty + teammates to Ronaldo ---
+  // --- Fan who gave loyalty + teammates to Player B ---
   if (side === "kobe" && votedForLoyalty === "lebron" && votedForTeammates === "lebron") {
-    return { title: "菲戈转会综合症", emoji: "🐷", description: "选了梅密的边，但忠诚度和队友功劳都送给了 C 罗。这跟当年揣着皇马合同回诺坎普的菲戈一个味儿——区别是人家挨了猪头，你连诺坎普的门票都没买。", color: "text-red-400" };
+    return { 
+      title: `${nameA}的动摇信徒`, 
+      emoji: "🐷", 
+      description: `选了${nameA}的边，但忠诚度和队友功劳都送给了${nameB}。你这跟背叛老东家一个味儿——区别是人家拿了高薪合同，你连球衣都没换。`, 
+      color: "text-red-400" 
+    };
   }
 
-  // --- 2014 决赛刽子手: Messi fan who gave finals AND clutch to Ronaldo ---
+  // --- Fan who gave finals AND clutch to Player B ---
   if (side === "kobe" && votedForFinals === "lebron" && votedForClutch === "lebron") {
-    return { title: "2014 决赛刽子手", emoji: "⚰️", description: "梅密身份，但关键球和大场面都给了 C 罗——你这是替伊瓜因和帕拉西奥那两个空门补刀。2014 那场决赛梅西不是输给德国，是输给了你这种投票模式。", color: "text-red-400" };
+    return { 
+      title: `大场面冷酷判官`, 
+      emoji: "⚰️", 
+      description: `${nameA}粉身份，但关键球和大场面都给了${nameB}——你这是亲自给心爱球员的防线挖坑。大赛决赛他没赢，可能就是输给你这种投票逻辑。`, 
+      color: "text-red-400" 
+    };
   }
 
-  // --- 加迪夫倒钩信徒: gave finals + iconic to Ronaldo but mvp to Messi ---
+  // --- Gave finals + iconic to Player B but mvp to Player A ---
   if (votedForFinals === "lebron" && votedForIconic === "lebron" && votedForMvp === "kobe") {
-    return { title: "加迪夫倒钩信徒", emoji: "🛩️", description: "2017 加迪夫那一脚倒钩你存了 4K 原画+慢镜头+8 个机位，决赛和经典时刻一并给了 C 罗。但金球先生你又承认是梅西的——那 8 vs 5 这道算术题你打算装聋作哑到哪一年？", color: "text-yellow-400" };
+    return { 
+      title: "经典名场面信徒", 
+      emoji: "🛩️", 
+      description: `决赛和经典时刻一并给了${nameB}，但个人荣誉你又承认是${nameA}的——这逻辑你打算怎么在球友群里圆过去？`, 
+      color: "text-yellow-400" 
+    };
   }
 
-  // --- 决赛失忆症: clutch to Messi but finals to Ronaldo ---
+  // --- Clutch to Player A but finals to Player B ---
   if (votedForClutch === "kobe" && votedForFinals === "lebron") {
-    return { title: "决赛失忆症", emoji: "🌫️", description: "关键球承认梅西，决赛却给 C 罗——所以世界杯决赛不算决赛？卡塔尔那一晚是阿根廷队内训练赛？你的脑回路比 VAR 画框还复杂，画到一半电脑死机了。", color: "text-purple-400" };
+    return { 
+      title: "大场面选择困难症", 
+      emoji: "🌫️", 
+      description: `关键球承认${nameA}，决赛却给${nameB}——所以大赛决赛不算关键球？你的脑回路比 VAR 画越位线还复杂。`, 
+      color: "text-purple-400" 
+    };
   }
 
-  // --- 金球否定派: mvp to Messi but goat to Ronaldo ---
+  // --- MVP to Player A but goat to Player B ---
   if (votedForMvp === "kobe" && votedForGoat === "lebron") {
-    return { title: "金球否定派", emoji: "🏆", description: "8 座金球承认是梅西的，但 GOAT 给了 C 罗——那金球评的到底是什么？最佳模特？最强健身博主？你这逻辑递交 France Football 编辑部，他们能气得当场宣布金球停办。", color: "text-blue-400" };
+    return { 
+      title: "硬荣誉否定派", 
+      emoji: "🏆", 
+      description: `金球与顶级个人荣誉承认是${nameA}的，但 GOAT 给了${nameB}——那荣誉评的到底是什么？最佳模特？你这逻辑递交评委会，他们能气得当场宣布大奖停办。`, 
+      color: "text-blue-400" 
+    };
   }
 
   // --- The contrarian: defense=lebron but era+iconic=kobe ---
   if (votedForDefense === "lebron" && votedForEra === "kobe" && votedForIconic === "kobe") {
-    return { title: "杠精附体", emoji: "🤡", description: "防守给了 C 罗但影响力和经典时刻给了梅西——每道题都精准避开主流答案。你在直播吧的评论一定是那种 0 赞 47 回复的类型，而且你乐在其中。", color: "text-yellow-400" };
+    return { 
+      title: "绿茵反向人", 
+      emoji: "🤡", 
+      description: `防守给了${nameB}但影响力和经典时刻给了${nameA}——每道题都精准避开主流答案。你在论坛的评论一定是那种零赞几十回复、盖了上百层楼的类型。`, 
+      color: "text-yellow-400" 
+    };
   }
 
-  // --- The betrayer: Messi fan who gave rings to Ronaldo ---
+  // --- The betrayer: Player A fan who gave rings to Player B ---
   if (side === "kobe" && votedForRings === "lebron" && votedForGoat === "kobe") {
-    return { title: "精神胜利法大师", emoji: "🏅", description: "国家队大赛荣誉给了 C 罗但 GOAT 给了梅西——你这是直接把 2022 世界杯+2024 美洲杯两座奖杯涂掉重画？阿根廷探戈跳着跳着，跳成了葡萄牙法多。", color: "text-kobe-gold" };
+    return { 
+      title: "精神胜利法大师", 
+      emoji: "🏅", 
+      description: `国家队大赛荣誉给了${nameB}但 GOAT 给了${nameA}——你这是直接把大赛金杯涂掉重画？逻辑闭环跳得极其魔幻。`, 
+      color: "text-kobe-gold" 
+    };
   }
 
   // --- High loyalty ---
   if (loyalty >= 0.75) {
     return side === "kobe"
-      ? { title: "正统梅吹门徒", emoji: "🔥", description: "大部分轮次站梅西，偶尔也承认对面有道理。你是梅密里难得的清醒派——虽然你在直播吧发一条「C 罗头球确实强」就会被梅密追着骂三天。坚持做自己，不容易。", color: "text-kobe-gold" }
-      : { title: "理性总裁拥趸", emoji: "⚡", description: "大部分投了 C 罗但不是无脑 SIUUU。你是那种进球了先看 xG 再庆祝的人。在梅罗大战的混乱评论区里，你就是那个被双方同时@的中间人。", color: "text-lebron-gold" };
+      ? { 
+          title: `${nameA}的正统门徒`, 
+          emoji: "🔥", 
+          description: `大部分轮次站${nameA}，偶尔也承认对面有道理。你是粉丝里难得的清醒派——虽然你在社区里客观分析一句就会被同阵营狂热粉追着骂。坚持做自己！`, 
+          color: "text-kobe-gold" 
+        }
+      : { 
+          title: `${nameB}的理性拥趸`, 
+          emoji: "⚡", 
+          description: `大部分投了${nameB}但不是无脑吹。你是那种理性看球、重视战术和客观数据的人。在混乱的评论区里，你就是那个被双方拉拢的理智派。`, 
+          color: "text-lebron-gold" 
+        };
   }
 
   // --- Moderate loyalty ---
   if (loyalty >= 0.4 && loyalty <= 0.6) {
-    return { title: "墙头草精", emoji: "🌾", description: "两边投得差不多——你是梅罗大战里的瑞士，永久中立。点外卖你是不是也在两家店之间纠结半小时最后点了第三家？", color: "text-white" };
+    return { 
+      title: "中立墙头草", 
+      emoji: "🌾", 
+      description: `两边投得差不多——你是双雄大战里的绝对中立国。点外卖你是不是也在两家店之间纠结半天？`, 
+      color: "text-white" 
+    };
   }
 
-  return { title: "摇摆球迷", emoji: "⚖️", description: "两边都投了不少，模式还不明显——你要么是真正的足球哲学家，要么就是看哪边论点排版更顺眼就选哪边。大概率是后者。下次试试盲投，可能更准。", color: "text-white" };
+  return { 
+    title: "理性分析派", 
+    emoji: "⚖️", 
+    description: `两边都投了不少，没有明显的单边偏向——你要么是真正的绿茵哲学家，要么就是看哪边论点排版更顺眼就选哪边。大概率是后者。`, 
+    color: "text-white" 
+  };
 }
 
-export function getRoast(side: Side, votes: Vote[]): string {
+export function getRoast(
+  side: Side, 
+  votes: Vote[],
+  nameA: string = "梅西",
+  nameB: string = "C罗"
+): string {
   const patterns: string[] = [];
 
   const v = (id: string) => votes.find((x) => x.topicId === id)?.winner;
@@ -217,76 +355,76 @@ export function getRoast(side: Side, votes: Vote[]): string {
   // --- Trash-talk patterns ---
 
   if (v("clutch") === "kobe" && v("finals") === "lebron") {
-    patterns.push("关键球投了梅西，大场面投了 C 罗？所以梅西关键球很强但 big game 不行？那 2022 卡塔尔决赛点球是 PS 的？2014 美洲杯决赛打门是空气进的？你这投票自己打自己脸了知道吗。");
+    patterns.push(`关键球投了${nameA}，大场面投了${nameB}？所以${nameA}关键球很强但决赛大场面不行？那大赛决赛是 PS 的？决赛打门是空气进的？你这投票自己打自己脸了知道吗。`);
   }
 
   if (v("skill") === "kobe" && v("mvp") === "lebron") {
-    patterns.push("技术投了梅西，金球先生投了 C 罗？你在说一个技术更差的人拿了更多金球？那金球评的是什么？倒钩大赛？SIUUU 节奏感？你的逻辑已经被苏亚雷斯咬死了。");
+    patterns.push(`技术投了${nameA}，个人荣誉投了${nameB}？你在说一个技术更差的人拿了更多金靴和金球？那荣誉评的是什么？选美大赛？你的逻辑已经被防线彻底铲碎了。`);
   }
 
   if (v("mentality") === "kobe" && v("goat") === "lebron") {
-    patterns.push("精神力投了梅西，GOAT 投了 C 罗？所以心态最稳的不是最伟大的？那 C 罗那个自律人设是用来干嘛的？发 INS 拍腹肌？精神力含金量被你亲手扔进垃圾桶。");
+    patterns.push(`精神力投了${nameA}，GOAT 投了${nameB}？所以心态最稳的不是最伟大的？那${nameB}的硬汉自律人设是用来干嘛的？发图秀腹肌？精神力含金量被你亲手扔进垃圾桶。`);
   }
 
   if (v("loyalty") === "kobe" && v("teammates") === "lebron") {
-    patterns.push("忠诚给梅西，队友给 C 罗？你是说一辈子在巴萨的人比换了 5 个俱乐部的人队友更差？那忠诚有什么用？感动自己？纽维尔小老弟梅西看到你这投票直接想退役。");
+    patterns.push(`忠诚给${nameA}，队友给${nameB}？一辈子留在母队的人比换了五家俱乐部的人队友配置还差？那忠诚有什么用？感动自己？${nameA}看到你这投票直接想挂靴。`);
   }
 
   if (v("defense") === "kobe" && v("era") === "lebron") {
-    patterns.push("回防给梅西，时代影响力给 C 罗？防守更好的人影响力更小？那 C 罗 6 亿 INS 粉丝是怎么来的？是不是你私信的？你这投票连葡萄牙国家队的二队都进不去。");
+    patterns.push(`回防给${nameA}，时代影响力给${nameB}？防守卖力的人影响力更小？那${nameB}几亿粉丝是怎么来的？是不是你买的？你这投票连预备队的战术板都上不去。`);
   }
 
   if (side === "kobe" && v("rings") === "lebron") {
-    patterns.push("梅密连国家队大赛荣誉都没投给梅西？2022 世界杯+2024 美洲杯你都选 C 罗的欧国联？你确定你看球了？还是说你心里早就投奔伯纳乌了，只是嘴上不承认？");
+    patterns.push(`你作为${nameA}粉，连国家队大赛荣誉都没投给${nameA}？你确定看球了？还是说你心里早就投奔对面了，只是嘴上不承认？`);
   }
 
   if (side === "lebron" && v("clutch") === "kobe") {
-    patterns.push("罗密承认梅西关键球更强了？那最后一秒任意球你把球给谁？你嘴上喊 SIUUU，但你的手已经把球递给梅西去主罚了。这心口不一比 C 罗去沙特还快。");
+    patterns.push(`你站${nameB}，却承认${nameA}关键球更强？那最后一秒生死点球你把球给谁？你嘴上支持${nameB}，但你的手已经把球递给${nameA}去主罚了。这倒戈速度比防守反击还快。`);
   }
 
   if (v("rings") === "kobe" && v("goat") === "lebron") {
-    patterns.push("国家队荣誉给了梅西但 GOAT 给了 C 罗？所以世界杯冠军不是 GOAT 标准？那 GOAT 是看 INS 粉丝量？看欧国联含金量？兄弟你都不知道你在投啥。");
+    patterns.push(`国家队荣誉给了${nameA}但 GOAT 给了${nameB}？所以最硬的国家队荣誉不是 GOAT 标准？那 GOAT 是看谁社交媒体粉丝多？还是看俱乐部虐菜？你自己都不知道你在投啥。`);
   }
 
   if (v("iconic") === "kobe" && v("finals") === "lebron") {
-    patterns.push("经典时刻给了梅西，大场面给了 C 罗？你觉得梅西的高光都不在决赛？2022 世界杯决赛 2 球+点球、2009 欧冠决赛头球、2011 欧冠决赛主导曼联——你是不是只看了诺坎普反皇马 5-0 那场就以为是全部？");
+    patterns.push(`经典时刻给了${nameA}，大场面决赛给了${nameB}？你觉得${nameA}的高光都不在决赛？那些欧冠决赛和国家队大赛决赛进球你当不存在？你是不是只看了两部过人集锦就以为是全部？`);
   }
 
   if (side === "lebron" && v("loyalty") === "kobe" && v("mentality") === "kobe") {
-    patterns.push("罗密把忠诚和精神力都给了梅西？你是不是觉得 C 罗就是个打工的？合同到期就跑、钱多就走、沙特给得多就去捞金？你这哪是球迷，你是 C 罗的经纪人门德斯。");
+    patterns.push(`你作为${nameB}粉，把忠诚和精神力都投给了${nameA}？你是不是觉得${nameB}就是个雇佣兵打工的？合同到期就撤、钱给得多就去？你这哪是球迷，你是对方的卧底。`);
   }
 
   if (side === "kobe" && v("mvp") === "lebron" && v("goat") === "lebron") {
-    patterns.push("金球和 GOAT 都给了 C 罗你还说自己是梅吹？8 个金球总要承认是梅西的吧？最有含金量的两个荣誉全送对面。你不是梅密，你是梅西最大的黑粉，巴塞罗那市政厅请你删号。");
+    patterns.push(`金球和 GOAT 都给了${nameB}你还说自己粉${nameA}？最有含金量的两个硬指标全送对面。你不是死忠，你是最大的黑粉，俱乐部行政部请你当场删号。`);
   }
 
   if (v("skill") === "lebron" && v("clutch") === "lebron" && v("defense") === "lebron") {
-    patterns.push("技术、关键球、回防三项全投了 C 罗？你觉得梅西在球场上干什么？卖萌？你把足球最核心的三项能力全给了对面，梅西看了直接把巴萨青训证撕了。");
+    patterns.push(`技术、关键球、回防防守三项全投了${nameB}？你觉得${nameA}在球场上干什么？卖萌？你把足球最核心的三项能力全给了对面，${nameA}看了直接把球衣撕了。`);
   }
 
   if (v("era") === "kobe" && v("teammates") === "lebron" && v("goat") === "lebron") {
-    patterns.push("时代影响力给梅西，但队友和 GOAT 给 C 罗？所以影响力最大的人不是 GOAT？那影响力影响了个啥？影响了大家哭一场然后投票还是投 C 罗？这逻辑能上《奇葩说》了。");
+    patterns.push(`时代影响力给${nameA}，但队友配置和 GOAT 给${nameB}？所以影响力最大的人反而不是 GOAT？那影响力影响了个啥？影响了大家哭一场然后投票还是投对面？这逻辑能上辩论大专杯了。`);
   }
 
   if (v("mentality") === "lebron" && v("loyalty") === "lebron" && side === "kobe") {
-    patterns.push("精神力和忠诚都投了 C 罗？你作为梅吹，把心态王和一人一城两张王牌全交给对面。梅西在迈阿密看着你直摇头，估计在想：这哥们咋走错更衣室了？");
+    patterns.push(`精神力和忠诚都投了${nameB}？你作为${nameA}粉，把心态和坚守两张大牌全交给对面。${nameA}在场上看着你直摇头，估计在想：这哥们是不是走错主场了？`);
   }
 
   if (v("clutch") === "lebron" && v("rings") === "kobe") {
-    patterns.push("关键球给了 C 罗但国家队荣誉给了梅西？所以关键球更强的人反而在最大场面颗粒无收？那 2016 欧洲杯决赛 C 罗 25 分钟下场是不是关键球时刻？你在嘲讽谁？");
+    patterns.push(`关键球给了${nameB}但国家队大赛荣誉给了${nameA}？所以关键球更强的人反而在最大场面拿不到金牌？你在暗示谁关键时刻隐身呢？`);
   }
 
   if (v("iconic") === "lebron" && v("skill") === "kobe") {
-    patterns.push("经典时刻给了 C 罗，技术给了梅西？你是说技术不行的人能创造经典？那你倒说说，倒钩之外 C 罗还有哪个被全球公认的「技术名场面」？过人？盘带？小范围摆脱？没有就别投这一票。");
+    patterns.push(`经典时刻给了${nameB}，技术给了${nameA}？你是说技术不行的人能创造经典名场面？那你倒说说，除了身体硬吃，对面还有哪个被全球公认的“技术微操名场面”？没有就别投这一票。`);
   }
 
   // --- Fallback ---
 
   if (patterns.length === 0) {
     if (side === "kobe") {
-      return "你的投票倒是没什么自相矛盾——但你站梅西这件事在 2026 年的直播吧已经是政治正确，毫无新意。8 金球+世界杯+美洲杯都摆这了，你站他就跟说「水是湿的」一样不需要论证。来点真知灼见好吗？";
+      return `你的投票倒是没什么自相矛盾——但你坚坚定定支持${nameA}这件事，在目前的球迷圈里毫无悬念。硬核战绩摆这了，你站他就跟说“地球是圆的”一样不需要论证。来点真的分析好吗？`;
     }
-    return "你的投票逻辑自洽——跟 C 罗合同自洽：哪里钱多去哪里。安全、稳健、但就是缺一点点足球纯粹性。你这种球迷沙特联赛最喜欢——闷头看，不质疑，按时打卡 SIUUU。";
+    return `你的投票逻辑自洽——跟追求高薪的雇佣兵合同一样自洽：哪里能赢去哪里。安全、稳健、但就是缺一点点足球情怀。你这种球迷就是商业球队最喜欢的类型——闷头看，不质疑，按时打卡高呼万岁。`;
   }
 
   return patterns[Math.floor(Math.random() * patterns.length)];
@@ -349,7 +487,7 @@ export const statBombs: Record<string, StatBomb[]> = {
   ],
   whatif_swap: [
     { stat: "梅西 2020 年逼宫要走时，巴萨财政崩盘后没人接得起他的工资——所谓忠诚不过是没人买得起。", source: "ESPN FC 2021 报道", side: "lebron" },
-    { stat: "C罗 2009 离开曼联后曼联 9 年欧冠 0 个 4 强——他走后球队直接垫底，证明带队能力真实存在。", source: "懂球帝战绩库", side: "kobe" },
+    { stat: "C罗 2009 离开曼联后曼联 9 年欧冠 0 个 4 强——他走后球队直接垫底，证明带带能力真实存在。", source: "懂球帝战绩库", side: "kobe" },
   ],
   whatif_era: [
     { stat: "00 年代防守强度比现在高 30%，铲球规则更宽松——梅西在 06-12 年那种环境下依然过人 2400+，含金量翻倍。", source: "Opta 时代修正", side: "kobe" },

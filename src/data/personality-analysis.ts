@@ -1301,13 +1301,13 @@ function buildInRelationship(i: LifeInput): string {
   const dataFlavor = i.axisB === "数据党" ? "约会前会比 ROI" : "约会全凭一时心动";
 
   if (i.axisD === "一城派" && i.axisB === "情怀党") {
-    return `${heroFlavor}，认定了就死守。梅西式忠诚（巴萨21年），但伴侣得忍受你的情绪化——你的爱来得猛，吵架也一样。`;
+    return `${heroFlavor}，认定了就死守。${i.sideName}式忠诚，但伴侣得忍受你的情绪化——你的爱来得猛，吵架也一样。`;
   }
   if (i.axisD === "一城派" && i.axisB === "数据党") {
     return `${heroFlavor}，${dataFlavor}。一旦认定你就长期持有——但你的关系经常被「对方哭你递纸巾然后继续讲道理」这一幕摧毁。`;
   }
   if (i.axisD === "冠军派" && i.axisB === "情怀党") {
-    return `你的爱像 C罗转会——感觉对就跳，感觉淡了就走${flipRef}。你需要的不是某个人，而是「心动的感觉」。`;
+    return `你的爱像 ${i.otherName}式转会——感觉对就跳，感觉淡了就走${flipRef}。你需要的不是某个人，而是「心动的感觉」。`;
   }
   return `${heroFlavor}，${dataFlavor}——每段关系你都在评估"转会"的可能性${flipRef}。你的关系大多在3个月内被你自己「优化」掉。`;
 }
