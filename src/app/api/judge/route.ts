@@ -41,7 +41,20 @@ function pick<T>(arr: T[]): T {
 }
 
 function vv(votes: Vote[], id: string): Side | undefined {
-  return votes.find((x) => x.topicId === id)?.winner;
+  return votes.find((x) => {
+    const tid = x.topicId;
+    if (tid === id) return true;
+    if (tid.endsWith("_" + id)) return true;
+    
+    // Semantic alias mappings for custom matchups and prefixed fixed matchups
+    if (id === "mvp" && (tid.endsWith("_individual") || tid.endsWith("_peak") || tid.endsWith("_data"))) return true;
+    if (id === "finals" && (tid.endsWith("_club") || tid.endsWith("_teammates") || tid.endsWith("_clutch"))) return true;
+    if (id === "loyalty" && (tid.endsWith("_club") || tid.endsWith("_career"))) return true;
+    if (id === "mentality" && (tid.endsWith("_style") || tid.endsWith("_tactics") || tid.endsWith("_leadership"))) return true;
+    if (id === "iconic" && (tid.endsWith("_influence") || tid.endsWith("_today") || tid.endsWith("_style"))) return true;
+    
+    return false;
+  })?.winner;
 }
 
 // Resolve display names from request body, with soccer-version defaults.
