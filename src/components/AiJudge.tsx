@@ -86,17 +86,37 @@ export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, na
   if (loading) {
     return (
       <div
-        className="w-full max-w-lg rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 text-center"
+        className="w-full max-w-lg rounded-2xl border-2 border-accent-green/30 bg-[#020904] p-6 sm:p-8 text-center relative overflow-hidden shadow-[0_0_30px_rgba(57,255,20,0.15)]"
         style={{ animation: "fade-up 0.5s ease-out" }}
       >
-        <div className="text-4xl mb-3 animate-bounce">🤖</div>
-        <h3 className="text-lg font-bold text-white/70 mb-2">AI 裁判 审理中...</h3>
-        <div className="flex justify-center gap-1">
-          <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
-          <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse [animation-delay:0.2s]" />
-          <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse [animation-delay:0.4s]" />
+        {/* 🟢 VAR scanning laser line overlay */}
+        <div className="var-scanner" />
+
+        <div className="flex items-center justify-center gap-2 mb-3 bg-black/40 border border-accent-green/20 py-2 px-4 rounded-full max-w-xs mx-auto">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-600 var-dot-flash shrink-0" />
+          <span className="text-xs font-black text-white tracking-widest uppercase">● VAR REVIEW IN PROGRESS</span>
         </div>
-        <p className="text-xs text-white/30 mt-3">正在扫描你的投票DNA、分析人格、编写判决书...（VAR 介入中）</p>
+
+        <h3 className="text-lg font-bold text-accent-green/90 mb-4 slanted-sports">VAR 视频助理裁判介入</h3>
+
+        {/* Fake Heartrate waveform animation */}
+        <div className="flex items-end justify-center gap-1.5 h-10 mb-5">
+          {[6, 10, 4, 14, 8, 2, 12, 5, 9, 3, 11].map((h, i) => (
+            <div
+              key={i}
+              className="w-1 bg-accent-green/40 rounded-full animate-pulse"
+              style={{
+                height: `${h * 2}px`,
+                animationDelay: `${i * 0.1}s`,
+                animationDuration: "1s"
+              }}
+            />
+          ))}
+        </div>
+
+        <p className="text-xs text-white/40 leading-relaxed max-w-sm mx-auto">
+          正在扫描您的投票 DNA 组合、核准专家数据仓库，准备起草终极判决书，这需要 0.003 秒...
+        </p>
       </div>
     );
   }
@@ -115,49 +135,50 @@ export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, na
 
   return (
     <div className="w-full max-w-lg space-y-4">
-      {/* ── Main Verdict Card ── */}
+      {/* ── Main Verdict Card: VAR Monitor Room ── */}
       <div
-        className={`rounded-2xl border-2 ${borderGlow} bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 sm:p-8`}
+        className={`rounded-2xl border-2 ${borderGlow} bg-gradient-to-b from-black/90 to-[#020703] p-6 sm:p-8 relative overflow-hidden`}
         style={{ animation: "fade-up 0.7s ease-out" }}
       >
-        {/* Header */}
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <span className="text-3xl">🤖</span>
-          <h3 className={`text-xl sm:text-2xl font-black ${accentColor}`}>AI 裁判</h3>
+        {/* VAR Header */}
+        <div className="flex items-center justify-between mb-5 border-b border-white/10 pb-4">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-black bg-accent-green text-black px-2 py-0.5 rounded uppercase tracking-wider">VAR</span>
+            <h3 className="text-sm font-black text-white tracking-widest uppercase">Video Referee Room</h3>
+          </div>
+          <div className="flex items-center gap-1.5 bg-black/60 px-3 py-1 rounded-full border border-white/5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-ping" />
+            <span className="text-[10px] font-mono text-white/50">LIVE SYSTEM</span>
+          </div>
         </div>
 
         {/* Confidence bar */}
         <div className="flex items-center gap-2 mb-5">
-          <span className="text-xs text-white/40 shrink-0">确信度</span>
+          <span className="text-xs text-white/40 shrink-0 uppercase tracking-widest">确信指数</span>
           <div className="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all duration-1000 ${
-                result.confidence >= 80
-                  ? "bg-gradient-to-r from-green-500 to-emerald-400"
-                  : result.confidence >= 60
-                    ? "bg-gradient-to-r from-yellow-500 to-amber-400"
-                    : "bg-gradient-to-r from-red-500 to-orange-400"
-              }`}
+              className="h-full rounded-full bg-gradient-to-r from-accent-green to-emerald-400"
               style={{ width: `${result.confidence}%` }}
             />
           </div>
-          <span className="text-xs font-mono text-white/50 shrink-0">{result.confidence}%</span>
+          <span className="text-xs font-mono text-accent-green shrink-0">{result.confidence}%</span>
         </div>
 
         {/* Verdict */}
-        <div className="bg-white/5 rounded-xl p-4 sm:p-5 mb-4 border border-white/5">
+        <div className="bg-white/[0.02] rounded-xl p-4 sm:p-5 mb-4 border border-white/5 relative">
+          <div className="absolute top-3 right-3 text-[9px] font-mono text-accent-green bg-accent-green/10 border border-accent-green/20 px-1.5 py-0.5 rounded">DECISION APPROVED</div>
           <div className="text-xs text-white/30 font-bold tracking-widest mb-2 uppercase">
-            判决
+            法庭终极判决
           </div>
-          <p className="text-white/90 text-sm sm:text-base leading-relaxed font-medium">
+          <p className="text-white/90 text-sm sm:text-base leading-relaxed font-semibold pr-10">
             {result.verdict}
           </p>
         </div>
 
         {/* Analysis */}
-        <div className="bg-white/5 rounded-xl p-4 sm:p-5 border border-white/5">
+        <div className="bg-white/[0.02] rounded-xl p-4 sm:p-5 border border-white/5">
           <div className="text-xs text-white/30 font-bold tracking-widest mb-2 uppercase">
-            分析报告
+            心流轨迹与数据清算
           </div>
           <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
             {result.analysis}

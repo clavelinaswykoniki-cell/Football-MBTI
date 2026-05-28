@@ -133,25 +133,93 @@ export default function Result() {
 
       {activeTab === "report" && (
         <div className="w-full flex flex-col items-center space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
-          {/* Persona card — top priority */}
+          {/* 💳 EA FUT Legends Ultimate Fan Card */}
           {persona && (
-            <div
-              className="w-full max-w-lg rounded-2xl border-2 border-white/20 bg-white/5 p-6 sm:p-8 text-center"
-            >
-              <div className="text-5xl mb-3">{persona.emoji}</div>
-              <h3 className={`text-2xl sm:text-3xl font-black mb-2 ${persona.color}`}>
-                {persona.title}
-              </h3>
-              <p className="text-white/70 mb-4 text-sm sm:text-base">
-                {persona.description}
-              </p>
-              {matchupMemes && (
-                <p className="text-xs sm:text-sm text-white/50 italic mb-3 mt-2">
-                  ⚔️ {matchupMemes.tagline}
+            <div className="w-full max-w-sm rounded-3xl overflow-hidden fut-card-gold p-6 text-center relative border border-yellow-500/30 shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:scale-[1.02] transition-transform duration-300 mx-auto">
+              
+              {/* Card top headers */}
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-[10px] font-black bg-yellow-500 text-black px-2 py-0.5 rounded tracking-widest uppercase">LEGEND</span>
+                <span className="text-xs font-mono text-yellow-500/70 tracking-widest uppercase">FUT SPECIAL</span>
+              </div>
+
+              {/* FUT Card Main Layout Grid */}
+              <div className="grid grid-cols-12 gap-2 mb-6 items-center">
+                {/* Left stats panel */}
+                <div className="col-span-4 flex flex-col items-center border-r border-yellow-500/10 pr-2">
+                  <span className="text-4xl sm:text-5xl font-black text-yellow-500 slanted-sports">
+                    {loyalty}
+                  </span>
+                  <span className="text-[10px] font-black text-white/50 uppercase tracking-widest mt-1">OVR</span>
+                  
+                  <div className="h-px w-8 bg-yellow-500/20 my-2" />
+                  
+                  <div className="flex flex-col items-center">
+                    <span className="text-base font-black text-white/80">{side === "kobe" ? "M10" : "CR7"}</span>
+                    <span className="text-[9px] text-white/40 tracking-wider uppercase">Tribe</span>
+                  </div>
+                </div>
+
+                {/* Center emoji anchor */}
+                <div className="col-span-4 flex flex-col items-center">
+                  <div className="text-6xl filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] animate-bounce mb-2">
+                    {persona.emoji}
+                  </div>
+                  <span className="text-[9px] font-mono text-yellow-500/50 uppercase tracking-widest font-bold">SOUL</span>
+                </div>
+
+                {/* Right hexagon radar graph */}
+                <div className="col-span-4 flex justify-center">
+                  <svg className="w-18 h-18 text-yellow-500/30" viewBox="0 0 100 100">
+                    {/* Background hexagons */}
+                    <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                    <polygon points="50,32.5 65,41 65,59 50,67.5 35,59 35,41" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+                    
+                    {/* Radar metrics polygon */}
+                    <polygon 
+                      points={`
+                        50,${50 - 35 * (loyalty / 100)} 
+                        ${50 + 30 * 0.86},${50 - 30 * 0.5} 
+                        ${50 + 25 * 0.86},${50 + 25 * 0.5} 
+                        50,${50 + 35 * 0.8} 
+                        ${50 - 28 * 0.86},${50 + 28 * 0.5} 
+                        ${50 - 32 * 0.86},${50 - 32 * 0.5}
+                      `} 
+                      fill="rgba(212, 175, 55, 0.4)" 
+                      stroke="#d4af37" 
+                      strokeWidth="1.5" 
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Title & Description */}
+              <div className="my-4">
+                <h3 className={`text-2xl font-black mb-2 ${persona.color} tracking-wide slanted-sports`}>
+                  {persona.title}
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm leading-relaxed px-2">
+                  {persona.description}
                 </p>
-              )}
-              <div className="border-t border-white/10 pt-4 mt-4">
-                <p className="text-xs text-white/40 mb-1">忠诚度 {loyalty}% · {side === "kobe" ? `${nameA}粉` : `${nameB}粉`}</p>
+                {matchupMemes && (
+                  <p className="text-[10px] text-yellow-500/50 italic mt-3 uppercase tracking-wider">
+                    ⚔️ {matchupMemes.tagline}
+                  </p>
+                )}
+              </div>
+
+              {/* Card Footer signatures */}
+              <div className="border-t border-yellow-500/10 pt-4 mt-4 flex items-center justify-between">
+                <div className="text-left">
+                  <p className="text-[9px] text-white/30 uppercase tracking-widest font-bold">Loyalty Status</p>
+                  <p className="text-xs font-bold text-white/80">{side === "kobe" ? `${nameA}的狂热信徒` : `${nameB}的狂热信徒`}</p>
+                </div>
+                {/* Gold Signatures */}
+                <div className="text-right slanted-sports">
+                  <p className="text-[10px] font-black text-yellow-500 tracking-widest italic drop-shadow-[0_0_5px_rgba(212,175,55,0.4)]">
+                    Tanggod Special Edition
+                  </p>
+                </div>
               </div>
             </div>
           )}

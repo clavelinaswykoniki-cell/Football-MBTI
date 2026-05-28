@@ -85,21 +85,26 @@ function BattleArenaRound() {
       {/* Global war banner */}
       <GlobalWar />
 
-      {/* Header: score + progress */}
-      <div className="flex items-center justify-between mb-4 sm:mb-6">
-        <div className="flex items-center gap-3">
-          <span className="text-kobe-gold font-bold text-lg">{kobeScore}</span>
-          <span className="text-white/30 text-sm">{nameA}</span>
+      {/* 🏆 Slanted Neon Scoreboard HUD Header */}
+      <div className="flex items-center justify-between mb-4 sm:mb-6 slanted-sports">
+        {/* Team A */}
+        <div className="flex items-center gap-2 sm:gap-3 bg-white/5 border border-white/5 px-4 py-2 rounded-xl backdrop-blur-sm">
+          <span className="text-xs sm:text-sm font-bold text-white/50 uppercase tracking-widest">{nameA}</span>
+          <span className="text-xl sm:text-2xl font-black text-kobe-gold">{kobeScore}</span>
         </div>
-        <div className="text-center">
-          <span className="text-white/50 text-sm">
-            {isBonus ? `Bonus ${currentRound - mainRounds + 1}/3` : `Round ${currentRound + 1}/${mainRounds}`}
+
+        {/* HUD Center Progress */}
+        <div className="text-center bg-black/40 border border-white/10 px-4 py-1.5 rounded-lg flex flex-col items-center shadow-lg shadow-black/20 shrink-0">
+          <span className="text-[10px] sm:text-xs font-black text-accent-green tracking-widest uppercase">
+            {isBonus ? `Bonus ${currentRound - mainRounds + 1}` : `Round ${currentRound + 1}`}
           </span>
-          {isBonus && <span className="block text-yellow-400/60 text-xs">🔮 假设题</span>}
+          {isBonus && <span className="text-[9px] text-yellow-400/80 font-bold uppercase tracking-wider">🔮 What-If</span>}
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-white/30 text-sm">{nameB}</span>
-          <span className="text-lebron-gold font-bold text-lg">{lebronScore}</span>
+
+        {/* Team B */}
+        <div className="flex items-center gap-2 sm:gap-3 bg-white/5 border border-white/5 px-4 py-2 rounded-xl backdrop-blur-sm">
+          <span className="text-xl sm:text-2xl font-black text-lebron-gold">{lebronScore}</span>
+          <span className="text-xs sm:text-sm font-bold text-white/50 uppercase tracking-widest">{nameB}</span>
         </div>
       </div>
 
@@ -124,6 +129,7 @@ function BattleArenaRound() {
         {/* Kobe card */}
         <div
           className={`rounded-2xl p-4 sm:p-6 border-2 transition-all duration-300 cursor-pointer
+            active:scale-[0.98] active:translate-x-[6px] active:rotate-1 active:shadow-[0_0_15px_rgba(253,185,39,0.3)]
             ${voted === "kobe"
               ? "border-kobe-gold bg-kobe-purple/30 scale-[1.02]"
               : voted === "lebron"
@@ -161,6 +167,7 @@ function BattleArenaRound() {
         {/* LeBron card */}
         <div
           className={`rounded-2xl p-4 sm:p-6 border-2 transition-all duration-300 cursor-pointer
+            active:scale-[0.98] active:-translate-x-[6px] active:-rotate-1 active:shadow-[0_0_15px_rgba(253,187,48,0.3)]
             ${voted === "lebron"
               ? "border-lebron-gold bg-lebron-wine/30 scale-[1.02]"
               : voted === "kobe"

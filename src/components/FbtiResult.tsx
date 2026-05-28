@@ -149,11 +149,11 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
 
   const letters = code.split("");
 
-  const shareText = `FBTI测了我是【${code}】${type.emoji} ${type.name}，谁懂啊，被算法掌握了\n"${type.tagline}"\n灵魂球员对线：${type.spiritPlayer}\n\n发到主队群被骂了，但是是真的——来测你的篮球人格 🏀`;
+  const shareText = `FBTI测了我是【${code}】${type.emoji} ${type.name}，谁懂啊，被算法掌握了\n"${type.tagline}"\n灵魂球员对线：${type.spiritPlayer}\n\n发到球迷群被骂了，但是是真的——来测你的足球人格 ⚽`;
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({ title: "我的 FBTI 篮球人格", text: shareText, url: window.location.href });
+      navigator.share({ title: "我的 FBTI 足球人格", text: shareText, url: window.location.href });
     } else {
       navigator.clipboard.writeText(shareText + "\n" + window.location.href).then(
         () => {
@@ -456,7 +456,7 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
       </div>
 
       <p className="mt-10 text-xs text-white/20 text-center max-w-sm">
-        FBTI 篮球人格类型 — 纯属娱乐，每个球迷都是独一无二的。
+        FBTI 足球人格类型 — 纯属娱乐，每个球迷都是独一无二的。
       </p>
     </div>
   );

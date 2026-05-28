@@ -29,7 +29,7 @@ export default function FbtiEntry() {
           Football Brain Type Indicator
         </p>
         <p className="text-white/40 text-sm">
-          16 种篮球人格类型 &middot; 你是哪一种？
+          16 种足球人格类型 &middot; 你是哪一种？
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default function FbtiEntry() {
               30 题 &middot; 约 5 分钟
             </div>
             <p className="text-white/60 text-sm leading-relaxed flex-1">
-              覆盖 4 大维度的核心题目，快速得出你的篮球人格类型。
+              覆盖 4 大维度的核心题目，快速得出你的足球人格类型。
               适合第一次玩或时间紧的朋友。
             </p>
             <div className="mt-6 text-kobe-gold text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
@@ -78,7 +78,7 @@ export default function FbtiEntry() {
             </div>
             <p className="text-white/60 text-sm leading-relaxed flex-1">
               更深度的灵魂拷问，准确度更高。
-              最后还有一道开放题让你写下自己的篮球故事。
+              最后还有一道开放题让你写下自己的足球故事。
             </p>
             <div className="mt-6 text-lebron-gold text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
               深度测试 &rarr;
@@ -102,7 +102,7 @@ export default function FbtiEntry() {
       </div>
 
       <p className="mt-10 text-xs text-white/30 text-center max-w-md">
-        每个选择都暴露你的真实篮球性格 &middot; 完成后可分享你的类型给朋友
+        每个选择都暴露你的真实足球性格 &middot; 完成后可分享你的类型给朋友
       </p>
     </div>
   );

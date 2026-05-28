@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #030c06;   /* Pitch Green — Deep soccer turf dark base */
   --foreground: #ededed;
   /* Token names preserved for slot-based theming.
      Values rebranded to football: Messi (Argentina/Barça) vs Ronaldo (Portugal/Real Madrid). */
@@ -10,6 +10,7 @@
   --lebron-wine: #8B0000;   /* Portugal red / Real Madrid base — Ronaldo accent dark */
   --lebron-gold: #FFD700;   /* Real Madrid gold — Ronaldo primary */
   --laker-purple: #2C3E8C;  /* mirrors kobe-purple */
+  --accent-green: #39FF14;  /* Stadium Neon Lime Green */
 }
 
 @theme inline {
@@ -19,6 +20,7 @@
   --color-kobe-gold: var(--kobe-gold);
   --color-lebron-wine: var(--lebron-wine);
   --color-lebron-gold: var(--lebron-gold);
+  --color-accent-green: var(--accent-green);
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
@@ -130,4 +132,57 @@ body {
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   transform: translateY(-2px);
+}
+
+/* FIFA FUT Card & VAR Neon Styles */
+@keyframes scanning {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes flash-red {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.var-scanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, #39FF14, transparent);
+  box-shadow: 0 0 8px #39FF14;
+  animation: scanning 2s linear infinite;
+}
+
+.var-dot-flash {
+  animation: flash-red 1s ease-in-out infinite;
+}
+
+/* Fut Legend gold multi-faceted card border */
+.fut-card-gold {
+  position: relative;
+  background: linear-gradient(135deg, #1c150b 0%, #0d0a05 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.fut-card-gold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(120deg, transparent 40%, rgba(212, 175, 55, 0.1) 45%, rgba(212, 175, 55, 0.3) 50%, rgba(212, 175, 55, 0.1) 55%, transparent 60%);
+  background-size: 200% 200%;
+  animation: shimmer-rotate 4s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+}
+
+/* Slanted sports score font styling */
+.slanted-sports {
+  font-family: 'Outfit', 'Arial Black', sans-serif;
+  transform: skewX(-10deg);
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
 }
