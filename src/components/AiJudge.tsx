@@ -34,9 +34,11 @@ interface AiJudgeProps {
   side: Side;
   kobeScore: number;
   lebronScore: number;
+  nameA?: string;
+  nameB?: string;
 }
 
-export default function AiJudge({ votes, side, kobeScore, lebronScore }: AiJudgeProps) {
+export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, nameB }: AiJudgeProps) {
   const [result, setResult] = useState<JudgeResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -48,7 +50,7 @@ export default function AiJudge({ votes, side, kobeScore, lebronScore }: AiJudge
     fetch("/api/judge", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ votes, side, kobeScore, lebronScore }),
+      body: JSON.stringify({ votes, side, kobeScore, lebronScore, nameA, nameB }),
     })
       .then((res) => {
         if (!res.ok) throw new Error("judge failed");

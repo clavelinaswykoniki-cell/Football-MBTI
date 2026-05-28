@@ -162,7 +162,14 @@ export default function Result() {
       {/* AI Judge */}
       {side && (
         <div className="w-full flex justify-center mb-6" style={{ animation: "fade-up 1.0s ease-out" }}>
-          <AiJudge votes={votes} side={side} kobeScore={kobeScore} lebronScore={lebronScore} />
+          <AiJudge
+            votes={votes}
+            side={side}
+            kobeScore={kobeScore}
+            lebronScore={lebronScore}
+            nameA={nameA}
+            nameB={nameB}
+          />
         </div>
       )}
 
