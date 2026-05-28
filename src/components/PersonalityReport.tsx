@@ -16,7 +16,7 @@ export interface PersonalityReport {
     atWork?: string;
     spiritAnimal?: string;
   };
-  basketballIQ: { score: number; grade: string; analysis: string };
+  footballIQ: { score: number; grade: string; analysis: string };
   overall: string;
 }
 
@@ -188,12 +188,12 @@ export default function PersonalityReportCard({ report }: Props) {
               球商指数
             </h4>
           </div>
-          <CircularProgress score={report.basketballIQ.score} />
-          <p className={`text-center text-sm font-bold mt-2 ${getScoreColor(report.basketballIQ.score).text}`}>
-            {report.basketballIQ.grade}
+          <CircularProgress score={report.footballIQ.score} />
+          <p className={`text-center text-sm font-bold mt-2 ${getScoreColor(report.footballIQ.score).text}`}>
+            {report.footballIQ.grade}
           </p>
           <p className="text-white/50 text-xs leading-relaxed mt-2 text-center">
-            {report.basketballIQ.analysis}
+            {report.footballIQ.analysis}
           </p>
         </div>
 

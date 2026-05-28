@@ -285,26 +285,32 @@ function ExpandBlock({
   onToggle: () => void;
 }) {
   return (
-    <div className="rounded-xl bg-white/5 border border-white/5 overflow-hidden">
+    <div className="rounded-xl bg-white/5 border border-white/5 overflow-hidden transition-all duration-300">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-4 py-3 text-left cursor-pointer hover:bg-white/5 transition-colors"
       >
         <span className="text-sm text-white/70 font-medium">{label}</span>
         <span
-          className="text-white/30 text-xs transition-transform duration-200"
+          className="text-white/30 text-xs transition-transform duration-300"
           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         >
           ▼
         </span>
       </button>
-      {isOpen && (
-        <div className="px-4 pb-4" style={{ animation: "fade-up 0.3s ease-out" }}>
-          <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
-            {content}
-          </p>
+      <div
+        className={`grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-4 pb-4">
+            <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
+              {content}
+            </p>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

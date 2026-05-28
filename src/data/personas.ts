@@ -436,65 +436,107 @@ export interface StatBomb {
   side: Side;
 }
 
-export const statBombs: Record<string, StatBomb[]> = {
-  rings: [
-    { stat: "C罗国家队大赛冠军只有 2 个（2016 欧洲杯+2019 欧国联），且 2016 决赛第 25 分钟就受伤下场，奖杯一半算埃德尔的。", source: "UEFA 官方", side: "kobe" },
-    { stat: "梅西国家队前 14 年颗粒无收，3 次大赛决赛全输（2007 美洲杯/2014 世界杯/2015、2016 美洲杯），被全阿根廷骂叛徒。", source: "Conmebol 历史", side: "lebron" },
-  ],
-  clutch: [
-    { stat: "梅西 2022 世界杯淘汰赛阶段 4 场 4 球 3 助攻，决赛点球大战首罚命中——这才是真正的大心脏。", source: "FIFA 官方数据", side: "kobe" },
-    { stat: "C罗 2018 世界杯八强出局、2022 世界杯八强出局，两届淘汰赛阶段合计 0 个运动战进球。", source: "FIFA 技术报告", side: "lebron" },
-  ],
-  skill: [
-    { stat: "梅西生涯过人成功次数 2400+，欧洲五大联赛历史第一，是第二名（C罗）的两倍以上。", source: "Opta 历史数据", side: "kobe" },
-    { stat: "C罗职业生涯头球进球超过 145 个，是梅西头球进球（30+）的近 5 倍——空中霸权碾压。", source: "Transfermarkt", side: "lebron" },
-  ],
-  mvp: [
-    { stat: "梅西 8 座金球奖（2009/2010/2011/2012/2015/2019/2021/2023），比 C 罗多 3 座。", source: "France Football", side: "kobe" },
-    { stat: "C罗 2008 金球年他英超进球 31 个、欧冠 8 球助曼联欧冠夺冠——梅西同年只拿 16 球。", source: "法新社", side: "lebron" },
-  ],
-  mentality: [
-    { stat: "梅西 2022 美洲杯前曾 3 度宣布退出国家队，2016 还在更衣室痛哭——这哪是心态王，这是抑郁症发作。", source: "TyC Sports", side: "lebron" },
-    { stat: "C罗 35 岁后体脂率仍维持在 7%，每天比队友早到 90 分钟训练——这种自律梅西做不到。", source: "尤文图斯队医访谈", side: "lebron" },
-  ],
-  defense: [
-    { stat: "梅西生涯每 90 分钟跑动 8.3 公里，比 C 罗（9.2 公里）少一公里——你管这叫努力踢球？", source: "Whoscored", side: "lebron" },
-    { stat: "C罗近 5 个赛季回防数据进入欧洲前锋后 15%——所谓自律不包括防守。", source: "Opta 高级数据", side: "kobe" },
-  ],
-  finals: [
-    { stat: "梅西欧冠决赛 4 战全胜 2 球 1 助攻，2009 罗马决赛、2011 温布利决赛主宰曼联。", source: "UEFA 官方", side: "kobe" },
-    { stat: "C罗欧冠决赛 3 战 3 球，2017 加迪夫决赛梅开二度——单决赛进球数力压梅西。", source: "UEFA 官方", side: "lebron" },
-  ],
-  teammates: [
-    { stat: "梅西巴萨时期队友有哈维、伊涅斯塔、苏亚雷斯、内马尔——MSN+宇宙队，你说他没帮手？", source: "Transfermarkt 阵容史", side: "lebron" },
-    { stat: "C罗去尤文第二年带队欧冠被里昂淘汰，去曼联第二年带队第六踢欧会杯——没有顶级阵容就是不行。", source: "懂球帝战绩库", side: "kobe" },
-  ],
-  era: [
-    { stat: "梅西迈阿密国际门票均价上涨 1700%，加盟首场比赛 NBA 老板贝克汉姆+Lebron+卡戴珊全到场。", source: "Forbes 2023", side: "kobe" },
-    { stat: "C罗 INS 粉丝 6.5 亿，是 Instagram 第一人——梅西 5.0 亿排第二。", source: "Social Blade", side: "lebron" },
-  ],
-  iconic: [
-    { stat: "梅西 2007 国王杯过 5 人复刻马拉多纳「世纪进球」——这是足球历史教科书级镜头。", source: "马卡报评选", side: "kobe" },
-    { stat: "C罗 2018 欧冠对尤文图斯倒钩——尤文主场球迷起立鼓掌的传奇瞬间。", source: "UEFA 官方评选", side: "lebron" },
-  ],
-  goat: [
-    { stat: "ESPN 2024 全球记者投票 GOAT 评选：梅西 79% vs C罗 12%，差距悬殊。", source: "ESPN GOAT Poll 2024", side: "kobe" },
-    { stat: "C罗职业生涯总进球 900+，男足历史第一人——绝对数量上无人能及。", source: "RSSSF 历史进球榜", side: "lebron" },
-  ],
-  loyalty: [
-    { stat: "梅西在巴萨踢了 21 年（2000-2021），效力时间是 C 罗最长俱乐部（曼联 6 年）的 3.5 倍。", source: "Transfermarkt 合同史", side: "kobe" },
-    { stat: "梅西 2020 年也曾递交转会申请要离开巴萨——所谓一人一城是被财政逼走的，不是主动留下。", source: "西班牙体育报", side: "lebron" },
-  ],
-  whatif_swap: [
-    { stat: "梅西 2020 年逼宫要走时，巴萨财政崩盘后没人接得起他的工资——所谓忠诚不过是没人买得起。", source: "ESPN FC 2021 报道", side: "lebron" },
-    { stat: "C罗 2009 离开曼联后曼联 9 年欧冠 0 个 4 强——他走后球队直接垫底，证明带带能力真实存在。", source: "懂球帝战绩库", side: "kobe" },
-  ],
-  whatif_era: [
-    { stat: "00 年代防守强度比现在高 30%，铲球规则更宽松——梅西在 06-12 年那种环境下依然过人 2400+，含金量翻倍。", source: "Opta 时代修正", side: "kobe" },
-    { stat: "现代足球前锋平均寿命延长 4-5 年——C 罗 39 岁还能进球部分要归功于运动科学进步，时代红利。", source: "FIFA 医疗报告 2024", side: "lebron" },
-  ],
-  whatif_1v1: [
-    { stat: "梅西生涯 1v1 突破成功率 58%，欧洲五大联赛历史前锋第一——单挑场景下无解。", source: "Opta 突破数据", side: "kobe" },
-    { stat: "C罗生涯空中对抗成功率 73%，禁区内身体对抗压制——单挑高空球梅西没得比。", source: "Whoscored 对抗数据", side: "lebron" },
-  ],
+export const matchupStatBombs: Record<string, Record<string, StatBomb[]>> = {
+  "messi-vs-ronaldo": {
+    rings: [
+      { stat: "C罗国家队大赛冠军只有 2 个（2016 欧洲杯+2019 欧国联），且 2016 决赛第 25 分钟就受伤下场，奖杯一半算埃德尔的。", source: "UEFA 官方", side: "kobe" },
+      { stat: "梅西国家队前 14 年颗粒无收，3 次大赛决赛全输（2007 美洲杯/2014 世界杯/2015、2016 美洲杯），被全阿根廷骂叛徒。", source: "Conmebol 历史", side: "lebron" },
+    ],
+    clutch: [
+      { stat: "梅西 2022 世界杯淘汰赛阶段 4 场 4 球 3 助攻，决赛点球大战首罚命中——这才是真正的大心脏。", source: "FIFA 官方数据", side: "kobe" },
+      { stat: "C罗 2018 世界杯八强出局、2022 世界杯八强出局，两届淘汰赛阶段合计 0 个运动战进球。", source: "FIFA 技术报告", side: "lebron" },
+    ],
+    skill: [
+      { stat: "梅西生涯过人成功次数 2400+，欧洲五大联赛历史第一，是第二名（C罗）的两倍以上。", source: "Opta 历史数据", side: "kobe" },
+      { stat: "C罗职业生涯头球进球超过 145 个，是梅西头球进球（30+）的近 5 倍——空中霸权碾压。", source: "Transfermarkt", side: "lebron" },
+    ],
+    mvp: [
+      { stat: "梅西 8 座金球奖（2009/2010/2011/2012/2015/2019/2021/2023），比 C 罗多 3 座。", source: "France Football", side: "kobe" },
+      { stat: "C罗 2008 金球年他英超进球 31 个、欧冠 8 球助曼联欧冠夺冠——梅西同年只拿 16 球。", source: "法新社", side: "lebron" },
+    ],
+    mentality: [
+      { stat: "梅西 2016 美洲杯因决赛失利崩溃而短暂退出国家队——心态脆弱性可见一斑。", source: "TyC Sports", side: "lebron" },
+      { stat: "C罗 35 岁后体脂率仍维持在 7%，每天比队友早到 90 分钟训练——这种自律梅西做不到。", source: "尤文图斯队医访谈", side: "lebron" },
+    ],
+    defense: [
+      { stat: "梅西生涯每 90 分钟跑动 8.3 公里，比 C 罗（9.2 公里）少一公里——你管这叫努力踢球？", source: "Whoscored", side: "lebron" },
+      { stat: "C罗近 5 个赛季回防数据进入欧洲前锋后 15%——所谓自律不包括防守。", source: "Opta 高级数据", side: "kobe" },
+    ],
+    finals: [
+      { stat: "梅西欧冠决赛 3 战 3 胜且在 2009、2011 决赛取得 2 球，主宰曼联防线。", source: "UEFA 官方", side: "kobe" },
+      { stat: "C罗欧冠决赛 3 战 3 球，2017 加迪夫决赛梅开二度——单决赛进球数力压梅西。", source: "UEFA 官方", side: "lebron" },
+    ],
+    teammates: [
+      { stat: "梅西巴萨时期队友有哈维、伊涅斯塔、苏亚雷斯、内马尔——MSN+宇宙队，你说他没帮手？", source: "Transfermarkt 阵容史", side: "lebron" },
+      { stat: "C罗去尤文第二年带队欧冠被里昂淘汰，去曼联第二年带队第六踢欧联杯——没有顶级阵容就是不行。", source: "懂球帝战绩库", side: "kobe" },
+    ],
+    era: [
+      { stat: "梅西迈阿密国际门票均价上涨 1700%，加盟首场比赛 NBA 老板贝克汉姆+Lebron+卡戴珊全到场。", source: "Forbes 2023", side: "kobe" },
+      { stat: "C罗 INS 粉丝 6.5 亿，是 Instagram 第一人——梅西 5.0 亿排第二。", source: "Social Blade", side: "lebron" },
+    ],
+    iconic: [
+      { stat: "梅西 2007 国王杯过 5 人复刻马拉多纳「世纪进球」——这是足球历史教科书级镜头。", source: "马卡报评选", side: "kobe" },
+      { stat: "C罗 2018 欧冠对尤文图斯倒钩——尤文主场球迷起立鼓掌的传奇瞬间。", source: "UEFA 官方评选", side: "lebron" },
+    ],
+    goat: [
+      { stat: "ESPN 2024 全球记者投票 GOAT 评选：梅西 79% vs C罗 12%，差距悬殊。", source: "ESPN GOAT Poll 2024", side: "kobe" },
+      { stat: "C罗职业生涯总进球 900+，男足历史第一人——绝对数量上无人能及。", source: "RSSSF 历史进球榜", side: "lebron" },
+    ],
+    loyalty: [
+      { stat: "梅西在巴萨踢了 21 年（2000-2021），效力时间是 C 罗最长俱乐部（曼联 6 年）的 3.5 倍。", source: "Transfermarkt 合同史", side: "kobe" },
+      { stat: "梅西 2020 年也曾递交转会申请要离开巴萨——所谓一人一城是被财政逼走的，不是主动留下。", source: "西班牙体育报", side: "lebron" },
+    ],
+    whatif_swap: [
+      { stat: "梅西 2020 年逼宫要走时，巴萨财政崩盘后没人接得起他的工资——所谓忠诚不过是没人买得起。", source: "ESPN FC 2021 报道", side: "lebron" },
+      { stat: "C罗 2009 离开曼联后曼联 9 年欧冠 0 个 4 强——他走后球队直接垫底，证明带带能力真实存在。", source: "懂球帝战绩库", side: "kobe" },
+    ],
+    whatif_era: [
+      { stat: "00 年代防守强度比现在高 30%，铲球规则更宽松——梅西在 06-12 年那种环境下依然过人 2400+，含金量翻倍。", source: "Opta 时代修正", side: "kobe" },
+      { stat: "现代足球前锋平均寿命延长 4-5 年——C 罗 39 岁还能进球部分要归功于运动科学进步，时代红利。", source: "FIFA 医疗报告 2024", side: "lebron" },
+    ],
+    whatif_1v1: [
+      { stat: "梅西生涯 1v1 突破成功率 58%，欧洲五大联赛历史前锋第一——单挑场景下无解。", source: "Opta 突破数据", side: "kobe" },
+      { stat: "C罗生涯空中对抗成功率 73%，禁区内身体对抗压制——单挑高空球梅西没得比。", source: "Whoscored 对抗数据", side: "lebron" },
+    ],
+  },
+  "pele-vs-maradona": {
+    rings: [
+      { stat: "贝利拥有 3 座世界杯冠军，是足球历史唯一达成此神迹的球员。", source: "FIFA 官方", side: "kobe" },
+      { stat: "马拉多纳在 1986 年以 5 球 5 助攻几乎凭借单兵统治整届世界杯夺冠，孤胆英雄的巅峰表现。", source: "Conmebol 历史", side: "lebron" },
+    ],
+    clutch: [
+      { stat: "马拉多纳在 1986 年 1/4 决赛对阵英格兰打入著名的世纪进球与上帝之手，生死关头无可阻挡。", source: "阿根廷历史库", side: "lebron" },
+      { stat: "贝利在 1958 年决赛年仅 17 岁梅开二度，1970 决赛首开纪录并奉献惊世直塞。", source: "FIFA 官方", side: "kobe" },
+    ],
+    skill: [
+      { stat: "马拉多纳魔幻的左脚盘带和人球合一是世界足球史浪漫主义的顶峰。", source: "马卡报", side: "lebron" },
+      { stat: "贝利是技术完美的六边形战士，左右脚和头球全面无短板。", source: "FIFA 历史", side: "kobe" },
+    ],
+  },
+  "zidane-vs-r9": {
+    rings: [
+      { stat: "齐达内率领法国连夺 1998 世界杯和 2000 欧洲杯，是国家队大满贯的绝对中场领袖。", source: "FFF 官方", side: "kobe" },
+      { stat: "罗纳尔多一辈子没有摸过欧冠奖杯，而齐达内拥有 2002 决赛的惊天「天外飞仙」欧冠绝杀。", source: "UEFA 官方", side: "kobe" },
+    ],
+    clutch: [
+      { stat: "齐达内 1998 决赛头球双响，2002 决赛天外飞仙，大场面属性无可匹敌。", source: "队报", side: "kobe" },
+      { stat: "罗纳尔多在 2002 年世界杯从毁灭性膝伤废墟中站起，斩获 8 球夺冠上演王者救赎。", source: "FIFA 官方", side: "lebron" },
+    ],
+  }
 };
+
+export function getStatBombsForMatchup(matchupId: string | null): Record<string, StatBomb[]> {
+  const defaultBombs = matchupStatBombs["messi-vs-ronaldo"];
+  if (!matchupId) return defaultBombs;
+
+  const key = matchupStatBombs[matchupId] ? matchupId : "messi-vs-ronaldo";
+  const bombs = matchupStatBombs[key];
+
+  return new Proxy(bombs, {
+    get: (target, prop) => {
+      const p = prop as string;
+      if (target[p]) return target[p];
+      return defaultBombs[p] || [];
+    }
+  }) as unknown as Record<string, StatBomb[]>;
+}

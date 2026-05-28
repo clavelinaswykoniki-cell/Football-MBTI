@@ -7,20 +7,17 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
-      {/* Background split — Messi (Barça blue) vs Ronaldo (Portugal red / Madrid wine) */}
-      <div className="absolute inset-0 flex">
+      {/* Premium Aurora Glow Background with Pixel Grid Mesh */}
+      <div className="absolute inset-0 z-0">
+        {/* Radial Aurora Glows */}
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full bg-kobe-purple/20 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-lebron-wine/25 blur-[120px] pointer-events-none" />
+        {/* Modern Dot Mesh Overlay */}
         <div
-          className="w-1/2"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            background:
-              "linear-gradient(to bottom right, color-mix(in srgb, var(--kobe-purple) 30%, transparent), color-mix(in srgb, var(--kobe-purple) 10%, transparent))",
-          }}
-        />
-        <div
-          className="w-1/2"
-          style={{
-            background:
-              "linear-gradient(to bottom left, color-mix(in srgb, var(--lebron-wine) 30%, transparent), color-mix(in srgb, var(--lebron-wine) 10%, transparent))",
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 0)",
+            backgroundSize: "24px 24px"
           }}
         />
       </div>
@@ -47,12 +44,25 @@ export default function Landing() {
         <p className="text-lg sm:text-xl text-white/60 mb-2">
           足球史上最大争议对决，你来投票
         </p>
-        <p className="text-sm text-white/40 mb-2">
+        <p className="text-sm text-white/40 mb-5">
           8 组传奇对决 · 12 轮辩论 · AI 深度人格分析
         </p>
-        <p className="text-xs text-white/25 mb-10">
-          梅西vsC罗 · 贝利vs马拉多纳 · 齐达内vs罗纳尔多 · 罗纳尔迪尼奥vs卡卡 · 内马尔vs姆巴佩 · 贝克汉姆vs菲戈 · 亨利vs伊布 · 哈兰德vs姆巴佩
-        </p>
+
+        {/* Dynamic Matchup Badges */}
+        <div className="flex flex-wrap justify-center gap-2 max-w-lg mx-auto mb-10" style={{ animation: "fade-up 0.9s ease-out both" }}>
+          {[
+            "梅西 vs C罗", "贝利 vs 马拉多纳", "齐达内 vs 罗纳尔多",
+            "罗纳尔迪尼奥 vs 卡卡", "内马尔 vs 姆巴佩", "贝克汉姆 vs 菲戈",
+            "亨利 vs 伊布", "哈兰德 vs 姆巴佩"
+          ].map((m, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 rounded-full text-xs font-bold border border-white/5 bg-white/5 text-white/40 shadow-sm transition-colors duration-300 hover:text-white/80 hover:bg-white/10"
+            >
+              {m}
+            </span>
+          ))}
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button

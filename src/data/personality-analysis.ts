@@ -103,7 +103,7 @@ export interface PsychologyReport {
 export interface PersonalityReport {
   philosophy: PhilosophyReport;
   psychology: PsychologyReport;
-  basketballIQ: {
+  footballIQ: {
     score: number;          // 0-100
     grade: string;          // e.g. "直播吧键盘侠" or "Opta 分析师"
     analysis: string;
@@ -1443,7 +1443,7 @@ function getIQGrade(score: number, sideName: string): IQGrade {
   };
 }
 
-function analyzeBasketballIQ(input: IQInput): PersonalityReport["basketballIQ"] {
+function analyzeFootballIQ(input: IQInput): PersonalityReport["footballIQ"] {
   const { correctPicks, totalConsensusTopics, sideName } = input;
 
   if (totalConsensusTopics === 0) {
@@ -1467,7 +1467,7 @@ function analyzeBasketballIQ(input: IQInput): PersonalityReport["basketballIQ"] 
 function generateOverall(
   philosophy: PhilosophyReport,
   psychology: PsychologyReport,
-  basketballIQ: PersonalityReport["basketballIQ"],
+  footballIQ: PersonalityReport["footballIQ"],
   sideName: string,
   otherName: string,
   loyalty: number,
@@ -1488,10 +1488,10 @@ function generateOverall(
 
   const philoPart = `哲学上你属于「${philosophy.school}」（${philosophy.archetype}）。`;
   const psychPart = `心理画像：${psychology.emoji}${psychology.name}（灵魂球员：${psychology.soulPlayer}）。`;
-  const iqPart = `懂球指数${basketballIQ.score}分（${basketballIQ.grade}级别）。`;
+  const iqPart = `懂球指数${footballIQ.score}分（${footballIQ.grade}级别）。`;
 
   let closer: string;
-  const score = basketballIQ.score;
+  const score = footballIQ.score;
   if (loyalty >= 0.9 && score < 40) {
     closer = `总结：你是那种在直播吧被禁言还要换号继续喷的人——热情有余，认知不足。`;
   } else if (loyalty >= 0.9 && score >= 70) {
@@ -1598,7 +1598,7 @@ export function generatePersonalityReport(
         spiritAnimal: "看戏的观众——存在但不参与",
         inLove: "你不进入关系，因为进入就意味着可能失败。",
       },
-      basketballIQ: {
+      footballIQ: {
         score: 0,
         grade: "弃权选手",
         analysis: "零轮投票，零分。",
@@ -1767,7 +1767,7 @@ export function generatePersonalityReport(
     configKnown,
   });
 
-  const basketballIQ = analyzeBasketballIQ({
+  const footballIQ = analyzeFootballIQ({
     correctPicks,
     totalConsensusTopics,
     votes,
@@ -1789,12 +1789,12 @@ export function generatePersonalityReport(
   const overall = generateOverall(
     philosophy,
     psychology,
-    basketballIQ,
+    footballIQ,
     sideName,
     otherName,
     loyalty,
     totalVotes,
   );
 
-  return { philosophy, psychology, basketballIQ, overall };
+  return { philosophy, psychology, footballIQ, overall };
 }

@@ -70,12 +70,12 @@ export default function MatchupSelect() {
               </p>
 
               {/* Player names on hover */}
-              <div className="mt-4 text-white/50 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="mt-4 text-white/50 text-xs opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
                 {matchup.playerA.name} vs {matchup.playerB.name}
               </div>
 
               {/* CTA */}
-              <div className="mt-3 text-kobe-gold text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-3 text-kobe-gold text-sm font-bold opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                 开始辩论 &rarr;
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function MatchupSelect() {
             </p>
 
             {/* CTA */}
-            <div className="mt-5 text-white/40 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="mt-5 text-white/40 text-sm font-bold opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
               自定义 &rarr;
             </div>
           </div>

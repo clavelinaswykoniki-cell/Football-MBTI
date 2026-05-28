@@ -51,8 +51,6 @@ interface GameState {
   side: Side | null;
   currentRound: number;
   votes: Vote[];
-  kobeScore: number;
-  lebronScore: number;
   gameStartTime: number | null;
   elapsedSeconds: number;
   fbtiMode: FbtiMode;
@@ -61,6 +59,8 @@ interface GameState {
 }
 
 interface GameContextType extends GameState {
+  kobeScore: number;
+  lebronScore: number;
   pickSide: (side: Side) => void;
   vote: (winner: Side) => void;
   nextRound: () => void;
@@ -98,8 +98,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
     side: null,
     currentRound: 0,
     votes: [],
-    kobeScore: 0,
-    lebronScore: 0,
     gameStartTime: null,
     elapsedSeconds: 0,
     fbtiMode: "quick",
@@ -146,8 +144,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
       return {
         ...s,
         votes: [...s.votes, { topicId: topic.id, winner }],
-        kobeScore: s.kobeScore + (winner === "kobe" ? 1 : 0),
-        lebronScore: s.lebronScore + (winner === "lebron" ? 1 : 0),
       };
     });
   }, []);
@@ -190,8 +186,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
       side: null,
       currentRound: 0,
       votes: [],
-      kobeScore: 0,
-      lebronScore: 0,
       gameStartTime: null,
       elapsedSeconds: 0,
     }));
@@ -204,8 +198,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
       side: null,
       currentRound: 0,
       votes: [],
-      kobeScore: 0,
-      lebronScore: 0,
       gameStartTime: null,
       elapsedSeconds: 0,
       fbtiMode: "quick",
@@ -226,6 +218,14 @@ export function GameProvider({ children }: { children: ReactNode }) {
     setState((s) => ({ ...s, fbtiCode: code, fbtiAnswers: answers, phase: "fbti-result" }));
   }, []);
 
+  const kobeScore = useMemo(() => {
+    return state.votes.filter((v) => v.winner === "kobe").length;
+  }, [state.votes]);
+
+  const lebronScore = useMemo(() => {
+    return state.votes.filter((v) => v.winner === "lebron").length;
+  }, [state.votes]);
+
   const currentTopic = useMemo(() => {
     if (state.phase === "battle") return debates[state.currentRound] ?? null;
     if (state.phase === "bonus") return allTopics[state.currentRound] ?? null;
@@ -243,6 +243,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
     <GameContext.Provider
       value={{
         ...state,
+        kobeScore,
+        lebronScore,
         pickSide,
         vote,
         nextRound,

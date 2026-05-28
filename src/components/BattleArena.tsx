@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useGame } from "./GameProvider";
-import { statBombs } from "@/data/personas";
+import { getStatBombsForMatchup } from "@/data/personas";
 import { recordVote } from "@/lib/voteStats";
 import VoteReveal from "./VoteReveal";
 import GlobalWar from "./GlobalWar";
@@ -43,11 +43,12 @@ function BattleArenaRound() {
 
   const statBomb = useMemo(() => {
     if (!voted || !currentTopic) return null;
-    const bombs = statBombs[currentTopic.id];
+    const matchupId = currentMatchup?.id || null;
+    const bombs = getStatBombsForMatchup(matchupId)[currentTopic.id];
     if (!bombs) return null;
     const opposing = bombs.find((b) => b.side !== voted);
     return opposing || bombs[0];
-  }, [voted, currentTopic]);
+  }, [voted, currentTopic, currentMatchup]);
 
   if (!currentTopic) return null;
 
@@ -74,18 +75,18 @@ function BattleArenaRound() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-4 py-6 sm:py-10 max-w-5xl mx-auto relative" key={animKey}>
+    <div className="min-h-screen flex flex-col px-4 py-4 sm:py-10 max-w-5xl mx-auto relative" key={animKey}>
       <button
         onClick={handleExit}
-        className="absolute top-3 right-3 sm:top-5 sm:right-5 text-xs text-white/30 hover:text-white/60 transition-colors cursor-pointer z-20"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs text-white/60 hover:text-white hover:border-white/20 transition-all duration-300 shadow-lg shadow-black/20 cursor-pointer z-20 hover:scale-105"
       >
-        ✕ 退出
+        ✕ 退出对决
       </button>
       {/* Global war banner */}
       <GlobalWar />
 
       {/* Header: score + progress */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <div className="flex items-center gap-3">
           <span className="text-kobe-gold font-bold text-lg">{kobeScore}</span>
           <span className="text-white/30 text-sm">{nameA}</span>
@@ -103,7 +104,7 @@ function BattleArenaRound() {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-1.5 bg-white/10 rounded-full mb-8 overflow-hidden">
+      <div className="w-full h-1.5 bg-white/10 rounded-full mb-4 sm:mb-8 overflow-hidden">
         <div
           className="h-full bg-gradient-to-r from-kobe-gold to-lebron-gold rounded-full transition-all duration-500"
           style={{ width: `${((currentRound + 1) / totalRounds) * 100}%` }}
@@ -111,18 +112,18 @@ function BattleArenaRound() {
       </div>
 
       {/* Topic title */}
-      <div className="text-center mb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
-        <span className="text-3xl sm:text-4xl mr-3">{currentTopic.emoji}</span>
-        <h2 className="inline text-2xl sm:text-3xl font-black text-white">
+      <div className="text-center mb-4 sm:mb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
+        <span className="text-2xl sm:text-4xl mr-3">{currentTopic.emoji}</span>
+        <h2 className="inline text-xl sm:text-3xl font-black text-white">
           {currentTopic.title}
         </h2>
       </div>
 
       {/* Debate cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
         {/* Kobe card */}
         <div
-          className={`rounded-2xl p-5 sm:p-6 border-2 transition-all duration-300 cursor-pointer
+          className={`rounded-2xl p-4 sm:p-6 border-2 transition-all duration-300 cursor-pointer
             ${voted === "kobe"
               ? "border-kobe-gold bg-kobe-purple/30 scale-[1.02]"
               : voted === "lebron"
@@ -159,7 +160,7 @@ function BattleArenaRound() {
 
         {/* LeBron card */}
         <div
-          className={`rounded-2xl p-5 sm:p-6 border-2 transition-all duration-300 cursor-pointer
+          className={`rounded-2xl p-4 sm:p-6 border-2 transition-all duration-300 cursor-pointer
             ${voted === "lebron"
               ? "border-lebron-gold bg-lebron-wine/30 scale-[1.02]"
               : voted === "kobe"
