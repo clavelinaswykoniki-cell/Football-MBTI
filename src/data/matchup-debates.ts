@@ -7,7 +7,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_rings",
         title: "国家队荣誉：三夺世界杯 vs 1986一个人的世界杯",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "三座世界杯金杯在手，贝利就是国家队永远的至高真神。",
           points: [
             "1958、1962、1970三次夺得世界杯，虽然1962年因伤缺席了大部分比赛，但三冠纪录前无古人",
@@ -16,7 +16,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "世界杯的极致是三座世界杯冠军金杯，老马拿什么跟三冠王贝利相提并论？"
         },
-        lebron: {
+        playerB: {
           claim: "1986年阿根廷的夺冠，是足球历史上唯一的「一个人扛起整届杯赛」。",
           points: [
             "1986年墨西哥世界杯全程打入5球并送出5次助攻，淘汰赛几乎凭借一己之力解决战斗",
@@ -30,7 +30,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_club",
         title: "俱乐部统治力：桑托斯横扫欧美 vs 那不勒斯的平民奇迹",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "桑托斯时期的贝利不仅统治了巴西国内，更在环球挑战赛中横扫了欧洲诸强。",
           points: [
             "率领桑托斯两度夺得解放者杯与洲际杯，在洲际杯中客场大胜尤塞比奥的本菲卡",
@@ -39,7 +39,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "别拿意甲中下游队自嗨，贝利的桑托斯是当时全世界公认的「宇宙队」，谁来都是个输。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳在小球会那不勒斯的建功立业，其难度比在豪门混迹高出百倍。",
           points: [
             "1984年加盟当时保级边缘的那不勒斯，在极其惨烈的「小世界杯」意甲杀出重围",
@@ -53,7 +53,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_individual",
         title: "个人硬核数据：千球神话 vs 绝对核心的统治力",
         emoji: "📊",
-        kobe: {
+        playerA: {
           claim: "贝利生涯超千球的壮举，是绿茵场上无法逾越的数字天堑。",
           points: [
             "贝利一生共打入1283粒进球（包含非正式比赛、友谊赛与表演赛的广泛统计口径）",
@@ -62,7 +62,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "1283个进球摆在那里，哪怕刨去友谊赛，正式进球数也足以碾压老马。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳的伟大从来不是靠干瘪的进球数字堆砌，而是对比赛脉络的极致掌控。",
           points: [
             "作为古典前腰，老马是全队进攻的唯一发动机，进球与助攻的一体化核心",
@@ -76,7 +76,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_style",
         title: "技术美感：完美的现代模板 vs 极致魔幻的左脚艺术",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "贝利是足球运动的百科全书，双脚均衡、身体素质逆天，是无可挑剔的现代模板。",
           points: [
             "双脚极度均衡，左右脚皆能开弓，头球能力在同时代锋线中也是顶尖水平",
@@ -85,7 +85,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "贝利是左右脚无短板的完美化身，老马的右脚基本上只能用来支撑站立。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳用一只左脚，将足球的艺术带到了上帝也为之惊叹的艺术高度。",
           points: [
             "上帝赐予的魔幻左脚，盘带重心极低、人球合一，能在极小空间内做出匪夷所思的变向",
@@ -99,7 +99,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_clutch",
         title: "大场面能力：定海神针 vs 精神领袖与抗争图腾",
         emoji: "🗡️",
-        kobe: {
+        playerA: {
           claim: "贝利在大赛决赛中的表现稳如磐石，从不掉链子。",
           points: [
             "1958年以17岁之龄首次参加世界杯决赛，梅开二度帮助巴西5-2战胜瑞典夺冠",
@@ -108,7 +108,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "决赛进球率100%，贝利在决赛中就是进球与胜利的代名词。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳在生死关头不仅能进球，更能以精神领袖的姿态感染整支球队。",
           points: [
             "1986年世界杯淘汰赛面对英格兰与比利时，包揽4个进球，生生将球队砸进决赛",
@@ -122,7 +122,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_peak",
         title: "巅峰高度：1970 桑巴之王 vs 1986 个人神迹",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "1970年的贝利达到了足球历史上战术与个人能力结合的最巅峰高度。",
           points: [
             "1970年墨西哥世界杯，贝利作为绝对核心，带领当时被誉为历史最强的巴西队夺冠",
@@ -131,7 +131,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "1970年那支巴西队是足球史上的终极艺术，而贝利就是那支球队的王冠明珠。"
         },
-        lebron: {
+        playerB: {
           claim: "1986年马拉多纳展现出的个人统治力，是任何团体运动史上的单人巅峰之最。",
           points: [
             "单届世界杯制造10个进球（5球5助），几乎参与了阿根廷队所有的前场致命进攻",
@@ -145,7 +145,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_longevity",
         title: "职业寿命：二十年常青树 vs 场外风波与坎坷生涯",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "贝利的职业生涯极其稳定，常年保持顶级竞技水平，是完美运动员的代名词。",
           points: [
             "从1956年出道到1977年挂靴，贝利在长达二十余年的时间里始终处于顶尖状态",
@@ -154,7 +154,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "持久的伟大才是真球王，老马的巅峰因为场外风波被割裂得支离破碎。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳的生涯虽然坎坷且伴随风波，但他每一次跌倒后的爬起都更具传奇色彩。",
           points: [
             "经历了毕尔巴鄂竞技时期的断腿重伤，却在伤愈后以更强的姿态在巴萨与意甲浴火重生",
@@ -168,7 +168,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_teammates",
         title: "队友与体系：巨星拱卫 vs 单核带队",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "贝利能与无数伟大巨星打出极致默契，证明了他无与伦比的战术兼容性与团队精神。",
           points: [
             "与加林查、瓦瓦、迪迪、扎加洛等超级巨星合作无间，共同创造了巴西足球的黄金时代",
@@ -177,7 +177,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "好的队友是加分项而不是贬低他的理由。贝利是群星中最亮的那颗北极星。"
         },
-        lebron: {
+        playerB: {
           claim: "老马的伟大在于他具有「点石成金」的魔力，能把普通队友变成冠军成员。",
           points: [
             "那不勒斯时期的队友实力平平，老马到来后，布鲁斯科洛蒂、卡尔内瓦莱等人才脱胎换骨",
@@ -191,7 +191,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_tactics",
         title: "战术价值：全能自由前锋 vs 古典前腰天花板",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "贝利在战术上是锋线的全能战神，超越了位置的局限。",
           points: [
             "可以胜任中锋、影锋、边锋甚至是中场前腰，踢法极为灵活且适应力极强",
@@ -200,7 +200,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "贝利可以融入任何时代、任何战术体系，是不需要特定配方的万能解。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳是古典前腰（10号位）不可逾越的战术天花板，一人自成体系。",
           points: [
             "极致的持球推进与组织调度能力，一个人就能包揽中前场的推进、分球和致命一击",
@@ -214,7 +214,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_influence",
         title: "全球影响力：绿茵外交官 vs 叛逆的精神图腾",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "贝利是将足球运动推广到全球的头号功臣，被全世界政要与球迷尊崇。",
           points: [
             "出访非洲时曾让正在交战的双方为了看他踢球而停火48小时，堪称绿茵外交神迹",
@@ -223,7 +223,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "贝利让足球走向世界，他的影响力超越了竞技，是和平与运动的全球化身。"
         },
-        lebron: {
+        playerB: {
           claim: "马拉多纳的魅力在于他的叛逆与真实，他是无数底层大众与弱者的精神支柱。",
           points: [
             "敢于公开叫板国际足联的腐败与强权，一辈子站在弱势群体和拉美底层人民一边",
@@ -237,7 +237,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_scandals",
         title: "遗憾与黑点：乌鸦嘴官方发言人 vs 争议不断的折翼天才",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "贝利场外无大碍，所谓的「乌鸦嘴」不过是球迷茶余饭后的调侃趣味。",
           points: [
             "职业生涯极为清白，没有兴奋剂或纪律方面的重大污点，堪称道德楷模",
@@ -246,7 +246,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "老马场外吸毒、打架、骂街样样精通，这种劣迹斑斑的履历，配得上当球王吗？"
         },
-        lebron: {
+        playerB: {
           claim: "老马的污点是他不完美人生的真实写照，他的缺陷反而衬托出他在绿茵场上的纯粹与伟大。",
           points: [
             "1994年因麻黄碱检测呈阳性遗憾告别世界杯，但他在场上的神勇表现依然无法被抹杀",
@@ -260,7 +260,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_goat",
         title: "球王正统：官方公认的第一 vs 民间信仰的至尊",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "贝利是国际足联、各大权威媒体公认的20世纪唯一球王，正统地位无可动摇。",
           points: [
             "FIFA官方评选的「20世纪最佳球员」中，贝利荣获官方大奖，地位得到盖棺定论",
@@ -269,7 +269,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "官方承认、数据碾压、三冠在手，贝利的球王宝座是用金子浇筑的，老马顶多算个诸侯。"
         },
-        lebron: {
+        playerB: {
           claim: "真正的球王不需要冷冰冰的官方奖杯来册封，马拉多纳活在全世界球迷的心底。",
           points: [
             "在国际足联组织的世纪最佳网络投票中，老马以压倒性的票数荣获民间第一",
@@ -285,7 +285,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_swap",
         title: "What-If：老马回到60年代，贝利来到80年代意甲",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "贝利来到80年代意甲照样大杀四方，他的身体对抗和六边形属性是全天候无解的。",
           points: [
             "贝利拥有惊人的弹跳与力量，在以粗野防守著称的意甲，他能用意志与肌肉强吃对手",
@@ -294,7 +294,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "贝利的身体素质是外星人级别的，去80年代意甲只会诞生一个更具统治力的终极战神。"
         },
-        lebron: {
+        playerB: {
           claim: "老马如果回到60年代，会在桑托斯和阿根廷踢出更加逆天且充满艺术感的数据。",
           points: [
             "60年代防守体系尚未完全链式化，防守球员的空间感较差，这简直是老马盘带的天堂",
@@ -308,7 +308,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_1v1",
         title: "What-If：巅峰 1v1 对决，谁的单兵技术更强",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "1v1单挑，贝利凭借无短板的身体和左右脚技术，能够形成全方位压制。",
           points: [
             "贝利体能出众，速度极快，爆发力惊人，在1v1的攻防对抗中身体占尽绝对便宜",
@@ -317,7 +317,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单挑拼的是无短板和绝对身体素质，贝利能突能顶能防，老马的小身板扛不住几下。"
         },
-        lebron: {
+        playerB: {
           claim: "在纯粹的技术单挑中，老马那人球合一的左脚盘带和魔幻变向是完全防不住的。",
           points: [
             "老马重心极低，他的敏捷度和变向技巧完全超越了牛顿定律，能把任何防守者晃到怀疑人生",
@@ -331,7 +331,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "pele_maradona_today",
         title: "What-If：年轻球迷今天重新投票，谁会更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "今天的球迷重视效率与全面性，贝利这个无懈可击的完美样板会更受推崇。",
           points: [
             "在现代数据和全面战术复盘下，贝利的六边形战士属性和三冠战绩是独一档的 hard 荣誉",
@@ -340,7 +340,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "现代球迷是理性的硬核数据党，三座世界杯加上千球神话，贝利就是永远的投票大魔王。"
         },
-        lebron: {
+        playerB: {
           claim: "今天的年轻球迷热爱个性和反叛，老马那充满激情与摇滚范的一生会吸粉无数。",
           points: [
             "老马在球场上展现出的极致个人英雄主义和抗争精神，是现代高度工业化足球最稀缺的灵魂",
@@ -358,7 +358,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_rings",
         title: "国家队荣誉：98决赛宿命对决 vs 02年王者救赎",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "齐达内率领法国夺得98世界杯与00欧洲杯，是国家队大满贯的绝对中场基石。",
           points: [
             "1998年法国世界杯决赛，在全场瞩目的焦点战中顶住压力，上半场头球梅开二度干翻巴西",
@@ -367,7 +367,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "98年世界杯决赛，齐祖用两个头球把大罗的巴西队打到怀疑人生，这就是宿命！"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多的国家队生涯写满了震撼人心的英雄史诗与2002年的终极救赎。",
           points: [
             "2002年日韩世界杯上演王者归来，作为核心主力斩获8粒进球夺得金靴，决赛梅开二度击败德国",
@@ -381,7 +381,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_club",
         title: "俱乐部硬伤：天外飞仙 vs 终生无缘欧冠的遗憾",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "齐达内用欧冠决赛的「天外飞仙」，在俱乐部最高舞台奠定了宗师地位。",
           points: [
             "2002年欧冠决赛对阵勒沃库森，以一记惊世骇俗的左脚半转身凌空抽射斩获冠军，载入史册",
@@ -390,7 +390,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "齐祖有欧冠、有欧冠决赛的世纪进球，大罗踢了一辈子球，连欧冠奖杯长啥样都没摸过！"
         },
-        lebron: {
+        playerB: {
           claim: "大罗虽无欧冠，但他代表了最极致的跨豪门即插即用毁灭性锋线战力。",
           points: [
             "在巴萨单赛季斩获47球，拿到优胜者杯；在国米联盟杯决赛上演钟摆晃倒门将封神夺冠",
@@ -404,7 +404,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_individual",
         title: "个人荣誉：金球先生常客 vs 巅峰封神加冕",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "齐达内的个人荣誉极其扎实，是国际足联盖章认定的中场宗师。",
           points: [
             "夺得1998年金球奖，并在1998、2000、2003年三度荣膺FIFA世界足球先生",
@@ -413,7 +413,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "三届先生加一届金球，齐祖在个人荣誉的厚度与官方认可度上，稳坐中场头把交椅。"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多的巅峰荣誉是摧枯拉朽的，他是最年轻的金球奖得主。",
           points: [
             "1997年以21岁的逆天年龄夺得金球奖，至今仍保持着历史最年轻获奖者的传奇纪录",
@@ -427,7 +427,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_style",
         title: "技术与球风：马赛回旋的大师艺术 vs 暴力美学与钟摆过人",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "齐达内将足球踢成了绿茵场上的交响乐，优雅得令人屏息。",
           points: [
             "招牌的「马赛回旋」圆润舒展，拥有历史顶级的控球、护球与中场摆脱能力",
@@ -436,7 +436,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "齐祖踢球是优雅艺术的极致，大罗那种靠速度强行生吃后卫的踢法，看多了容易审美疲劳。"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多代表了人类身体素质与脚下技术的完美结合，是终极的暴力美学。",
           points: [
             "招牌的「钟摆过人」利用超强的身体晃动和重心转移彻底戏耍门将，历史名画",
@@ -450,7 +450,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_clutch",
         title: "关键时刻：大场面之王 vs 生死战冷酷终结者",
         emoji: "🗡️",
-        kobe: {
+        playerA: {
           claim: "齐达内是大场面先生的终极代言人，越是大舞台越是无解。",
           points: [
             "1998世界杯决赛梅开二度，2000欧洲杯半决赛加时绝杀，2002欧冠决赛天外飞仙",
@@ -459,7 +459,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "一到决赛就进球，一到生死战就开挂，齐祖的决赛属性历史第一档，大罗98年决赛人去哪了？"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多在承受巨大压力和身体创伤时，依然是冷酷无情的终结机器。",
           points: [
             "2002年世界杯决赛顶着巨大的心理阴影，面对门神卡恩梅开二度，彻底洗刷四年前的阴霾",
@@ -473,7 +473,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_peak",
         title: "巅峰高度：中场指挥官的极致优雅 vs 外星人降临的无解破坏力",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "齐达内的巅峰期极长且极稳，他是整支球队战术的上限保证。",
           points: [
             "巅峰期的齐祖是绝对的战术基石，拥有一个人决定整支球队进攻下限与上限的宗师级战术价值",
@@ -482,7 +482,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大罗的巅峰是一闪而过的流星，齐祖的巅峰是长达十年的北极星，照亮了整个足坛。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗在1996-1998年的「外星人」巅峰，是足球史上最无解的单兵战力。",
           points: [
             "在巴萨时期上演各种连过数人的神迹，被老帅罗布森惊呼为「不是地球人」",
@@ -496,7 +496,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_longevity",
         title: "稳定性与寿命：宗师长青 vs 被伤病摧毁的天才",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "齐达内完美规划了自己的职业生涯，退役之时依然处于世界最顶端。",
           points: [
             "整个生涯极其自律，身体机能保持得非常完美，极少遭遇影响职业生涯的毁灭性重伤",
@@ -505,7 +505,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大罗在30岁之后就因为伤病和体重问题成了「肥罗」，齐祖34岁还在世界杯决赛教年轻人做人。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗虽然遭遇了极其残酷的膝伤，但他每一次浴火重生都让他的传奇更加伟大。",
           points: [
             "经历了两次几乎可以摧毁职业生涯的肌腱断裂重伤，依然能重返赛场拿到世界杯与金球奖",
@@ -519,7 +519,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_teammates",
         title: "队友与环境：银河战舰双子星的内部对比",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "齐达内在银河战舰一期是毫无争议的绝对战术核心与灵魂。",
           points: [
             "皇马齐聚六大巨星，但只有齐达内在中场拿球时，整个银河战舰才能稳定且有序地运转",
@@ -528,7 +528,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大罗是战舰上最锋利的矛，但齐祖才是这艘豪华战舰的掌舵人和发动机。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗在任何体系、任何豪门都是绝对的战术爆点，完全不需要体系喂饼。",
           points: [
             "在巴萨单核带队，在国米身边是平民攻击群，他依然能用个人能力解决一切防线",
@@ -542,7 +542,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_tactics",
         title: "战术价值：自带中场体系 vs 锋线终结怪兽",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "齐达内是战术大师的终极样板，拥有改变比赛节奏的宗师能力。",
           points: [
             "拥有极强控节奏能力，能将比赛速度降低到他最舒服的慢节奏中，通过精妙调度寻找破绽",
@@ -551,7 +551,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "足球比赛90分钟，齐祖掌控了其中的89分钟；大罗只是在最后那1分钟负责把球踢进去。"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多是战术板上最恐怖的无解爆点，一个人就能撑起一套防守反击战术。",
           points: [
             "拥有极限的单兵爆破能力，不管对手防线排得有多密，他只要拿球推进就能瞬间撕开缺口",
@@ -565,7 +565,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_influence",
         title: "文化影响力：法国移民的精神领袖 vs 世纪足坛的全球初恋",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "齐达内的影响力超越了体育范畴，是多元文化与国家团结的精神象征。",
           points: [
             "作为阿尔及利亚移民后裔，他的成功极大地促进了法国社会的种族融合与文化包容",
@@ -574,7 +574,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "齐祖的伟大不仅在球场，他用智慧、威严和成就，成为了一个国家和一个时代的精神图腾。"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多这个名字是无数球迷对足球的启蒙与初恋，他的魅力全球通透。",
           points: [
             "「Ronaldo」这七个字母是足球运动在全球化推广黄金时代的最高金字招牌",
@@ -588,7 +588,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_regrets",
         title: "遗憾与硬伤：惊天一顶红牌谢幕 vs 98年决赛前夜的谜团",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "齐达内的红牌是他铁血性格与桀骜不驯的真实写照，也是传奇的一部分。",
           points: [
             "2006年世界杯决赛由于不堪对手侮辱，怒顶马特拉齐红牌罚下，与大力神杯擦肩而过",
@@ -597,7 +597,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "齐祖的遗憾是轰轰烈烈的抗争，大罗在1998年世界杯决赛前夜突然浑身抽搐失常，至今都是足坛未解之谜。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗98年的失利是生理与命运的不可抗力，但这反而让他在2002年的浴火重生更加伟大。",
           points: [
             "98年决赛前发生的身体痉挛事件属于极其罕见的生理突发状况，并非他在球场上退缩怂了",
@@ -611,7 +611,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_goat",
         title: "历史地位：中场唯二的宗师 vs 历史第一九号中锋",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "齐达内在历史地位的评选中，稳坐历史顶级中场宗师的宝座。",
           points: [
             "荣誉大满贯：世界杯、欧洲杯、欧冠、联赛、金球奖、世界足球先生一个不漏",
@@ -620,7 +620,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大罗在历史前十的讨论里极不稳定，而齐祖凭借无懈可击的大满贯履历，历史前十位置稳如泰山！"
         },
-        lebron: {
+        playerB: {
           claim: "罗纳尔多是公认的历史第一9号中锋，是所有顶级中锋不可企及的天花板。",
           points: [
             "在锋线位置上，他的巅峰单兵战力、影响力与破门杀伤力是无可争议的历史第一",
@@ -636,7 +636,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_swap",
         title: "What-If：齐祖去90年代意甲国米，大罗去00年代皇马中场",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "齐达内去当时的国米依然能梳理出顶级进攻，用他的大师级控球稳住蓝黑军团中场。",
           points: [
             "国米当时阵容豪华但极度缺乏中场组织调度，齐祖的到来能完美解决中前场脱节的顽疾",
@@ -645,7 +645,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "国米当时缺的就是齐祖这种中场总指挥，有了齐祖，国米在意甲的冠军数起码翻倍。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗如果更早加盟那一支齐备的中场皇马，会在中场群的喂饼下刷出更加逆天的进球数据。",
           points: [
             "那一时期的皇马拥有菲戈、贝克汉姆等传中大师，大罗在禁区内的抢点与爆破将得到无限子弹",
@@ -659,7 +659,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_1v1",
         title: "What-If：生死战单场决胜，你会首发谁",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "生死战首选齐达内，他是中场绝对的军心稳定器和大场面先生。",
           points: [
             "齐祖在决赛舞台的开挂属性世人皆知，他能够用大师级的控球让全队在巨大压力下冷静下来",
@@ -668,7 +668,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "生死战拼的是中场控制力和心理抗压度，首发齐祖等于给全队买了一份超级夺冠保险！"
         },
-        lebron: {
+        playerB: {
           claim: "生死战首选大罗，他是唯一能在零机会情况下强行生吃后卫解决战斗的终极杀器。",
           points: [
             "生死战防守必然极其严密，大罗无解的个人持球爆破能力是破密集防守的终极核武器",
@@ -682,7 +682,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "zidane_r9_today",
         title: "What-If：今天的年轻球迷会投谁，集锦党 vs 数据党",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "今天的年轻球迷重视大局观和战术底蕴，齐祖的大师级操作和欧冠神迹会更受欢迎。",
           points: [
             "齐祖标志性的马赛回旋、天外飞仙和06年世界杯对巴西的独舞，在短视频剪辑中优雅到极致",
@@ -691,7 +691,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "有荣誉、有逼格、有优雅集锦，齐祖在现代网络投票中就是中场无可争议的人气天花板。"
         },
-        lebron: {
+        playerB: {
           claim: "大罗在高速推进中的暴力过人和钟摆晃飞门将，是任何集锦党看一眼就会高潮的视觉震撼。",
           points: [
             "大罗的过人集锦充满了极致的速度、力量和匪夷所思的技术，在短视频时代是绝对的吸粉狂魔",
@@ -709,7 +709,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_rings",
         title: "国家队生涯：02年神奇吊射 vs 替补随队夺冠的少年",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "罗纳尔迪尼奥是2002年巴西捧起大力神杯的功勋巨头，立下汗马功劳。",
           points: [
             "2002年世界杯对阵英格兰的1/4决赛中，轰入惊世骇俗的超远任意球吊射绝杀，名震天下",
@@ -718,7 +718,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "02年夺冠小罗是扛大旗的主力，卡卡顶多算个在板凳席上看老大哥表演的拉拉队长。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡虽然在02年是年轻替补，但他随后的国家队核心生涯同样表现极其硬核。",
           points: [
             "2002年世界杯随队捧杯，虽然只在对阵哥斯达黎加的比赛中替补登场了十几分钟，但少年意气风发",
@@ -732,7 +732,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_club",
         title: "俱乐部巅峰：巴萨复兴领路人 vs 2007红黑军团单核封神",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "小罗是巴萨梦二王朝的真正复兴领路人，是他重新定义了红蓝军团的尊严。",
           points: [
             "2003年加盟正处于低谷的巴萨，一手将球队带回巅峰，夺得西甲两连冠并于2006年捧起欧冠",
@@ -741,7 +741,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "没有小罗在巴萨的拓荒和复兴，哪来后来横扫欧洲的梦三？他是王朝的奠基人！"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡在2006-07赛季的表现，是足球历史上最极致、最震撼的「单核欧冠封神」。",
           points: [
             "在舍甫琴科离队、AC米兰被电话门阴霾笼罩的至暗时刻，卡卡挺身而出独自扛起球队",
@@ -755,7 +755,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_individual",
         title: "个人荣誉：蝉联世界先生 vs 击败梅罗的凡人天花板",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "罗纳尔迪尼奥在巅峰时期对个人荣誉的收割，是让同时代所有人臣服的。",
           points: [
             "夺得2005年金球奖，并在2004和2005年蝉联FIFA世界足球先生，风头一时无两",
@@ -764,7 +764,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "世界先生两连冠，小罗在巅峰期的统治力，是全宇宙公认的「足坛第一人」。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡是足球历史的一个伟大分水岭——他是最后一个击败梅罗夺得金球奖的地球人。",
           points: [
             "2007年以无可争议的统治级表现包揽金球奖与世界足球先生，力压年轻的梅西与C罗",
@@ -778,7 +778,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_style",
         title: "技术球风：桑巴精灵的魔幻舞步 vs 追风少年的致命奔袭",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "小罗是足球史上最纯粹的桑巴魔术师，人球合一的极致化身。",
           points: [
             "招牌的「牛尾巴过人」轻灵诡异，拥有历史顶级的花式盘带、挑传与无死角想象力",
@@ -787,7 +787,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小罗把足球踢成了艺术，他的每一次过人都是艺术创作；卡卡那只是跑得快的直线田径运动。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡将纵向速度与优雅技术结合到了极致，是绿茵场上无可阻挡的闪电狂飙。",
           points: [
             "招牌的「长途奔袭」大步流星、银鞍照白马，在高速带球中拥有极其优美且恐怖的身体控制力",
@@ -801,7 +801,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_clutch",
         title: "经典时刻：伯纳乌的掌声 vs 圣西罗的雨夜斩红魔",
         emoji: "⚡",
-        kobe: {
+        playerA: {
           claim: "小罗征服了足球世界里最挑剔的眼睛，赢得了死敌皇马球迷的集体起立鼓掌。",
           points: [
             "2005年西甲国家德比，小罗在伯纳乌球场梅开二度（巴萨3-0完胜，首球埃托奥），皇马球迷集体起立为他鼓掌致敬",
@@ -810,7 +810,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "能让死敌皇马的球迷起立鼓掌，足球史上除了贝利和马拉多纳，也就只有小罗了！"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡在2007年欧冠半决赛的演出，是写进米兰史册的圣西罗雨夜神话。",
           points: [
             "2006-07欧冠半决赛对阵曼联，首回合在老特拉福德长途奔袭让海因策和埃弗拉撞在一起，破门得分",
@@ -824,7 +824,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_peak",
         title: "巅峰高度：精灵降世的统治力 vs 追风少年的无解冲击",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "小罗在2004-2006年的巅峰高度，被公认为近二十年最接近「绿茵神明」的水平。",
           points: [
             "巅峰小罗拥有无与伦比的技术、爆发力、视野与破门能力，在场上几乎是不可防守的超然存在",
@@ -833,7 +833,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大罗之后，只有巅峰期的小罗让人真正感受到了什么叫「降维打击的外星科技」。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡在2007年的巅峰高度，展现了现代全能前腰的战术极致战力。",
           points: [
             "2007年的卡卡集速度、传射、大局观于一体，他的纵向带球推进效率是足球史上的独一份",
@@ -847,7 +847,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_longevity",
         title: "职业寿命：夜店摧毁的天赋 vs 伤病折断的折翼天使",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "小罗的下滑虽然迅速，但他已经在最短的时间里拿满了足球世界的所有至高荣誉。",
           points: [
             "因为巴西球员天生的散漫和对派对的热爱，他在夺得欧冠后由于私生活放纵导致竞技状态下滑",
@@ -856,7 +856,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "虽然巅峰短，但我什么荣誉都有了，这就叫「出道即巅峰，巅峰即大满贯」！"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡的下滑完全是因为毁灭性的身体伤病与皇马时期的战术动荡，令人扼腕叹息。",
           points: [
             "为了国家队荣誉，带伤坚持踢完2010年世界杯，导致腹股沟和膝盖伤势恶化，留下了永久后遗症",
@@ -870,7 +870,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_teammates",
         title: "队友与体系：巴萨复兴群星 vs AC米兰四个十号",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "小罗在巴萨是团队的大脑与核心，能够带飞身边的所有队友。",
           points: [
             "巴萨梦二时期的战术体系完全围绕小罗展开，埃托奥、久利、德科在他身边踢得如鱼得水",
@@ -879,7 +879,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "卡卡在米兰有皮尔洛、加图索、西多夫撑腰，小罗在巴萨是生生把一支二流豪门重新拉回了一流殿堂！"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡在AC米兰经典的「四个十号」体系中，是当之无愧的战术终结大腿。",
           points: [
             "米兰中场虽然大师云集（皮尔洛、西多夫、鲁伊科斯塔），但卡卡是这套传控中唯一的纵向推进利刃",
@@ -893,7 +893,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_tactics",
         title: "战术价值：魔幻边路自由人 vs 反击前腰爆点",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "小罗是左路到中场的绝对战术自由人，拥有无懈可击的策动与创造力。",
           points: [
             "可以胜任左边锋、前腰或九号半，能够利用超强的个人护球在中场强行带球组织",
@@ -902,7 +902,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小罗在场上能带能传能射能组织，他的战术工具箱比卡卡那单一的反击超车大得太多了。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡是现代快速反击战术中最完美的纵向推进前腰，一人打穿防线。",
           points: [
             "拥有恐怖的接球转身起步爆发力，能够在攻防转换的瞬间直接带球高速向前推进30-40米",
@@ -916,7 +916,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_influence",
         title: "商业与影响力：快乐足球代言人 vs 绿茵完美白马王子",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "小罗的快乐足球理念赢得了全世界球迷的爱戴，他是足球运动最生动的代言人。",
           points: [
             "那张永远挂着憨厚笑容的脸，和标志性的六指手势，成为了全球快乐足球的文化符号",
@@ -925,7 +925,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小罗的影响力是纯粹因为足球带来的快乐，他是无数街头足球少年唯一的图腾信仰。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡以其英俊的外貌、优雅的举止和完美的职业道德，成为了全球足球界最顶级的阳光偶像。",
           points: [
             "银鞍照白马，卡卡完美契合了全世界球迷对于「足球王子」的一切美好幻想",
@@ -939,7 +939,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_regrets",
         title: "黑点与硬伤：荒废天赋自毁前程 vs 皇马岁月的挣扎与无奈",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "小罗的天性就是快乐，他的下滑也是他随性人生的真实选择，无需遗憾。",
           points: [
             "他虽然早早离开了欧洲主流赛场，但他在弗拉门戈、米内罗竞技等南美赛场依然率队夺得解放者杯",
@@ -948,7 +948,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小罗只是选择了他喜欢的活法，卡卡在皇马拿着巨额年薪却常年坐在替补席上，那才是真的悲剧。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡在皇马的挣扎完全是因为命运不公的伤病和主帅选择，他的态度始终无比职业。",
           points: [
             "在皇马即便沦为替补，也从未抱怨过主教练或俱乐部，每一次登场都全力以赴，交出不错的数据",
@@ -962,7 +962,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_goat",
         title: "历史地位：殿堂级足球精灵 vs 现代全能中场标杆",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "小罗在足球历史的评选中，稳坐绿茵场上唯一「足球精灵」的宝座。",
           points: [
             "荣誉大满贯：世界杯、美洲杯、联合会杯、欧冠、解放者杯、金球奖、世界先生",
@@ -971,7 +971,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "论技术美感和荣誉大满贯，小罗在历史殿堂里稳坐超巨交椅，卡卡的历史地位还是差了半个身位。"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡是现代全能推进型前腰的开山鼻祖和标杆，其战术历史地位极为稳固。",
           points: [
             "作为最后一个在梅罗统治前拿下双料先生的地球人，他的历史分金量和代表性不言而喻",
@@ -987,7 +987,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_swap",
         title: "What-If：小罗加盟07米兰，卡卡入主梦二巴萨",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "小罗加盟07米兰会在安切洛蒂的四个十号体系中打出更加华丽的桑巴传控足球。",
           points: [
             "米兰当时的皮尔洛、西多夫等大师能够与小罗完美合拍，打出极其丝滑、极具观赏性的阵地控球",
@@ -996,7 +996,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小罗在07米兰跟皮尔洛搭档，那场面简直就是桑巴魔术与古典意式大师艺术的终极结合！"
         },
-        lebron: {
+        playerB: {
           claim: "卡卡如果加盟梦二巴萨，会用他无解的纵向反击速度把巴萨的进攻直接提速到超音速时代。",
           points: [
             "巴萨当时拥有德科等传球大师，卡卡可以作为左路或中路的绝对突刺爆点，大步流星打穿防线",
@@ -1010,7 +1010,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_1v1",
         title: "What-If：巅峰桑巴魔术 vs 巅峰超车单挑，谁能赢",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "在小空间的技术单挑中，小罗那鬼斧神工的微操技术能把卡卡彻底晃晕。",
           points: [
             "小罗的球感是神明级别的，他的身体柔韧度极高，能够在原地做出无数种假动作和变向",
@@ -1019,7 +1019,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单挑拼的是最极致的脚底微操，小罗有一百种方法把卡卡晃出球场，卡卡连球衣都摸不着。"
         },
-        lebron: {
+        playerB: {
           claim: "在大空间的单挑对抗中，卡卡那无解的一步强行起步超车，能让小罗在后面吃尾气。",
           points: [
             "卡卡的带球爆发力和起步速度是历史级别的，只要给他一米的空间，他就能瞬间强行生吃防守者",
@@ -1033,7 +1033,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "dinho_kaka_today",
         title: "What-If：年轻球迷今天重新投票，谁更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "在短视频剪辑满天飞的时代，小罗那充满魔术感的快乐足球会成为无可争辩的人气霸主。",
           points: [
             "小罗在球场上的每一次牛尾巴、不看人传球和骚气停球，都是短视频平台上最天然的流量收割机",
@@ -1042,7 +1042,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "短视频集锦里，小罗的每一次骚操作都能把年轻球迷的胃口彻底钓足，票数绝对是断崖式第一！"
         },
-        lebron: {
+        playerB: {
           claim: "在如今注重颜值的时代，卡卡那完美无瑕的王子形象和热血奔袭，依然是无可匹敌的人气收割机。",
           points: [
             "卡卡那张精致阳光的脸庞和白马王子的气质，在现代社交网络时代就是无可匹敌的绝对顶流",
@@ -1060,7 +1060,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_rings",
         title: "国家队生涯：桑巴历史射手王 vs 19岁世界杯封神",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "内马尔是巴西队史射手王，凭借无可置疑的个人能力独自在寒冬中扛起桑巴大旗。",
           points: [
             "超越贝利加冕巴西国家队历史第一射手，在内马尔出场的比赛中，巴西队的进攻档次完全不同",
@@ -1069,7 +1069,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔是在巴西足球人才断档的至暗时代，一个人带着一群平民队友苦苦支撑，这难度懂的都懂！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在国家队的起点与高度，是同龄人甚至无数超巨一生都难以企及的珠穆朗玛峰。",
           points: [
             "2018年以19岁的逆天年龄作为绝对主力夺得俄罗斯世界杯冠军，并在决赛中轰入世界波封神",
@@ -1083,7 +1083,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_club",
         title: "俱乐部巅峰：巴萨MSN三冠王 vs 巴黎队史射手王",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "内马尔在巴萨MSN时期展现的俱乐部战力，是21世纪最强三叉戟的核心爆点。",
           points: [
             "2014-15赛季与梅西、苏亚雷斯组成MSN神级组合，包揽三冠王，并在欧冠决赛中打入锁定胜局一球",
@@ -1092,7 +1092,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "MSN时期的内马尔是能够与巅峰梅罗平起平坐的超巨，姆巴佩在巴黎拿一堆虐菜联赛冠军有什么好吹的？"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是巴黎圣日耳曼队史第一射手，在法甲留下了统治级的俱乐部数据。",
           points: [
             "超越伊布、内马尔等一众超巨，加冕巴黎圣日耳曼队史射手王，斩获无数法甲金靴",
@@ -1106,7 +1106,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_individual",
         title: "个人荣誉：常年金球前三 vs 金靴拿到手软",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "内马尔是梅罗双骄时代含金量最硬的「足坛第三人」。",
           points: [
             "在2015和2017年两度荣登金球奖第三名，在梅罗巅峰期能拿到这个名次本身就是极致褒奖",
@@ -1115,7 +1115,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "在梅罗巅峰期拿第三，比在双骄老去后拿金球含金量还要高，内马尔是无冕的储君。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在个人荣誉上的收割速度极为惊人，是未来金球奖的头号热门。",
           points: [
             "斩获2022年卡塔尔世界杯金靴，并在法甲连续多年垄断射手王与年度最佳球员大奖",
@@ -1129,7 +1129,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_style",
         title: "技术球风：最后的桑巴艺术 vs 现代速度力量机器",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "内马尔是绿茵场上最后的桑巴舞者，承载着巴西足球失落的灵魂。",
           points: [
             "拥有神仙般的盘带控球技巧，招牌的「彩虹过人」和极致的花哨过人赏心悦目",
@@ -1138,7 +1138,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔是用大脑和灵魂在跳桑巴，姆巴佩除了把球传给三秒后的自己、靠身体跑直线，还会啥？"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是现代足球最完美的进攻核武器，将速度、爆发力与力量发挥到了极致。",
           points: [
             "拥有恐怖的起步加速度，瞬间时速可达38公里，是所有后卫在反击战中的终极噩梦",
@@ -1152,7 +1152,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_clutch",
         title: "大场面能力：巴萨奇迹的导演 vs 世界杯决赛的帽子戏法",
         emoji: "🗡️",
-        kobe: {
+        playerA: {
           claim: "内马尔在关键战役中经常展现出超越凡人的核心主宰力。",
           points: [
             "2016-17巴萨6-1逆转巴黎的关键生死战，内马尔在最后7分钟独造3球导演了历史神迹",
@@ -1161,7 +1161,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "导演欧冠历史最大逆转奇迹的男人是内马尔，大场面下的精神意志力，内马尔从没怂过！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在世界杯决赛舞台上展现出的大心脏，是足球史诗级的个人狂飙。",
           points: [
             "2022年世界杯决赛面对状态如日中天的阿根廷，在两球落后的绝境中，97秒内连入两球扳平比分",
@@ -1175,7 +1175,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_injuries",
         title: "巅峰高度与伤病：MSN足坛老三 vs 无伤常青的输出",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "内马尔的巅峰高度是金子般的，他的实力早已得到了历史殿堂的认可。",
           points: [
             "在巴萨MSN时期，内马尔是毫无争议的足坛前三，在球场上的战术威胁与灵性直接拉满",
@@ -1184,7 +1184,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔是因为被对手疯狂伐木才频繁伤退，如果能得到合理的裁判保护，他的高度直接叫板梅罗！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩最恐怖的地方在于他拥有极佳的身体韧性，能常年保持顶级且无伤的高效输出。",
           points: [
             "自摩纳哥出道至今，几乎极少遭遇重伤病，身体维护极其科学，出勤率极其逆天",
@@ -1198,7 +1198,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_choices",
         title: "职业规划与伤病：离开巴萨的遗憾 vs 踏入皇马的坦途",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "内马尔离开巴萨去巴黎，是极具雄心与胆识的选择，虽然遗憾但令人尊敬。",
           points: [
             "为了摆脱梅西的阴影，主动挑战2.22亿欧元的历史第一身价，前往巴黎渴望单核夺魁",
@@ -1207,7 +1207,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "总比某些人一辈子躲在法甲舒适圈里称王称霸、最后靠拉扯皇马和总统挽留来抬高身价要体面得多！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩的职业规划展现了极高的大局观和清晰的人生目标，如今已步入皇马殿堂。",
           points: [
             "在巴黎圣日耳曼圆满完成队史射手王的加冕，在合同到期后以最体面的自由身免签加盟皇家马德里",
@@ -1221,7 +1221,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_teammates",
         title: "体系与队友：MSN神话 vs 大巴黎特权之争",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "内马尔拥有历史顶级的战术融合度，能与任何顶级巨星打出令人心醉的默契配合。",
           points: [
             "在巴萨MSN组合中无私喂饼，与梅西、苏亚雷斯场上场下琴瑟和鸣，被奉为足坛更衣室楷模",
@@ -1230,7 +1230,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔是完美的团队润滑剂，某些人在巴黎因为抢点球、抢特权跟队友闹内讧，这叫团队精神？"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在场上是绝对的进攻终结轴心，豪门战术围绕他展开是天经地义的。",
           points: [
             "在巴黎后期，他作为核心输出赢得了绝对的战术特权，这是对他逆天终结力的最合理使用",
@@ -1244,7 +1244,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_tactics",
         title: "战术价值：10号腰刀一体 vs 极致边路突击刺客",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "内马尔是战术上极罕见的「腰刀一体」全能战士，其技术战术价值独一档。",
           points: [
             "回撤时能充当顶级的组织前腰，送出极具想象力和穿透力的手术刀直塞，梳理中场进攻",
@@ -1253,7 +1253,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔一个人能顶一个前沿组织者加一个顶级爆点，姆巴佩除了在前场等着接球冲刺，还会组织吗？"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是战术板上最具撕裂防线威慑力的极致速度爆点，战术破坏力惊人。",
           points: [
             "他的存在能强行逼迫对方整条防线整体回撤15米，为本方中场制造极其庞大的倒脚与组织空间",
@@ -1267,7 +1267,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_influence",
         title: "商业与文化价值：桑巴时尚天王 vs 法国文化符号",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "内马尔是全球时尚与潮流的超级风向标，个人魅力风靡全球。",
           points: [
             "IG粉丝数破2亿，与各大顶流时尚品牌、游戏及潮流文化深度联名，个人出圈影响力极高",
@@ -1276,7 +1276,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔的商业与文化影响力是纯粹自发、风靡全球的，他是时尚与快乐足球的终极Icon。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是站在法国国家与总统支持高度的殿堂级文化符号，影响力非同凡响。",
           points: [
             "曾让法国总统马克龙多次亲自出面沟通并极力挽留，这在体育史上是前所未有的至高待遇",
@@ -1290,7 +1290,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_scandals",
         title: "遗憾与黑点：场外派对与翻滚争议 vs 皇马拉扯肥皂剧",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "内马尔场内无大碍，所谓的争议只是他率真天性的流露，从不虚伪虚构。",
           points: [
             "「内马尔滚」虽然被全网调侃，但这也是后卫粗野伐木防守下他唯一的自我保护机制",
@@ -1299,7 +1299,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "内马尔的任性是透明公开的，某些人一边拉扯皇马抬价、一边跟大巴黎拿巨额签字费，那才叫虚伪狡黠！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在转会皇马过程中的拉扯是顶级的商业智慧与清醒规划的体现，职业规范拉满。",
           points: [
             "在法甲大巴黎与西甲皇家马德里两大豪门的博弈中，展现了极其成熟的决策能力，把自身利益最大化",
@@ -1313,7 +1313,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_status",
         title: "历史地位：梅罗时代的最强无冕储君 vs 新时代的领军旗手",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "内马尔在历史球星殿堂中，早已凭无解的艺术技术稳坐超级巨星的交椅。",
           points: [
             "他是巴萨MSN组合的超级功勋，超越贝利的国家队第一人，其盘带技术是世界足坛的艺术瑰宝",
@@ -1322,7 +1322,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "姆巴佩即使拿再多冠军，也是高度系统化和乏味的工业产品；内马尔则是足球技术历史长河中的绝代孤本！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩作为新时代的领军旗手，其未来的荣誉与历史高度必定能超越内马尔。",
           points: [
             "年纪轻轻就拥有一座世界杯冠军和一座世界杯亚军（决赛帽子戏法），国家队硬荣誉直接秒杀",
@@ -1338,7 +1338,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_swap",
         title: "What-If：如果内马尔留在巴萨，姆巴佩更早前往皇马",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "内马尔若留在巴萨，必将顺利继承梅西的王座，率队统治欧洲并夺得金球奖。",
           points: [
             "留在诺坎普成熟且强大的战术体系中，他能在梅西逐渐转型中场时接过核心球权，统治前场",
@@ -1347,7 +1347,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "留在巴萨的内马尔就是毫无争议的巴萨新一代球王加金球得主，那大巴黎的职业滑铁卢根本不会发生！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩若早些加盟皇马，会在伯纳乌的中场大师群喂饼下更早封神、收割金球与欧冠。",
           points: [
             "如果能在2021或2022年加盟拥有莫德里奇、克罗斯巅峰中场的皇马，姆巴佩的反击优势将无限放大",
@@ -1361,7 +1361,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_1v1",
         title: "What-If：巅峰单兵技术 1v1，谁能赢",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "在 1v1 单兵技术对抗中，内马尔那变幻莫测的桑巴盘带会让姆巴佩摸不着头脑。",
           points: [
             "内马尔的盘带不仅是速度，更是极其精细的微操、重心晃动和假动作的完美结合，防不胜防",
@@ -1370,7 +1370,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单挑拼的是最纯粹的脚下细活和重心变幻，内马尔能用花式过人把姆巴佩晃倒在地上找球！"
         },
-        lebron: {
+        playerB: {
           claim: "在 1v1 纯对抗中，姆巴佩那极致的一步起步爆发力和绝对身体强壮度，能强碾内马尔。",
           points: [
             "姆巴佩在绝对起步速度和身体硬度上占尽优势，在单挑中只要一脚趟球，就能用身体强行超车",
@@ -1384,7 +1384,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "ney_mbappe_today",
         title: "What-If：年轻球迷今天重新投票，谁更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "年轻球迷今天投票会极力偏爱内马尔那独步天下的技术灵性与桑巴狂放个性。",
           points: [
             "内马尔在短视频平台上拥有的极致花哨盘带与骚气操作，在年轻球迷心目中是绝对的吸粉大杀器",
@@ -1393,7 +1393,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "现在的年轻球迷都是集锦党和潮流党，内马尔那充满灵性与艺术感的表现，得票率绝对是压倒性的第一！"
         },
-        lebron: {
+        playerB: {
           claim: "年轻球迷崇尚实力至上与终极统治力，姆巴佩那世界杯决赛的震撼戴帽与皇马加冕会更受欢迎。",
           points: [
             "姆巴佩在2022世界杯决赛中顶天立地的超级个人大心脏表现，是年轻球迷心目中无可匹敌的热血神迹",
@@ -1411,7 +1411,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_rings",
         title: "国家队生涯：拯救国家之任意球 vs 黄金一代领头羊",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆是英格兰国家队的铁血队长，关键时刻的爱国硬汉。",
           points: [
             "2001年世界杯预选赛对阵希腊，在伤停补时最后一刻踢入价值千金的惊天弧线任意球，拯救英格兰出线",
@@ -1420,7 +1420,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小贝的队长担当和对希腊那一脚拯救国家的弯刀，是英格兰国家队历史上最伟大的英雄神迹！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈是葡萄牙「黄金一代」无可争议的灵魂领袖，率队开创了国家队的黄金时代。",
           points: [
             "率领葡萄牙国家队杀入2004年本土欧洲杯决赛，并在2006年世界杯中带队闯入四强，立下赫赫战功",
@@ -1434,7 +1434,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_club",
         title: "俱乐部荣誉：曼联99年三冠王 vs 跨死敌意甲的多国联赛冠军",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆作为红魔「92班」的核心大佬，是1999年曼联勇夺历史三冠王的超级功勋。",
           points: [
             "1998-99赛季作为中场绝对主力，率领曼联在英超、足总杯和欧冠中一路高歌猛进，夺得历史性三冠王",
@@ -1443,7 +1443,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "英格兰足球历史上唯一一次三冠王，小贝是绝对的核心主力，这俱乐部的硬荣誉谁来也搬不动！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈是世纪之交跨越西甲死敌与意甲多豪门、斩获无数联赛冠军的绝对赢家。",
           points: [
             "在巴萨夺得两座西甲冠军，转会皇马后再次夺得两座西甲与一座欧冠冠军（2002）",
@@ -1457,7 +1457,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_individual",
         title: "个人荣誉：金球奖第二 vs 双料先生在手",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆在个人荣誉的评选中，是两届世界足球先生第二名的无冕之王。",
           points: [
             "在1999年金球奖评选中荣获第二名，在1999和2001年两度荣登FIFA世界足球先生第二名",
@@ -1466,7 +1466,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "99年金球第二名，小贝在巅峰期的个人实力，是绝对配得上世界顶级大师席位的。"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈在个人荣誉的殿堂里，是手握金球奖与世界足球先生的双料超级先生。",
           points: [
             "击败齐达内、小贝等一众超级巨星，荣获2000年金球奖，实至名归",
@@ -1480,7 +1480,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_style",
         title: "技术球风：圆月弯刀 vs 古典右路盘带宗师",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆将右路传中与任意球带到了前无古人、后无来者的宗师级高度。",
           points: [
             "招牌的「圆月弯刀」任意球技术精确到毫米，其罚球弧度极其优美，是世界足坛的极致绝活",
@@ -1489,7 +1489,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小贝的传中和任意球是一门艺术，他那一脚销魂的斜长传，菲戈一辈子也传不出来。"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈是古典右路突破的宗师级化身，人球合一与节奏摆脱的极致代表。",
           points: [
             "拥有历史顶级的古典盘带技术，极其擅长利用上半身的重心晃动与精妙的变向完成突破摆脱",
@@ -1503,7 +1503,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_clutch",
         title: "关键时刻：对阵希腊的救赎 vs 诺坎普大战的重压",
         emoji: "⚡",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆在极限压力下的自我救赎，是体育史上最热血的硬汉篇章。",
           points: [
             "对希腊的第93分钟任意球绝平，全场疯狂跑动16公里，用一己之力将英格兰送进世界杯",
@@ -1512,7 +1512,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "在国家队最绝望的时刻，全英格兰都在指望小贝的右脚，而他也确实在最后一秒拯救了国家！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈在转会皇马后承受着人类极限级别的敌意重压，依然展现出无可挑剔的心理硬度。",
           points: [
             "在转会皇马回到诺坎普面对十万巴萨球迷疯狂投掷的矿泉水瓶和飞来的猪头，依然面不改色去主罚角球，心理硬度直接拉满",
@@ -1526,7 +1526,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_peak",
         title: "巅峰高度：三冠王赛季的贝克汉姆 vs 世纪交接之时的欧洲第一右翼",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆在1999年的巅峰高度，代表了英格兰中场在欧洲顶端的最高荣誉。",
           points: [
             "1999年作为三冠王绝对核心，单赛季贡献无数助攻与关键任意球，战力极其惊人",
@@ -1535,7 +1535,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "1999年曼联的荣耀是写在足坛史册上的，那一年的小贝就是全欧洲最致命的右路传球大师！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈在2000-2001年的巅峰高度，是边锋位置上无可争议的足坛第一人。",
           points: [
             "2000年欧洲杯期间，菲戈用无可挑剔的古典过人和长途奔袭，打爆了欧洲诸强防线",
@@ -1549,7 +1549,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_longevity",
         title: "职业寿命与自律：英伦长青树 vs 意甲国米的大师暮年",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆的职业寿命极其漫长，从英超、西甲一路征战至美职联与法甲巴黎，始终保持顶级态度。",
           points: [
             "整个生涯其实极为自律，极高的奔跑体能和任意球绝活让他即便年纪增大依然是战术极佳的棋子",
@@ -1558,7 +1558,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "别被他的商业外表骗了，小贝是绿茵场上最自律、最敬业的铁汉跑不死，38岁还能打顶级联赛！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈在加盟国米后的常青岁月，展现了一名古典巨星的大师底蕴。",
           points: [
             "转会意甲国际米兰后，即便爆发力有所下滑，依然转型为纯熟的中场大脑，协助国米达成意甲四连冠",
@@ -1572,7 +1572,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_teammates",
         title: "队友与体系：红魔九二班 vs 皇马中场群",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆能与红魔92班的兄弟们打出极其恐怖的团队默契，证明了他无可挑剔的团队属性。",
           points: [
             "与加里·内维尔在曼联右路组成了足球史上最默契、最坚不可摧的「右路双子星」黄金搭档",
@@ -1581,7 +1581,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小贝是完美的战术拼图，他极其愿意为团队干脏活累活，而不是像某些人那样非要当战术特权大腿。"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈是能够与任何顶级大师完美兼容的战术推进轴心，战术地位极高。",
           points: [
             "在巴萨是瓜迪奥拉、里瓦尔多最信赖的边路爆破者，在葡萄牙是黄金一代的唯一核心",
@@ -1595,7 +1595,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_tactics",
         title: "战术价值：不惜体力的奔跑长传 vs 纵向爆破的前场爆点",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆拥有极其现代且硬核的奔跑拦截能力，战术价值极其被低估。",
           points: [
             "小贝不仅长传精准，每场比赛的跑动距离常年保持在13-14公里，是英超著名的「跑不死」",
@@ -1604,7 +1604,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "别拿集锦来看球，小贝是防守跑动拉满的钢铁硬汉，在战术支撑力上比菲戈强出一个维度！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈是战术板上最恐怖的右路进攻兵器，古典边锋的极致标杆。",
           points: [
             "他不仅能提供边路的绝对宽度与纵向突击，更能通过优秀的控球在中场强行带球吸引防守",
@@ -1618,7 +1618,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_influence",
         title: "商业与大众认知：帅气面庞与商业顶流 vs 古典足球的实力派巨星",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆是将足球运动带出体育界、风靡全球的头号商业文化Icon。",
           points: [
             "凭借极其英俊的面庞、帅气的发型与极具出圈效果的时尚管理，成为了全球体育界第一位跨界商业天王",
@@ -1627,7 +1627,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小贝的影响力早已超越了足球本身，他是全球时尚、商业与跨界文化中最亮眼的第一名片！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈代表了古典足球实力派巨星的尊严，他的一切荣誉完全是在绿茵场上用脚踢出来的。",
           points: [
             "菲戈没有小贝那么花哨的场外娱乐营销，他将所有的精力都专注于绿茵场上的古典盘带与进球",
@@ -1641,7 +1641,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_regrets",
         title: "争议与遗憾：98年红牌全英公敌 vs 叛逃巴萨的世纪猪头事件",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "小贝的遗憾是热血澎湃的成长史诗，他的每一处伤痕都写满了救赎的伟大。",
           points: [
             "1998年对阵阿根廷因踢人红牌被罚下，遭遇全英格兰长达数月的声讨与疯狂谩骂",
@@ -1650,7 +1650,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "小贝的红牌是年轻冲动的代价，菲戈则是为了金钱主动背叛巴萨加盟死敌皇马，诺坎普飞来的猪头是他一生洗不掉的叛徒烙印！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈转会皇马是顶级的职业选择与商业博弈，他的冷酷和职业态度无可指责。",
           points: [
             "当年转会风波是皇马主席弗洛伦蒂诺的惊天阳谋，菲戈作为职业球员在合同合理范围内转会，无可厚非",
@@ -1664,7 +1664,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_goat",
         title: "历史地位：被低估的英伦铁汉 vs 葡萄牙足球的教父级宗师",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "贝克汉姆在历史球星殿堂中，早已凭无解的任意球长传与三冠王功勋奠定了顶级地位。",
           points: [
             "三冠王绝对核心，英超与欧冠历史上的超级助攻宗师，其任意球弯刀技术是历史天花板级别的",
@@ -1673,7 +1673,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "菲戈虽然拿了金球，但在全球范围内的足球记忆与历史厚度上，小贝那销魂的圆月弯刀才是永远的绿茵名片！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈作为双料先生得主，其在足球历史殿堂的硬核地位是小贝无法企及的。",
           points: [
             "手握金球奖与世界足球先生双料荣耀，这硬核荣誉直接在历史地位上压死了一众储君",
@@ -1689,7 +1689,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_swap",
         title: "What-If：小贝留在红魔成为终老传奇，菲戈从未离开诺坎普",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "小贝如果终老曼联，必将继承吉格斯、斯科尔斯的光环，成为曼联历史上最伟大的队史丰碑。",
           points: [
             "在弗格森手下，小贝会在老特拉福德打出更恐怖的长传助攻数据，成为无可争议的红魔队魂",
@@ -1698,7 +1698,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "终老红魔的小贝就是曼联历史上唯一的右路之神加金球得主，其地位绝非流浪豪门可比！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈若从未离开巴萨，必将作为巴萨梦二王朝前夜的绝对领袖与队魂，在诺坎普终老封神。",
           points: [
             "作为巴萨的绝对队长与中场核心，他能与里瓦尔多、恩里克等人打出极其恐怖的西甲传控霸业",
@@ -1712,7 +1712,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_1v1",
         title: "What-If：巅峰 1v1 单挑，谁更强",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "在纯粹的长传定位球与拦截体能单挑中，小贝能用极致的任意球弯刀射死菲戈。",
           points: [
             "小贝拥有极其恐怖的定位球脚法，在任何远射、任意球直接攻门的比拼中能打出无解的命中率",
@@ -1721,7 +1721,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "拼脚法、拼任意球、拼奔跑体能拦截，小贝那一脚弯刀在定位球比拼中能把菲戈射成筛子！"
         },
-        lebron: {
+        playerB: {
           claim: "菲戈在古典边路突破盘带的单挑中，能用极致的人球合一技术把小罗晃倒在地。",
           points: [
             "菲戈的古典盘带微操技术历史顶级，他的接球变向和重心变幻在1v1中是绝对无解的杀招",
@@ -1735,7 +1735,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "becks_figo_today",
         title: "What-If：年轻球迷今天重新投票，谁更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "在颜值即正义与互联网顶流出圈的时代，小贝那无懈可击的外表和弯刀技术，必将收割全部年轻选票。",
           points: [
             "小贝的英俊面庞、时尚发型和各种出圈的社交网络营销，在现代球迷心目中就是绝对的商业顶流 Icon",
@@ -1744,7 +1744,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "有颜值、有顶级出圈名片、有任意球神仙集锦，小贝在现代年轻球迷心目中就是无可替代的人气大魔王！"
         },
-        lebron: {
+        playerB: {
           claim: "在崇尚硬核实力与技术流的时代，菲戈那古典右路过人与双料先生履历会更受年轻球迷推崇。",
           points: [
             "菲戈在西甲和欧洲杯赛场上奉献的古典盘带突破集锦，在短视频平台上是绝对的技术流吸粉大杀器",
@@ -1762,7 +1762,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_rings",
         title: "国家队生涯：世界杯欧洲杯大满贯 vs 生死战神仙球专家",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "亨利是法国黄金一代夺得世界杯与欧洲杯大满贯的绝对锋线功勋。",
           points: [
             "作为队内超新星参与并夺得1998年法国世界杯冠军，并在2000年欧洲杯中作为绝对主力中锋率队夺冠",
@@ -1771,7 +1771,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "世界杯冠军加欧洲杯冠军在手，亨利在国家队的硬荣誉直接秒杀一辈子在大赛打酱油的伊布！"
         },
-        lebron: {
+        playerB: {
           claim: "伊布拉希莫维奇在瑞典国家队展现的神迹与超级神仙球，是国家队史诗的绝对巅峰。",
           points: [
             "在实力平平的瑞典国家队独自抗起锋线大旗，多次率队打入欧洲杯与世界杯，立下卓越战功",
@@ -1785,7 +1785,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_club",
         title: "俱乐部荣誉：阿森纳不败神话 vs 联赛收割机但无欧冠",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "亨利是阿森纳队史最伟大的传奇，一手缔造了英超不败夺冠的核心神话。",
           points: [
             "2003-04赛季作为绝对核心锋线霸主，率领阿森纳以49场不败的逆天神迹勇夺英超冠军，震古烁今",
@@ -1794,7 +1794,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "不败夺冠队魂加巴萨三冠王，亨利的俱乐部生涯有欧冠、有历史级神话，这硬实力谁能碰瓷？"
         },
-        lebron: {
+        playerB: {
           claim: "伊布是足球历史上绝无仅有的「联赛收割机」，所到之处寸草不生。",
           points: [
             "效力阿贾克斯、尤文、国米、巴萨、米兰、巴黎、曼联，横跨四国联赛夺得11次联赛冠军",
@@ -1808,7 +1808,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_individual",
         title: "个人荣誉：英超金靴刷子 vs 多国联赛神锋",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "亨利在个人荣誉的评选中，是英超历史上无可争议的第一前锋霸主。",
           points: [
             "4次斩获英超金靴，并两度夺得欧洲金靴奖，在英超巅峰期完成了锋线统治力",
@@ -1817,7 +1817,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "4座英超金靴加两座欧洲金靴，亨利的个人进球硬荣誉，是前锋位置上绝对的黄金履历。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布拉希莫维奇是跨越多个顶级联赛垄断射手王的超级神锋天花板。",
           points: [
             "在意甲AC米兰、国米以及法甲巴黎圣日耳曼多次斩获联赛金靴，含金量十足",
@@ -1831,7 +1831,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_style",
         title: "技术球风：海布里大帝的优雅内切 vs 跆拳道黑带的暴力美学",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "亨利将前锋的控球与奔跑带到了优雅的极致艺术高度。",
           points: [
             "招牌的「左路拉边外切射门」极其丝滑，在大步流星的高速推进中拥有顶级射门弧度",
@@ -1840,7 +1840,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利踢球是优雅艺术的极致，伊布那种靠大体型和野路子强行拼身体的踢法，美感差太远。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布是将极致的身体柔韧度与恐怖力量结合的足坛无二之「暴力美学」。",
           points: [
             "拥有1米95的逆天身板，但由于是跆拳道黑带，其身体柔韧度和空中的爆发力极其恐怖",
@@ -1854,7 +1854,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_clutch",
         title: "关键时刻：单骑闯关击杀皇马 vs 神仙球专家大心脏",
         emoji: "⚡",
-        kobe: {
+        playerA: {
           claim: "亨利是大场面战役中屡屡挺身而出的冷酷杀手，留下了无数经典名画。",
           points: [
             "2006年欧冠八分之一决赛，亨利在伯纳乌单枪匹马连过四人破门击杀皇马，完成历史级演出",
@@ -1863,7 +1863,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "在欧冠客场击杀皇马、在世界杯绝杀巴西，亨利在大场面下的关键致命性，伊布大场面隐身懂的都懂。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布是关键时刻用身体对抗命运、用逆天神仙球终结一切质疑的绝对大心脏。",
           points: [
             "2004年欧洲杯对阵意大利，在最后关头打入一记不可思议的蝎子摆尾吊射绝平蓝衣军团",
@@ -1877,7 +1877,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_peak",
         title: "巅峰高度：英超海布里之王 vs 自带体系的终极神锋",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "亨利在2002-2006年的巅峰高度，代表了英超前锋历史上的绝对物理极限。",
           points: [
             "巅峰亨利在英超几乎是不可阻挡的超然存在，其速度、盘带和优雅射门在联赛中直接降维打击",
@@ -1886,7 +1886,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单赛季24球20助，亨利的巅峰高度直接把前锋的进球与组织价值拉到了物理天花板！"
         },
-        lebron: {
+        playerB: {
           claim: "伊布在巅峰期展现出的身体与战术统治力，是任何防线都无法招架的终极霸王。",
           points: [
             "在巴黎和AC米兰巅峰期，伊布作为绝对中锋战术支点，其前场制空权与推进压制力震古烁今",
@@ -1900,7 +1900,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_longevity",
         title: "职业寿命：大联盟暮年 vs 40岁重返米兰的上帝神话",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "亨利科学地规划了自己的职业生涯，在功成名就后以最优雅的姿态在大联盟享受足球。",
           points: [
             "在曼联和巴萨夺得一切荣誉后，以极其体面的姿态转战美职联纽约红牛，依然交出顶级数据",
@@ -1909,7 +1909,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "大帝的谢幕充满了温情与优雅，伊布快40岁了还在场上狂妄自大，这风骨高下立判。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布在职业生涯暮年展现出的超级逆生长，是足球历史上绝无仅有的上帝神话。",
           points: [
             "经历了严重的膝盖十字韧带断裂重伤，依然在大联盟大杀四方，并于38岁高龄重返意甲AC米兰",
@@ -1923,7 +1923,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_teammates",
         title: "队友与体系：枪手不败大本营 vs 自带反击体系的战神",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "亨利能与温格的枪手地传体系及巴萨MSN前身打出极致配合，团队属性拉满。",
           points: [
             "在阿森纳与皮雷、博格坎普无私配合，形成了名震英伦的行云流水进攻群，从不独吞球权",
@@ -1932,7 +1932,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利能完美融入各种高级传控体系并提供战力，伊布去哪都要当特权大腿，不去巴萨就把更衣室闹翻。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布是拥有极强「带队属性」的单兵战神，不需要依赖任何体系喂饼。",
           points: [
             "不管在国米、AC米兰还是大巴黎，伊布的打法就是直接拿球单挑整条防线，带飞平民中场",
@@ -1946,7 +1946,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_tactics",
         title: "战术价值：左路优雅腰刀一体 vs 锋线超级物理坦克支点",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "亨利是边锋与前锋完美结合的腰刀一体大师，战术机动性极强。",
           points: [
             "可以极其纯熟地拉边突破，利用极强的传中和带球突破能力为中路队友输送炮弹",
@@ -1955,7 +1955,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利能突能传能自己解决战斗，其战术灵活度完胜只会站在禁区里当桩子的伊布。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布是现代足球中最完美、最让人头疼的物理坦克前锋支点天花板。",
           points: [
             "拥有恐怖的接长传背身单打能力，能在极高对抗下稳稳护球并送出精妙的脚后跟妙传分球",
@@ -1969,7 +1969,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_influence",
         title: "文化影响力：海布里大帝优雅解说 vs 上帝奉先狂放语录",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "亨利以其优雅的绅士形象和极高深的解说智慧，赢得了世界足坛的广泛尊敬。",
           points: [
             "作为世界顶级体育频道的王牌解说嘉宾，以极高深的战术素养和优雅幽默谈吐深受球迷爱戴",
@@ -1978,7 +1978,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利展现了足球巨星退役后最优雅、最受人尊敬的大师范，伊布那一套狂妄装逼早晚让人看腻。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布拉希莫维奇以其唯我独尊的「上帝」人设和无数热血语录，风靡全球文化圈。",
           points: [
             "「来时国王，去时传说」、「我是北欧的上帝」等霸气语录在互联网时代是绝对的出圈神话",
@@ -1992,7 +1992,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_regrets",
         title: "黑点与遗憾：爱尔兰生死战手球 vs 欧冠淘汰赛软脚蟹争议",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "亨利的手球是他在国家队生死关头展现的极致求胜欲，虽然争议但也是足球的一部分。",
           points: [
             "2009年世界杯预选赛附加赛对阵爱尔兰，加时赛用手停球助攻加拉绝杀，引发了全球范围内的讨论",
@@ -2001,7 +2001,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利的手球是为了带国家队进世界杯，伊布在欧冠淘汰赛年年隐身当软脚蟹，连决赛地板都没摸过，那才是真硬伤！"
         },
-        lebron: {
+        playerB: {
           claim: "伊布虽然没有欧冠，但他代表了最真实的凡人战力，他的缺憾反而让传奇更真实。",
           points: [
             "欧冠虽然有缺，但他跨越尤文、国米、巴萨、米兰夺得的多国联赛冠军直接证明了他的实力",
@@ -2015,7 +2015,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_goat",
         title: "历史地位：英超第一前锋霸主 vs 21世纪最强异类神锋",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "亨利在历史顶级前锋的评选中，稳坐英超历史第一人的超然王座。",
           points: [
             "世界杯、欧洲杯、欧冠、英超不败冠军、巴萨三冠王大满贯履历，荣誉柜直接拉满",
@@ -2024,7 +2024,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "论硬核大满贯荣誉和历史定位评选，亨利稳压伊布半个档次，这是无可动摇的历史结论。"
         },
-        lebron: {
+        playerB: {
           claim: "伊布作为足坛史上最无解的异类神锋，其代表性与个人破坏力早已载入史册。",
           points: [
             "手握11座跨联赛冠军奖杯，瑞典历史绝对第一人，其神仙球效率与观赏性历史无二",
@@ -2040,7 +2040,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_swap",
         title: "What-If：伊布在04不败枪手，亨利在国米意甲争霸",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "亨利若去当时的国米意甲，必将用他无解的爆发速度拉边突破打穿防线，成为国米新一代的莫拉蒂宠儿。",
           points: [
             "在意甲强攻中，亨利极强的斜插跑位和边路极速推进，能与阿德里亚诺打出令人心惊肉跳的锋线风暴",
@@ -2049,7 +2049,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "亨利去国米能跟阿德里亚诺组成地表最强速度力量三叉戟，在意甲的荣誉只会比在阿森纳更闪耀！"
         },
-        lebron: {
+        playerB: {
           claim: "伊布若在04不败枪手，会在博格坎普的精妙喂饼和温格地面传切下，刷出更加残暴的空中与神仙球数据。",
           points: [
             "有了博格坎普的大师级斜长传，伊布在前场的物理制空和背身拿球将得到无限的炮弹输送",
@@ -2063,7 +2063,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_1v1",
         title: "What-If：巅峰单兵 1v1 对决，谁的破坏力更无解",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "单挑pk中，亨利那大步流星的极速突破和优雅内切，是伊布小身板防不住的。",
           points: [
             "亨利的极速启动爆发力和盘带速度是前锋历史顶尖的，只要拉开空间，一步起步就能强行生吃伊布",
@@ -2072,7 +2072,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单挑拼的是最极致的速度和内切准度，亨利一步油门就把伊布甩飞，伊布连他的衣角都摸不到。"
         },
-        lebron: {
+        playerB: {
           claim: "单挑pk中，伊布那1米95的恐怖身板和跆拳道柔韧度，能在对抗中把亨利强碾生吃。",
           points: [
             "伊布拥有无可匹敌的绝对身体力量与底盘硬度，在1v1肉搏对抗中，能直接用背身把亨利强力撞开",
@@ -2086,7 +2086,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "henry_ibra_today",
         title: "What-If：年轻球迷今天重新投票，谁更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "年轻球迷今天投票会极力推崇亨利那优雅到极致的战术素养和海布里大帝神迹。",
           points: [
             "亨利在阿森纳奉献的左路极速突防、1打4击杀皇马和优雅推远角集锦，在短视频里高级感爆表",
@@ -2095,7 +2095,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "有荣誉、有逼格、有双二十神迹，大帝亨利在现代年轻球迷心目中就是无可置疑的人气宗师天花板！"
         },
-        lebron: {
+        playerB: {
           claim: "年轻球迷极度热爱个性和互联网狂放人设，伊布那「上帝奉先」的霸气风范必定收割全部选票。",
           points: [
             "伊布在对阵英格兰时轰入的33米惊天挂角倒钩，在短视频时代就是最顶级、点击量最高的绿茵神迹流量炸弹",
@@ -2113,7 +2113,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_rings",
         title: "国家队起点：挪威金枪鱼 vs 19岁世界杯征服者",
         emoji: "🏆",
-        kobe: {
+        playerA: {
           claim: "哈兰德在挪威国家队交出了极其惊人的进球效率，证明了他是不受体系限制的纯粹破门利刃。",
           points: [
             "在实力平平、缺少顶级中场输送的挪威国家队，交出了场均超一球的逆天效率，历史罕见",
@@ -2122,7 +2122,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "哈兰德是在穷山恶水的地方自己找饭吃，某些人在顶级法国队靠着格列兹曼和豪门队友躺赢，含金量完全不同！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在国家队的起点与高度，是无可争议的新生代第一王者。",
           points: [
             "2018年以19岁的逆天年龄作为绝对核心，单挑克罗地亚夺得俄罗斯世界杯冠军，并荣获赛事最佳新秀",
@@ -2136,7 +2136,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_club",
         title: "俱乐部荣誉：曼城三冠王创纪录首秀 vs 大巴黎队史射手王",
         emoji: "🏟️",
-        kobe: {
+        playerA: {
           claim: "哈兰德在曼城的处子赛季，上演了足球历史上最凶残、最完美的「俱乐部收割神话」。",
           points: [
             "2022-23赛季加盟曼城首个赛季，单赛季狂轰52球，率队夺得欧冠、英超、足总杯的历史性三冠王伟业",
@@ -2145,7 +2145,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "加盟英超第一个赛季就打破历史纪录、拿到三冠王，哈兰德这俱乐部起步的硬核含金量，直接把姆巴佩甩出十条街！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是巴黎圣日耳曼队史绝对的第一人，如今已踏入皇马的全新金球殿堂。",
           points: [
             "超越卡瓦尼、内马尔等一众超巨，加冕巴黎圣日耳曼队史第一射手，垄断法甲金靴多年",
@@ -2159,7 +2159,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_individual",
         title: "个人荣誉：英超历史级纪录 vs 拿奖拿到手软的新王",
         emoji: "🎖️",
-        kobe: {
+        playerA: {
           claim: "哈兰德在个人硬数据上的垄断力，代表了最纯粹的前锋终结极限。",
           points: [
             "单赛季36粒英超进球打破历史纪录，荣膺英格兰PFA年度最佳球员、欧洲金靴奖等多项超级大奖",
@@ -2168,7 +2168,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "前锋的本职工作就是进球。哈兰德用一个个打破尘封纪录的进球数字，将效率拉到了人类极限。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是个人荣誉含金量最高、新生代最具说服力的超级领军人物。",
           points: [
             "斩获2022年卡塔尔世界杯金靴，并在法甲连续多年包揽联赛最佳射手与最佳球员大奖",
@@ -2182,7 +2182,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_style",
         title: "技术球风：无情的吃饼怪兽 vs 速度拉满的终极爆点",
         emoji: "🎨",
-        kobe: {
+        playerA: {
           claim: "哈兰德是前锋位置上最纯粹、最无情、最致命的物理终结机器。",
           points: [
             "拥有1米95的魔人身板加惊人的速度爆发力，在禁区内具有毁灭性的物理防空与肉搏制空权",
@@ -2191,7 +2191,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "哈兰德是现代足球最完美的终结中锋模板，化繁为简、一剑封喉；某些人天天秀身手，其实累得要死。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是现代绿茵场上最具杀伤力、最完美的边路极速突击刺客。",
           points: [
             "拥有瞬间启动达到时速38公里的恐怖爆发力，是所有后防线在反击战中的终极终结梦魇",
@@ -2205,7 +2205,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_clutch",
         title: "关键时刻：英超德比大杀器 vs 决赛帽子戏法的绝对战神",
         emoji: "⚡",
-        kobe: {
+        playerA: {
           claim: "哈兰德在强强对话的联赛和关键德比中，是无情收割对手的冷血猎人。",
           points: [
             "在曼城德比中数次上演帽子戏法与大四喜，用极其狂野的门前终结直接击碎死敌防线",
@@ -2214,7 +2214,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "联赛38场拼的是稳定收割，哈兰德的稳定输出是曼城三冠王的地基，某些人一到关键战就开始传转会绯闻。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在最极端、最大舞台上展现出的个人大心脏，是足球史诗级的决赛战神。",
           points: [
             "2022年世界杯决赛在两球落后的绝境中，97秒内连入两球扳平比分，加时赛上演帽子戏法救国",
@@ -2228,7 +2228,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_longevity",
         title: "巅峰高度：魔人布欧的无缝衔接 vs 摩纳哥至今的长青巅峰",
         emoji: "🔥",
-        kobe: {
+        playerA: {
           claim: "哈兰德的巅峰高度是极具震撼力的，从萨尔茨堡、多特到曼城，数据从未下滑。",
           points: [
             "在多特蒙德时期就展现了场均近1球的逆天统治力，加盟英超首赛季即夺欧冠三冠王并破纪录",
@@ -2237,7 +2237,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "从奥地利联赛到世界最强的英超联赛，哈兰德的数据无缝衔接且持续飙升，这叫纯粹的进球真金！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩最恐怖的地方在于他拥有极长且极稳的长青巅峰，自摩纳哥出道至今从未下滑。",
           points: [
             "2017年在摩纳哥横空出世，率队斩获法甲并杀入欧冠四强，至今近十年时间始终处于足坛最顶端",
@@ -2251,7 +2251,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_choices",
         title: "职业选择：哈兰德的务实规划 vs 姆巴佩的皇马加冕",
         emoji: "⏳",
-        kobe: {
+        playerA: {
           claim: "哈兰德的职业规划极其清明，每一步都选择了最有利于技术成长的完美土壤。",
           points: [
             "从萨尔茨堡去多特磨炼，在最合适的时机（22岁）加盟拥有瓜迪奥拉和最强中场的曼城，完美闭环",
@@ -2260,7 +2260,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "这叫纯粹的职业人。某些人拉扯皇马好几年，把转会活活演成肥皂剧，赚饱了签字费却丢了口碑。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩的职业规划展现了极宏大的大局观与极高的商业智慧，如今已在皇马完成新王的加冕。",
           points: [
             "在巴黎圣日耳曼圆满完成队史第一人荣誉的建立，在合同到期后以自由身、最强姿态踏入皇家马德里",
@@ -2274,7 +2274,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_teammates",
         title: "体系与队友：曼城无情喂饼机 vs 皇马青年巨星群",
         emoji: "🤝",
-        kobe: {
+        playerA: {
           claim: "哈兰德是曼城不懈地面传切战术的终极拼图，能够与任何顶级大师达成心电感应。",
           points: [
             "与德布劳内、B席、罗德里等中场大师无缝合作，用极强的身体压制为中场拉扯出巨大的活动空间",
@@ -2283,7 +2283,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "哈兰德是完美的团队润滑剂和终结拼图，而不是像某些人那样，在更衣室因为抢特权跟队友闹得不可开交。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是拥有极其强大战术辐射力的终极终结者，如今更加入了世界上最豪华的巨星群。",
           points: [
             "在法国国家队，与吉鲁、格列兹曼、登贝莱等人形成了无坚不摧的攻击线，战术核心地位坚不可摧",
@@ -2297,7 +2297,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_tactics",
         title: "战术价值：禁区压制物理怪兽 vs 撕裂防线的反击核武",
         emoji: "⚙️",
-        kobe: {
+        playerA: {
           claim: "哈兰德是战术板上最具压迫感的物理坦克中锋，战术战略威慑力独一档。",
           points: [
             "他的存在能强行顶死对方两名高大中后卫，在禁区内提供历史最硬核的高空防空权与强攻支点",
@@ -2306,7 +2306,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "防阵地战拼的就是最硬的禁区砸门重炮，哈兰德这种物理怪兽，才是所有主教练最渴望的战术托底！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是现代足球最尖端的撕裂型边锋，天下武功唯快不破的极致标杆。",
           points: [
             "他的存在能强行逼迫对方整条防线整体往后撤退15米，彻底瘫痪对手的高位逼抢战术",
@@ -2320,7 +2320,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_influence",
         title: "商业与大众形象：魔人布欧趣味出圈 vs 站在法兰西之巅的宠儿",
         emoji: "🌍",
-        kobe: {
+        playerA: {
           claim: "哈兰德以其魔人布欧的有趣性格和极纯粹的球痴形象，赢得了全世界球迷的广泛喜爱。",
           points: [
             "长相极具辨识度，其「魔人布欧」、「北欧海盗」的搞怪梗在互联网社交媒体上风靡全球，极其接地气",
@@ -2329,7 +2329,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "哈兰德的喜爱是纯粹因为他的幽默与对足球的专注，他是年轻人心目中最真实的绿茵怪兽。"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩是站在法国国家名片高度、影响力非凡的划时代殿堂级宠儿。",
           points: [
             "被法国总统马克龙多次亲自出面沟通并极力挽留，这是足球界前所未有的国家级至高礼遇",
@@ -2343,7 +2343,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_scandals",
         title: "遗憾与短板：大场面隐身 vs 特权拉扯与肥皂剧争议",
         emoji: "⚠️",
-        kobe: {
+        playerA: {
           claim: "哈兰德球球见血、数据无双，所谓的「大场面隐身」不过是黑子酸了的无端指责。",
           points: [
             "在曼城处子欧冠赛季中，他在前几轮淘汰赛中狂轰滥炸，是球队进决赛的首功之臣，不容抹杀",
@@ -2352,7 +2352,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "哈兰德的短板可以用无双的进球数字抹平，某些人年年在转会窗口拉扯豪门拿巨额签字费，那才叫口碑崩盘！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩在转会皇马过程中的拉扯是顶级的商业智慧与人生规划的体现，极其无可厚非。",
           points: [
             "在两大巨无霸俱乐部和多方势力的极限制衡中，展现了极其成熟的决策智慧，把自身利益与坦途完美结合",
@@ -2366,7 +2366,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_status",
         title: "未来 GOAT 之争：谁会是梅罗之后真正的第一人",
         emoji: "🐐",
-        kobe: {
+        playerA: {
           claim: "哈兰德用打破尘封历史纪录的纯粹进球效率，早已锁定了后梅罗时代的第一终结神坛。",
           points: [
             "单赛季英超36球加三冠王创纪录首秀，这种级别的俱乐部起步是世界足坛近五十年未见的神话",
@@ -2375,7 +2375,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "在这个讲究效率和进球的时代，哈兰德用一个个金子般、打破尘封纪录的进球，早已把金球的入场券牢牢攥在手里！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩手握世界杯冠军和决赛帽子戏法，其在未来历史殿堂的统治高度早已甩开哈兰德一个身位。",
           points: [
             "世界杯冠军一冠一亚，决赛帽子戏法加世界杯金靴在手，这国家队硬核荣誉直接在历史地位上压死了一众对手",
@@ -2391,7 +2391,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_swap",
         title: "What-If：如果哈兰德是英格兰籍，姆巴佩代表喀麦隆征战",
         emoji: "🔄",
-        kobe: {
+        playerA: {
           claim: "哈兰德如果是英格兰籍，早就率领三狮军团捧起世界杯与欧洲杯，金球奖拿到手软了。",
           points: [
             "英格兰中场拥有凯恩、贝林厄姆、萨卡等多位顶级喂饼大师，哈兰德在国家队将得到无限的炮弹输送",
@@ -2400,7 +2400,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "英格兰的超强中场配合哈兰德的无情终结，这国家队组合早就拿世界杯了，金球拿到手软！"
         },
-        lebron: {
+        playerB: {
           claim: "姆巴佩即使代表喀麦隆，也能凭借无解的个人持球爆破能力，率领非洲雄狮在世界杯杀出一条热血血路。",
           points: [
             "姆巴佩是不依赖任何中场喂饼、自己拿球就能从后场启动、撕碎防线强行超车破门的世界级反击核武器",
@@ -2414,7 +2414,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_1v1",
         title: "What-If：巅峰单兵 1v1，谁是更无解的爆点",
         emoji: "🥊",
-        kobe: {
+        playerA: {
           claim: "在纯粹的物理肉搏单挑中，哈兰德能用他1米95的魔人身板在禁区把姆巴佩活活碾碎。",
           points: [
             "哈兰德拥有极其恐怖的绝对身体力量与底盘硬度，在1v1肉搏对抗中，能直接用身体强行推土机超车",
@@ -2423,7 +2423,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "单挑拼的是绝对的身体对抗和硬桥硬马的终结，哈兰德一巴掌下去，姆巴佩就得在后面找球！"
         },
-        lebron: {
+        playerB: {
           claim: "在 1v1 极速突击单挑中，姆巴佩那极致的变摆人球合一与恐怖起步超车，能把哈兰德晃到外太空。",
           points: [
             "姆巴佩的起步爆发力与绝对人球合一突破技术是新生代顶尖的，只要拉开一米空间，一步启动就能强行超车",
@@ -2437,7 +2437,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
         id: "haaland_mbappe_today",
         title: "What-If：年轻球迷今天重新投票，谁会更受欢迎",
         emoji: "🗳️",
-        kobe: {
+        playerA: {
           claim: "年轻球迷极度偏爱纯粹自律、低调自黑且进球效率爆表的哈兰德，人气必定大爆发。",
           points: [
             "哈兰德「魔人布欧」、「球痴」的二次元接地气好玩形象，在互联网短视频平台上是绝对的流量宠儿",
@@ -2446,7 +2446,7 @@ export const fixedMatchupDebates: Record<string, { main: DebateTopic[]; bonus: D
           ],
           punchline: "有硬核纪录、有反差萌二次元形象、有纯自律魅力，哈兰德在年轻球迷心目中就是最纯粹、最可爱的绿茵怪兽！"
         },
-        lebron: {
+        playerB: {
           claim: "现代年轻球迷极度崇尚领袖霸气与大场面史诗，姆巴佩的世界杯决赛神迹与皇马王冠无可匹敌。",
           points: [
             "姆巴佩在2022世界杯决赛中以一己之力抗衡梅西、独中三元的逆天霸气演出，是所有热血少年心目中的终极神明",

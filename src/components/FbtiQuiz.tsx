@@ -131,7 +131,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
       {/* ─── Exit button ────────────────────────────────── */}
       <button
         onClick={() => setConfirmExit(true)}
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 min-h-[48px] min-w-[48px] flex items-center justify-center text-white/30 hover:text-white/60 transition-colors cursor-pointer text-lg"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 min-h-[56px] min-w-[56px] flex items-center justify-center text-white/30 hover:text-white/60 transition-colors cursor-pointer text-xl"
         aria-label="退出测试"
       >
         ✕
@@ -141,18 +141,18 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
       {confirmExit && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="glass rounded-2xl p-8 max-w-sm mx-4 text-center">
-            <p className="text-white text-lg font-bold mb-2">确定退出？</p>
+            <p className="text-white text-lg font-bold mb-2">确定要提前退场？更衣室通道已为你打开</p>
             <p className="text-white/50 text-sm mb-6">进度不会保存</p>
             <div className="flex gap-4">
               <button
                 onClick={() => setConfirmExit(false)}
-                className="flex-1 py-3 min-h-[48px] rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/30 transition-all cursor-pointer"
+                className="flex-1 py-3 min-h-[56px] rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/30 transition-all cursor-pointer"
               >
                 取消
               </button>
               <button
                 onClick={onExit}
-                className="flex-1 py-3 min-h-[48px] rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all cursor-pointer"
+                className="flex-1 py-3 min-h-[56px] rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all cursor-pointer"
               >
                 确定
               </button>
@@ -169,7 +169,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
         </div>
         <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-kobe-gold to-lebron-gold transition-all duration-500 ease-out"
+            className="h-full rounded-full bg-gradient-to-r from-accent-color-a to-accent-color-b transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -202,25 +202,25 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
             {/* Option A — purple side */}
             <button
               onClick={() => handleBinaryClick("A")}
-              className={`flex-1 group relative overflow-hidden rounded-2xl border-2 min-h-[48px]
+              className={`flex-1 group relative overflow-hidden rounded-2xl border-2 min-h-[56px]
                 transition-all duration-300 cursor-pointer p-6 text-left
                 ${
                   selectedFlash === q.optionA!.pole
-                    ? "border-kobe-gold scale-[0.97]"
-                    : "border-kobe-gold/20 hover:border-kobe-gold/60"
+                    ? "border-accent-color-a scale-[0.97]"
+                    : "border-accent-color-a/20 hover:border-accent-color-a/60"
                 }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-kobe-purple/30 to-kobe-purple/60 group-hover:from-kobe-purple/50 group-hover:to-kobe-purple/80 transition-all" />
+              <div className="absolute inset-0 bg-gradient-to-b from-primary-color-a/30 to-primary-color-a/60 group-hover:from-primary-color-a/50 group-hover:to-primary-color-a/80 transition-all" />
               <div className="relative z-10">
                 <p className="text-white font-semibold text-sm sm:text-base leading-snug">
                   {q.optionA.text}
                 </p>
-                <div className="mt-3 text-kobe-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 text-accent-color-a text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
                   选这个 →
                 </div>
               </div>
               {selectedFlash === q.optionA!.pole && (
-                <div className="absolute inset-0 vote-flash-kobe rounded-2xl" />
+                <div className="absolute inset-0 vote-flash-playerA rounded-2xl" />
               )}
             </button>
 
@@ -232,25 +232,25 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
             {/* Option B — wine side */}
             <button
               onClick={() => handleBinaryClick("B")}
-              className={`flex-1 group relative overflow-hidden rounded-2xl border-2 min-h-[48px]
+              className={`flex-1 group relative overflow-hidden rounded-2xl border-2 min-h-[56px]
                 transition-all duration-300 cursor-pointer p-6 text-left
                 ${
                   selectedFlash === q.optionB!.pole
-                    ? "border-lebron-gold scale-[0.97]"
-                    : "border-lebron-gold/20 hover:border-lebron-gold/60"
+                    ? "border-accent-color-b scale-[0.97]"
+                    : "border-accent-color-b/20 hover:border-accent-color-b/60"
                 }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-lebron-wine/30 to-lebron-wine/60 group-hover:from-lebron-wine/50 group-hover:to-lebron-wine/80 transition-all" />
+              <div className="absolute inset-0 bg-gradient-to-b from-primary-color-b/30 to-primary-color-b/60 group-hover:from-primary-color-b/50 group-hover:to-primary-color-b/80 transition-all" />
               <div className="relative z-10">
                 <p className="text-white font-semibold text-sm sm:text-base leading-snug">
                   {q.optionB.text}
                 </p>
-                <div className="mt-3 text-lebron-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 text-accent-color-b text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
                   选这个 →
                 </div>
               </div>
               {selectedFlash === q.optionB!.pole && (
-                <div className="absolute inset-0 vote-flash-lebron rounded-2xl" />
+                <div className="absolute inset-0 vote-flash-playerB rounded-2xl" />
               )}
             </button>
           </div>
@@ -265,17 +265,17 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
                 <button
                   key={idx}
                   onClick={() => handleMultiClick(idx)}
-                  className={`w-full rounded-xl border-2 px-5 py-4 min-h-[48px] text-left transition-all duration-200 cursor-pointer
+                  className={`w-full rounded-xl border-2 px-5 py-4 min-h-[56px] text-left transition-all duration-200 cursor-pointer
                     ${
                       isSelected
-                        ? "border-kobe-gold bg-kobe-gold/10 text-white scale-[0.98]"
+                        ? "border-accent-color-a bg-accent-color-a/10 text-white scale-[0.98]"
                         : "border-white/10 text-white/80 hover:border-white/30 hover:bg-white/[0.04]"
                     }`}
                 >
                   <div className="flex items-start gap-3">
                     <div
                       className={`w-5 h-5 mt-0.5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all
-                        ${isSelected ? "border-kobe-gold bg-kobe-gold" : "border-white/20"}`}
+                        ${isSelected ? "border-accent-color-a bg-accent-color-a" : "border-white/20"}`}
                     >
                       {isSelected && (
                         <span className="text-black text-xs font-black">
@@ -297,7 +297,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
         {q.type === "open" && (
           <div className="relative">
             {/* Special background for the last question */}
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-kobe-purple/15 via-transparent to-lebron-wine/15 pointer-events-none" />
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary-color-a/15 via-transparent to-primary-color-b/15 pointer-events-none" />
 
             <div className="relative space-y-4">
               <textarea
@@ -307,14 +307,14 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
                 rows={5}
                 className="w-full rounded-xl border-2 border-white/10 bg-white/[0.03] text-white placeholder-white/25
                   px-5 py-4 text-sm sm:text-base leading-relaxed resize-none
-                  focus:outline-none focus:border-kobe-gold/50 focus:bg-white/[0.05]
+                  focus:outline-none focus:border-accent-color-a/50 focus:bg-white/[0.05]
                   transition-all duration-200"
               />
               <div className="flex items-center justify-between">
                 <span
                   className={`text-xs transition-colors ${
                     openText.trim().length >= 20
-                      ? "text-kobe-gold/70"
+                      ? "text-accent-color-a/70"
                       : "text-white/30"
                   }`}
                 >
@@ -323,14 +323,14 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
                 <button
                   onClick={handleOpenSubmit}
                   disabled={openText.trim().length < 20}
-                  className={`px-8 py-3 min-h-[48px] rounded-2xl text-base font-bold transition-all duration-200
+                  className={`px-8 py-3 min-h-[56px] rounded-2xl text-base font-bold transition-all duration-200
                     ${
                       openText.trim().length >= 20
-                        ? "bg-gradient-to-r from-kobe-purple to-lebron-wine text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                        ? "bg-gradient-to-r from-primary-color-a to-primary-color-b text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                         : "bg-white/5 text-white/20 cursor-not-allowed"
                     }`}
                 >
-                  {isLast ? "查看结果 🧬" : "提交"}
+                  {isLast ? "VAR介入查看结果 🧬" : "一脚爆射提交"}
                 </button>
               </div>
             </div>

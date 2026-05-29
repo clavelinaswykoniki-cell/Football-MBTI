@@ -104,7 +104,7 @@ export default function PersonalityReportCard({ report }: Props) {
               哲学倾向
             </h4>
           </div>
-          <p className="text-lg sm:text-xl font-black text-kobe-gold mb-2">
+          <p className="text-lg sm:text-xl font-black text-accent-color-a mb-2">
             {report.philosophy.school}
           </p>
           <p className="text-white/60 text-sm leading-relaxed mb-3">
@@ -153,7 +153,7 @@ export default function PersonalityReportCard({ report }: Props) {
           {psy.soulPlayer && (
             <div className="text-center mb-3">
               <span className="text-xs text-white/40">灵魂球员：</span>
-              <span className="text-sm font-bold text-kobe-gold">{psy.soulPlayer}</span>
+              <span className="text-sm font-bold text-accent-color-a">{psy.soulPlayer}</span>
             </div>
           )}
 
@@ -212,12 +212,12 @@ export default function PersonalityReportCard({ report }: Props) {
             </div>
             <div className="space-y-3">
               {psy.axes!.map((axis, i) => (
-                <div key={`${axis.label}-${i}`} className="border-l-2 border-kobe-gold/40 pl-3">
+                <div key={`${axis.label}-${i}`} className="border-l-2 border-accent-color-a/40 pl-3">
                   <div className="flex items-center justify-between mb-0.5">
                     <span className="text-xs text-white/40 tracking-wider uppercase">
                       {axis.label}
                     </span>
-                    <span className="text-sm font-bold text-kobe-gold">
+                    <span className="text-sm font-bold text-accent-color-a">
                       {axis.value}
                     </span>
                   </div>

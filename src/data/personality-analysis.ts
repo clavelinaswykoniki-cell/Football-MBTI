@@ -152,84 +152,84 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "messi-vs-ronaldo": {
     sideLabels: {
-      kobe: "梅西",      // side "kobe" → 梅西
-      lebron: "C罗",     // side "lebron" → C罗
+      playerA: "梅西",      // side "playerA" → 梅西
+      playerB: "C罗",     // side "playerB" → C罗
     },
     topics: {
       // --- 有相对明确专家共识的 ---
       rings: {
         // 国家队荣誉 / 大赛冠军：2022 WC + 美洲杯 → 梅西
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "effort" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "effort" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mvp: {
         // 金球 8 vs 5 → 梅西
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerB", mainstream: "playerA",
       },
       skill: {
         // 技术、视野、盘带 → 梅西
-        consensus: "kobe", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "effort" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "effort" },
+        underdog: "playerB", mainstream: "playerA",
       },
       loyalty: {
         // 巴萨21年 vs 五联赛 → 梅西
-        consensus: "kobe", category: "emotional", axis: "team",
-        tribeMap: { kobe: "loyalty", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "team",
+        tribeMap: { playerA: "loyalty", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       goat: {
         // 当前主流舆论略偏梅西（2022 WC 加冕之后）
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
 
       // --- 真有争议（IQ 不扣分） ---
       clutch: {
         // C罗欧冠加时绝杀、点球大战 → 偏C罗，但梅西 2022 决赛也封神
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mentality: {
         // 拼劲、永不放弃 → C罗，但梅西的隐忍也属于一种心态
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "kobe", mainstream: "lebron",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerA", mainstream: "playerB",
       },
       defense: {
         // 防守贡献 / 不丢球：C罗有压迫，梅西基本不防守
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "kobe", mainstream: "lebron",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerA", mainstream: "playerB",
       },
       finals: {
         // 决赛舞台：C罗欧战决赛多，梅西世界杯决赛
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       era: {
         // 时代统治力——双雄并立，真的可以辩
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       iconic: {
         // 标志性瞬间：上帝之手vs.玛德琳谷球？梅西连过四人 vs C罗欧冠头球
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       teammates: {
         // 队友强度：巴萨 tiki-taka 黄金一代 vs 皇马 BBC
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "effort" },
-        underdog: "kobe", mainstream: "lebron",
+        tribeMap: { playerA: "winning", playerB: "effort" },
+        underdog: "playerA", mainstream: "playerB",
       },
 
       // Bonus "What If" 假设性问题——全部可辩
@@ -244,80 +244,80 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "pele-vs-maradona": {
     sideLabels: {
-      kobe: "贝利",
-      lebron: "马拉多纳",
+      playerA: "贝利",
+      playerB: "马拉多纳",
     },
     topics: {
       rings: {
         // 世界杯 3 vs 1 → 贝利
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mvp: {
         // 个人荣誉 → 贝利数据更夸张
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       skill: {
         // 球技纯度 → 老马的连过五人和上帝之手是足球史最浪漫两幕
-        consensus: "lebron", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "aesthetics" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "aesthetics" },
+        underdog: "playerA", mainstream: "playerB",
       },
       loyalty: {
         // 贝利桑托斯一辈子；老马转过 4 队（博卡/巴萨/那不勒斯/塞维利亚）
-        consensus: "kobe", category: "emotional", axis: "team",
-        tribeMap: { kobe: "loyalty", lebron: "aesthetics" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "team",
+        tribeMap: { playerA: "loyalty", playerB: "aesthetics" },
+        underdog: "playerB", mainstream: "playerA",
       },
       goat: {
         // 历史地位之争——传统派偏贝利，浪漫派偏老马
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "aesthetics" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "winning", playerB: "aesthetics" },
+        underdog: "playerB", mainstream: "playerA",
       },
 
       clutch: {
         // 关键时刻：老马 1986 单骑闯关 → 偏老马
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "aesthetics" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "aesthetics" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mentality: {
         // 心态——老马的反抗精神 vs 贝利的优雅，真有辩论空间
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "underdog" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "winning", playerB: "underdog" },
+        underdog: "playerB", mainstream: "playerA",
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
+        tribeMap: { playerA: "talent", playerB: "effort" },
       },
       finals: {
         // 决赛舞台：贝利赢的多
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       era: {
         // 时代统治力——老马把那不勒斯单骑提到意甲冠军是孤胆传奇
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "underdog" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "winning", playerB: "underdog" },
+        underdog: "playerB", mainstream: "playerA",
       },
       iconic: {
         // 上帝之手 + 连过五人 → 偏老马
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "aesthetics" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "aesthetics" },
+        underdog: "playerA", mainstream: "playerB",
       },
       teammates: {
         // 队友强度：贝利的桑托斯有同时代南美最强阵
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "underdog" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "winning", playerB: "underdog" },
+        underdog: "playerB", mainstream: "playerA",
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -331,74 +331,74 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "zidane-vs-r9": {
     sideLabels: {
-      kobe: "齐达内",
-      lebron: "罗纳尔多",
+      playerA: "齐达内",
+      playerB: "罗纳尔多",
     },
     topics: {
       rings: {
         // 国家队 + 俱乐部冠军：齐达内有 1998 WC + 欧冠
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mvp: {
         // 两人都是金球（齐 1，外星人 2）→ 偏外星人
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerA", mainstream: "playerB",
       },
       skill: {
         // 齐达内的优雅 vs 外星人的爆破力——双方都有顶级技术
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       loyalty: {
         // 齐达内：尤文→皇马（2队）；外星人：转过更多队
-        consensus: "kobe", category: "emotional", axis: "team",
-        tribeMap: { kobe: "loyalty", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "team",
+        tribeMap: { playerA: "loyalty", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       goat: {
         // 巅峰外星人是历史前 5，齐达内是 10 号位天花板
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
+        tribeMap: { playerA: "winning", playerB: "talent" },
       },
 
       clutch: {
         // 齐达内：2002 欧冠决赛凌空抽射；外星人：2002 WC 救赎
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
       },
       mentality: {
         // 齐达内头顶马特拉齐 vs 外星人三次大伤复出
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "lebron", mainstream: "kobe",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerB", mainstream: "playerA",
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       finals: {
         // 决赛舞台：齐达内 1998 + 2002 欧冠；外星人 2002 WC
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       era: {
         // 时代——齐达内统治世纪交替；外星人巅峰更短但更恐怖
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "talent" },
+        tribeMap: { playerA: "winning", playerB: "talent" },
       },
       iconic: {
         // 标志性瞬间：齐达内凌空抽射 vs 外星人 2002 WC 决赛梅开二度
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
       },
       teammates: {
         // 法国 98 黄金一代 vs 巴西 02 三R
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -412,73 +412,73 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "ronaldinho-vs-kaka": {
     sideLabels: {
-      kobe: "小罗",
-      lebron: "卡卡",
+      playerA: "小罗",
+      playerB: "卡卡",
     },
     topics: {
       rings: {
         // 国家队 + 俱乐部冠军：都赢过 02 WC + 欧冠，卡卡的欧冠是 MVP
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       mvp: {
         // 金球：小罗 2005，卡卡 2007——双方各一
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
       },
       skill: {
         // 球技纯度：小罗的桑巴足球是足球史最快乐的足球
-        consensus: "kobe", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       loyalty: {
         // 卡卡 AC 米兰 5 年是巅峰队；小罗辗转更多
-        consensus: "lebron", category: "emotional", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "loyalty" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "team",
+        tribeMap: { playerA: "winning", playerB: "loyalty" },
+        underdog: "playerA", mainstream: "playerB",
       },
       goat: {
         // 历史地位 → 巅峰小罗高于卡卡，但卡卡更稳
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
 
       clutch: {
         // 关键时刻：卡卡 06-07 欧冠淘汰赛接连闪光
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mentality: {
         // 卡卡的虔诚 vs 小罗的派对生活
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerA", mainstream: "playerB",
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
+        tribeMap: { playerA: "talent", playerB: "effort" },
       },
       finals: {
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
       },
       era: {
         // 时代统治力：03-06 是小罗，06-09 是卡卡
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
       },
       iconic: {
         // 标志性瞬间：小罗对英格兰任意球 / 牛尾巴过人
-        consensus: "kobe", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       teammates: {
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -492,75 +492,75 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "neymar-vs-mbappe": {
     sideLabels: {
-      kobe: "内马尔",
-      lebron: "姆巴佩",
+      playerA: "内马尔",
+      playerB: "姆巴佩",
     },
     topics: {
       rings: {
         // 国家队大赛：姆巴佩 2018 WC 冠军
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mvp: {
         // 金球：都没拿过，但姆巴佩近年呼声更高
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       skill: {
         // 球技纯度：内马尔的过人是巅峰艺术
-        consensus: "kobe", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       loyalty: {
         // 内马尔：巴萨→大巴黎→沙特；姆巴佩：摩纳哥→大巴黎→皇马
         category: "emotional", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       goat: {
         // 历史地位还远未盖棺，但姆巴佩前途更猛
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
 
       clutch: {
         // 姆巴佩 2022 WC 决赛大四喜，神级
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mentality: {
         // 姆巴佩冷静；内马尔伤情多+态度争议
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "effort" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "effort" },
+        underdog: "playerA", mainstream: "playerB",
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "talent" },
+        tribeMap: { playerA: "talent", playerB: "talent" },
       },
       finals: {
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       era: {
         // 时代：姆巴佩还在巅峰，内马尔已逐渐淡出
-        consensus: "lebron", category: "mixed", axis: "team",
-        tribeMap: { kobe: "talent", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "mixed", axis: "team",
+        tribeMap: { playerA: "talent", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       iconic: {
         // 标志性瞬间：内马尔过人集锦多，姆巴佩 WC 决赛戴帽
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
       },
       teammates: {
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -574,71 +574,71 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "beckham-vs-figo": {
     sideLabels: {
-      kobe: "贝克汉姆",
-      lebron: "菲戈",
+      playerA: "贝克汉姆",
+      playerB: "菲戈",
     },
     topics: {
       rings: {
         // 俱乐部冠军：贝克汉姆三冠王 99 + 联赛多；菲戈巴萨/皇马联赛
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       mvp: {
         // 金球：菲戈 2000 → 偏菲戈
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
+        underdog: "playerA", mainstream: "playerB",
       },
       skill: {
         // 球技纯度：菲戈的盘带历史级
-        consensus: "lebron", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
+        underdog: "playerA", mainstream: "playerB",
       },
       loyalty: {
         // 贝克汉姆离开曼联，菲戈从巴萨叛逃皇马（猪头事件）
         category: "emotional", axis: "team",
-        tribeMap: { kobe: "loyalty", lebron: "winning" },
+        tribeMap: { playerA: "loyalty", playerB: "winning" },
       },
       goat: {
         // 历史地位：菲戈历史 50 强常客，贝克汉姆名气更大但实力略逊
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
 
       clutch: {
         // 关键时刻：贝克汉姆的任意球绝杀
-        consensus: "kobe", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mentality: {
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       finals: {
         // 决赛：贝克汉姆 1999 欧冠传球助攻反败为胜
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       era: {
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "aesthetics", lebron: "talent" },
+        tribeMap: { playerA: "aesthetics", playerB: "talent" },
       },
       iconic: {
         // 贝克汉姆任意球世界波 + 中线吊射；菲戈巴萨叛逃猪头风暴
-        consensus: "kobe", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "aesthetics", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       teammates: {
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -652,72 +652,72 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "henry-vs-ibra": {
     sideLabels: {
-      kobe: "亨利",
-      lebron: "伊布",
+      playerA: "亨利",
+      playerB: "伊布",
     },
     topics: {
       rings: {
         // 大赛荣誉：亨利 1998 WC + 2000 欧洲杯；伊布从未走过欧冠决赛
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mvp: {
         // 金球都没拿过，但亨利更接近（多次第二）
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
+        tribeMap: { playerA: "winning", playerB: "talent" },
       },
       skill: {
         // 球技纯度：伊布的暴力美学/倒钩 vs 亨利的优雅奔袭
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "aesthetics" },
+        tribeMap: { playerA: "aesthetics", playerB: "aesthetics" },
       },
       loyalty: {
         // 亨利阿森纳 8 年；伊布转过 7-8 队
-        consensus: "kobe", category: "emotional", axis: "team",
-        tribeMap: { kobe: "loyalty", lebron: "winning" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "team",
+        tribeMap: { playerA: "loyalty", playerB: "winning" },
+        underdog: "playerB", mainstream: "playerA",
       },
       goat: {
         // 历史地位：两人都没拿过欧冠，但亨利大赛荣誉略多
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "talent" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "talent" },
+        underdog: "playerB", mainstream: "playerA",
       },
 
       clutch: {
         // 关键时刻：亨利 2006 欧冠决赛进球但输；伊布关键大战经常哑火
-        consensus: "kobe", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "underdog" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "underdog" },
+        underdog: "playerB", mainstream: "playerA",
       },
       mentality: {
         // 伊布的自信狂妄 vs 亨利的克制
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       finals: {
-        consensus: "kobe", category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "underdog" },
-        underdog: "lebron", mainstream: "kobe",
+        consensus: "playerA", category: "stats", axis: "hero",
+        tribeMap: { playerA: "winning", playerB: "underdog" },
+        underdog: "playerB", mainstream: "playerA",
       },
       era: {
         // 时代：亨利阿森纳 invincibles 一代；伊布跨度更长但缺顶级冠军
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "talent" },
+        tribeMap: { playerA: "winning", playerB: "talent" },
       },
       iconic: {
         // 伊布的倒钩世界波 vs 亨利的奔袭破门
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "aesthetics", lebron: "aesthetics" },
+        tribeMap: { playerA: "aesthetics", playerB: "aesthetics" },
       },
       teammates: {
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },
@@ -731,72 +731,72 @@ const MATCHUP_CONFIGS: Record<string, MatchupConfig> = {
   // ============================================================
   "haaland-vs-mbappe": {
     sideLabels: {
-      kobe: "哈兰德",
-      lebron: "姆巴佩",
+      playerA: "哈兰德",
+      playerB: "姆巴佩",
     },
     topics: {
       rings: {
         // 大赛荣誉：姆巴佩 2018 WC，哈兰德欧冠（曼城三冠王）
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       mvp: {
         // 金球：都没拿到（截至 2025/2026 状态变化中）
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "winning" },
+        tribeMap: { playerA: "talent", playerB: "winning" },
       },
       skill: {
         // 球技纯度：姆巴佩盘带 + 速度 + 终结；哈兰德更专精射门和身体
-        consensus: "lebron", category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "aesthetics" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "mixed", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "aesthetics" },
+        underdog: "playerA", mainstream: "playerB",
       },
       loyalty: {
         // 都转过：哈兰德：萨尔茨堡→多特→曼城；姆巴佩：摩纳哥→大巴黎→皇马
         category: "emotional", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       goat: {
         // 太早盖棺，但当下舆论略偏姆巴佩
-        consensus: "lebron", category: "stats", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "stats", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
 
       clutch: {
         // 关键时刻：姆巴佩 2022 WC 决赛大四喜——史诗级，哈兰德欧冠淘汰赛表现争议
-        consensus: "lebron", category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "winning" },
-        underdog: "kobe", mainstream: "lebron",
+        consensus: "playerB", category: "emotional", axis: "hero",
+        tribeMap: { playerA: "talent", playerB: "winning" },
+        underdog: "playerA", mainstream: "playerB",
       },
       mentality: {
         // 哈兰德的杀手本能 vs 姆巴佩的稳健
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "effort", lebron: "talent" },
+        tribeMap: { playerA: "effort", playerB: "talent" },
       },
       defense: {
         category: "mixed", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "talent" },
+        tribeMap: { playerA: "talent", playerB: "talent" },
       },
       finals: {
         // 哈兰德 2022/23 欧冠决赛拿冠军；姆巴佩 2022 WC 决赛
         category: "stats", axis: "hero",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
       era: {
         // 两人都在时代巅峰，但姆巴佩更早出名
         category: "mixed", axis: "team",
-        tribeMap: { kobe: "talent", lebron: "winning" },
+        tribeMap: { playerA: "talent", playerB: "winning" },
       },
       iconic: {
         // 标志性瞬间：姆巴佩 WC 决赛戴帽 vs 哈兰德欧冠破纪录
         category: "emotional", axis: "hero",
-        tribeMap: { kobe: "talent", lebron: "winning" },
+        tribeMap: { playerA: "talent", playerB: "winning" },
       },
       teammates: {
         // 队友强度：曼城是当代最强；大巴黎/皇马也豪华
         category: "stats", axis: "team",
-        tribeMap: { kobe: "winning", lebron: "winning" },
+        tribeMap: { playerA: "winning", playerB: "winning" },
       },
 
       whatif_swap: { category: "mixed", axis: "team" },

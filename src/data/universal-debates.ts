@@ -2,9 +2,9 @@
 // Universal Debate Templates — Football Edition
 // ─────────────────────────────────────────────────────────────
 //
-// NOTE: The DebateTopic interface uses `kobe` and `lebron` field names.
-// In custom matchups, `kobe` slot holds playerA's content,
-// `lebron` slot holds playerB's content.
+// NOTE: The DebateTopic interface uses `playerA` and `playerB` field names.
+// In custom matchups, `playerA` slot holds playerA's content,
+// `playerB` slot holds playerB's content.
 //
 // 4 main dimensions + 1 bonus:
 //   1. 荣誉含金量 (Honor Value)
@@ -152,8 +152,8 @@ const templateHonors: UniversalDebateTemplate = {
       id: `custom-honors-${a.id}-vs-${b.id}`,
       title: "荣誉含金量",
       emoji: "🏆",
-      kobe: sideA,
-      lebron: sideB,
+      playerA: sideA,
+      playerB: sideB,
     };
   },
 };
@@ -192,8 +192,8 @@ const templateLegacy: UniversalDebateTemplate = {
       id: `custom-legacy-${a.id}-vs-${b.id}`,
       title: "历史地位",
       emoji: "🏛️",
-      kobe: sideA,
-      lebron: sideB,
+      playerA: sideA,
+      playerB: sideB,
     };
   },
 };
@@ -232,8 +232,8 @@ const templateClutch: UniversalDebateTemplate = {
       id: `custom-clutch-${a.id}-vs-${b.id}`,
       title: "关键时刻",
       emoji: "🗡️",
-      kobe: sideA,
-      lebron: sideB,
+      playerA: sideA,
+      playerB: sideB,
     };
   },
 };
@@ -270,8 +270,8 @@ const templateImpact: UniversalDebateTemplate = {
       id: `custom-impact-${a.id}-vs-${b.id}`,
       title: "对足球影响",
       emoji: "🌍",
-      kobe: sideA,
-      lebron: sideB,
+      playerA: sideA,
+      playerB: sideB,
     };
   },
 };
@@ -310,8 +310,8 @@ const templatePeakVsPeak: UniversalDebateTemplate = {
       id: `custom-peak-vs-peak-${a.id}-vs-${b.id}`,
       title: "🔮 假如巅峰对决",
       emoji: "⚡",
-      kobe: sideA,
-      lebron: sideB,
+      playerA: sideA,
+      playerB: sideB,
     };
   },
 };
@@ -332,7 +332,7 @@ export const universalDebates: UniversalDebateTemplate[] = [
  * Generate a full set of debates for any two players.
  * Returns 4 main debates + 1 bonus (Peak vs Peak).
  *
- * playerA → `kobe` slot, playerB → `lebron` slot.
+ * playerA → `playerA` slot, playerB → `playerB` slot.
  */
 export function generateMatchupDebates(
   playerA: Player,

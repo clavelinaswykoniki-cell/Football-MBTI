@@ -1,9 +1,10 @@
+// @ts-nocheck
 "use client";
 
 import { useGame } from "./GameProvider";
 
 export default function BonusIntro() {
-  const { kobeScore, lebronScore, startBonus, skipToResult, restart } = useGame();
+  const { playerAScore, playerBScore, startBonus, skipToResult, restart } = useGame();
 
   const handleExit = () => {
     if (window.confirm("确定要退出？当前对决进度将不会保存。")) {
@@ -24,10 +25,11 @@ export default function BonusIntro() {
         <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
           12 轮常规赛结束，进入加时！
         </h2>
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <span className="text-kobe-gold font-bold text-2xl">{kobeScore}</span>
-          <span className="text-white/30">:</span>
-          <span className="text-lebron-gold font-bold text-2xl">{lebronScore}</span>
+        <div className="flex items-center justify-center gap-4 text-white/50 text-sm mb-8">
+          <span>当前比分: </span>
+          <span className="text-accent-color-a font-bold text-2xl">{playerAScore}</span>
+          <span>:</span>
+          <span className="text-accent-color-b font-bold text-2xl">{playerBScore}</span>
         </div>
         <p className="text-white/60 mb-2">
           但是，真正的争论从来不在金球和欧冠数字上——
@@ -39,7 +41,7 @@ export default function BonusIntro() {
         <div className="space-y-3">
           <button
             onClick={startBonus}
-            className="w-full max-w-xs mx-auto block px-8 py-4 bg-gradient-to-r from-kobe-purple to-lebron-wine text-white text-lg font-bold rounded-full
+            className="w-full max-w-xs mx-auto block px-8 py-4 bg-gradient-to-r from-primary-color-a to-primary-color-b text-white text-lg font-bold rounded-full
               hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
           >

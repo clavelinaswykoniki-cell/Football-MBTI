@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { getTopicStats, type TopicStats } from "@/lib/voteStats";
-import { useGame } from "./GameProvider";
 
 // ── Provocative callouts based on how minority you are ─────────────────
 
@@ -20,17 +19,17 @@ function deterministicPick<T>(items: T[], topicId: string, votedFor: string): T 
 }
 
 function getCallout(
-  votedFor: "kobe" | "lebron",
+  votedFor: "playerA" | "playerB",
   stats: TopicStats,
   topicId: string
 ): string | null {
   const myPercent =
-    votedFor === "kobe" ? stats.kobePercent : stats.lebronPercent;
+    votedFor === "playerA" ? stats.playerAPercent : stats.playerBPercent;
 
   if (myPercent <= 20) {
     return deterministicPick(
       [
-        `全球只有 ${myPercent}% 的人同意你——你是来搞笑的吧？`,
+        `全球只有 ${myPercent}% 的人同意你——你的脑回路上是不是刻着 'Factos👍'？`,
         `${myPercent}%？恭喜你，你的观点比大熊猫还稀有。`,
         `${myPercent}% 同意你——另外 ${100 - myPercent}% 在笑。`,
       ],
@@ -94,13 +93,14 @@ function getCallout(
 
 interface VoteRevealProps {
   topicId: string;
-  votedFor: "kobe" | "lebron";
+  votedFor: "playerA" | "playerB";
+  playerAName?: string;
+  playerBName?: string;
 }
 
-export default function VoteReveal({ topicId, votedFor }: VoteRevealProps) {
-  const { currentMatchup } = useGame();
-  const nameA = currentMatchup?.playerA.nameZh ?? "科比";
-  const nameB = currentMatchup?.playerB.nameZh ?? "詹姆斯";
+export default function VoteReveal({ topicId, votedFor, playerAName, playerBName }: VoteRevealProps) {
+  const nameA = playerAName ?? "梅西";
+  const nameB = playerBName ?? "C罗";
   const [stats, setStats] = useState<TopicStats | null>(null);
   const [animating, setAnimating] = useState(false);
 
@@ -125,11 +125,11 @@ export default function VoteReveal({ topicId, votedFor }: VoteRevealProps) {
 
   const callout = getCallout(votedFor, stats, topicId);
 
-  const kobeWidth = animating ? stats.kobePercent : 0;
-  const lebronWidth = animating ? stats.lebronPercent : 0;
+  const playerAWidth = animating ? stats.playerAPercent : 0;
+  const playerBWidth = animating ? stats.playerBPercent : 0;
 
   const isMinority =
-    (votedFor === "kobe" ? stats.kobePercent : stats.lebronPercent) < 45;
+    (votedFor === "playerA" ? stats.playerAPercent : stats.playerBPercent) < 45;
 
   return (
     <div
@@ -148,51 +148,51 @@ export default function VoteReveal({ topicId, votedFor }: VoteRevealProps) {
 
       {/* Bar chart */}
       <div className="relative w-full h-10 rounded-lg overflow-hidden bg-white/5 flex">
-        {/* Kobe bar */}
+        {/* PlayerA bar */}
         <div
           className="h-full flex items-center justify-start pl-2 transition-all ease-out"
           style={{
-            width: `${kobeWidth}%`,
+            width: `${playerAWidth}%`,
             transitionDuration: "1200ms",
             background:
-              "linear-gradient(90deg, #552583 0%, #FDB927 100%)",
+              "linear-gradient(90deg, #43A1D5 0%, #FFFFFF 100%)",
           }}
         >
-          {kobeWidth >= 15 && (
-            <span className="text-xs font-black text-white drop-shadow-md whitespace-nowrap">
-              {nameA} {stats.kobePercent}%
+          {playerAWidth >= 15 && (
+            <span className="text-xs font-black text-blue-900 drop-shadow-md whitespace-nowrap">
+              {nameA} {stats.playerAPercent}%
             </span>
           )}
         </div>
 
-        {/* LeBron bar */}
+        {/* PlayerB bar */}
         <div
           className="h-full flex items-center justify-end pr-2 transition-all ease-out"
           style={{
-            width: `${lebronWidth}%`,
+            width: `${playerBWidth}%`,
             transitionDuration: "1200ms",
             background:
-              "linear-gradient(90deg, #FDBB30 0%, #860038 100%)",
+              "linear-gradient(90deg, #E42518 0%, #046A38 100%)",
           }}
         >
-          {lebronWidth >= 15 && (
+          {playerBWidth >= 15 && (
             <span className="text-xs font-black text-white drop-shadow-md whitespace-nowrap">
-              {stats.lebronPercent}% {nameB}
+              {stats.playerBPercent}% {nameB}
             </span>
           )}
         </div>
       </div>
 
       {/* Labels if bars are too narrow */}
-      {(kobeWidth < 15 || lebronWidth < 15) && (
+      {(playerAWidth < 15 || playerBWidth < 15) && (
         <div className="flex justify-between mt-1 text-xs font-bold">
-          {kobeWidth < 15 && (
-            <span className="text-kobe-gold">{nameA} {stats.kobePercent}%</span>
+          {playerAWidth < 15 && (
+            <span className="text-[#43A1D5]">{nameA} {stats.playerAPercent}%</span>
           )}
-          {kobeWidth >= 15 && <span />}
-          {lebronWidth < 15 && (
-            <span className="text-lebron-gold">
-              {stats.lebronPercent}% {nameB}
+          {playerAWidth >= 15 && <span />}
+          {playerBWidth < 15 && (
+            <span className="text-[#E42518]">
+              {stats.playerBPercent}% {nameB}
             </span>
           )}
         </div>

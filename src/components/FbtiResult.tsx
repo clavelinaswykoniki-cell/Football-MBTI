@@ -7,39 +7,39 @@ import { getFbtiType, fbtiQuestions, type FbtiAnswer, type PoleKey } from "../da
 const DIMENSIONS = [
   {
     pos: 0,
-    letters: ["O", "D"] as const,
-    labels: ["进攻", "防守"],
+    letters: ["H", "T"] as const,
+    labels: ["个人英雄", "团队体系"],
     colors: ["bg-orange-500", "bg-blue-500"],
     textColors: ["text-orange-400", "text-blue-400"],
     barColor: ["from-orange-500 to-orange-400", "from-blue-500 to-blue-400"],
-    key: "OD",
+    key: "HT",
   },
   {
     pos: 1,
-    letters: ["A", "E"] as const,
-    labels: ["数据", "情怀"],
+    letters: ["D", "F"] as const,
+    labels: ["数据派", "情怀派"],
     colors: ["bg-green-500", "bg-pink-500"],
     textColors: ["text-green-400", "text-pink-400"],
     barColor: ["from-green-500 to-green-400", "from-pink-500 to-pink-400"],
-    key: "AE",
+    key: "DF",
   },
   {
     pos: 2,
-    letters: ["I", "T"] as const,
-    labels: ["个人", "团队"],
+    letters: ["G", "P"] as const,
+    labels: ["优雅灵感", "硬核力量"],
     colors: ["bg-purple-500", "bg-teal-500"],
     textColors: ["text-purple-400", "text-teal-400"],
     barColor: ["from-purple-500 to-purple-400", "from-teal-500 to-teal-400"],
-    key: "IT",
+    key: "GP",
   },
   {
     pos: 3,
-    letters: ["L", "R"] as const,
-    labels: ["忠诚", "冠军"],
+    letters: ["L", "N"] as const,
+    labels: ["一城一队", "强者跟随"],
     colors: ["bg-yellow-500", "bg-gray-400"],
     textColors: ["text-yellow-400", "text-gray-400"],
     barColor: ["from-yellow-500 to-yellow-400", "from-gray-400 to-gray-300"],
-    key: "LR",
+    key: "LN",
   },
 ] as const;
 
@@ -149,7 +149,14 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
 
   const letters = code.split("");
 
-  const shareText = `FBTI测了我是【${code}】${type.emoji} ${type.name}，谁懂啊，被算法掌握了\n"${type.tagline}"\n灵魂球员对线：${type.spiritPlayer}\n\n发到球迷群被骂了，但是是真的——来测你的足球人格 ⚽`;
+  const shareText = `⚽ 真的爆了！测完我的【足球MBTI】人傻了……\n` +
+    `🤖 FBTI测出来我是：【${code}】${type.emoji}「${type.name}」\n` +
+    `💬 “${type.tagline}”\n` +
+    `⚡ 灵魂球星：${type.spiritPlayer}\n` +
+    `😭 发到球迷群里直接炸锅，但也太准了吧！\n\n` +
+    `👇 1分钟测出你的专属足球人格，不服来辩：\n` +
+    `🔗 https://football-mbti.vercel.app\n\n` +
+    `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`;
 
   const handleShare = () => {
     if (navigator.share) {
@@ -343,9 +350,9 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
         </p>
 
         {/* Spirit Player */}
-        <div className="rounded-xl bg-gradient-to-r from-kobe-purple/20 to-lebron-wine/20 border border-white/10 p-4 mb-5">
+        <div className="rounded-xl bg-gradient-to-r from-primary-color-a/20 to-primary-color-b/20 border border-white/10 p-4 mb-5">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-1">灵魂球员</p>
-          <p className="text-xl font-black text-kobe-gold mb-1">{type.spiritPlayer}</p>
+          <p className="text-xl font-black text-accent-color-a mb-1">{type.spiritPlayer}</p>
           <p className="text-white/60 text-xs sm:text-sm leading-relaxed">{type.spiritPlayerWhy}</p>
         </div>
 
@@ -419,7 +426,7 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
       >
         <button
           onClick={handleShare}
-          className="w-full px-8 py-4 min-h-[48px] bg-gradient-to-r from-kobe-purple to-lebron-wine text-white text-lg font-bold rounded-full
+          className="w-full px-8 py-4 min-h-[48px] bg-gradient-to-r from-primary-color-a to-primary-color-b text-white text-lg font-bold rounded-full
             hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
           style={{ animation: "pulse-glow 2.5s ease-in-out infinite" }}
         >
@@ -448,7 +455,7 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
         </button>
         <button
           onClick={onSwitchToDebate}
-          className="flex-1 px-6 py-3 min-h-[48px] bg-gradient-to-r from-kobe-gold/80 to-lebron-gold/80 text-black font-bold rounded-full
+          className="flex-1 px-6 py-3 min-h-[48px] bg-gradient-to-r from-accent-color-a/80 to-accent-color-b/80 text-black font-bold rounded-full
             hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
         >
           试试辩论模式

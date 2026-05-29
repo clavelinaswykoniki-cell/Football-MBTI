@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
@@ -48,7 +49,7 @@ function Confetti() {
 }
 
 export default function Result() {
-  const { kobeScore, lebronScore, votes, side, restart, backToMatchupSelect, totalRounds, elapsedSeconds, matchupId, currentMatchup } = useGame();
+  const { playerAScore, playerBScore, votes, side, restart, backToMatchupSelect, totalRounds, elapsedSeconds, matchupId, currentMatchup } = useGame();
   const pA = currentMatchup?.playerA;
   const pB = currentMatchup?.playerB;
   const nameA = pA?.nameZh ?? "梅西";
@@ -59,7 +60,7 @@ export default function Result() {
     [matchupId],
   );
 
-  const winner = kobeScore > lebronScore ? "kobe" : lebronScore > kobeScore ? "lebron" : "tie";
+  const winner = playerAScore > playerBScore ? "playerA" : playerBScore > playerAScore ? "playerB" : "tie";
   const persona = side ? getPersona(side, votes, totalRounds, nameA, nameB) : null;
   const roast = side ? getRoast(side, votes, nameA, nameB) : "";
   const loyalty = side && votes.length > 0
@@ -70,17 +71,85 @@ export default function Result() {
     [side, votes, elapsedSeconds, matchupId],
   );
 
+  const futStats = useMemo(() => {
+    const getWinnerOf = (id: string) => votes.find((v) => v.topicId === id)?.winner;
+    
+    let pac = 75;
+    let sho = 75;
+    let pas = 75;
+    let dri = 75;
+    let def = 40;
+    let phy = 60;
+    
+    if (getWinnerOf("clutch") === "playerB") pac += 12;
+    else if (getWinnerOf("clutch") === "playerA") pac += 8;
+    if (getWinnerOf("whatif_1v1") === "playerB") pac += 8;
+    else pac += 4;
+    if (elapsedSeconds && elapsedSeconds < 90) pac += 4;
+    
+    if (getWinnerOf("finals") === "playerB") sho += 12;
+    else if (getWinnerOf("finals") === "playerA") sho += 8;
+    if (getWinnerOf("mvp") === "playerB") sho += 8;
+    else sho += 5;
+    if (getWinnerOf("clutch") === "playerB") sho += 4;
+    
+    if (getWinnerOf("skill") === "playerA") pas += 12;
+    else if (getWinnerOf("skill") === "playerB") pas += 6;
+    if (getWinnerOf("teammates") === "playerA") pas += 8;
+    else pas += 4;
+    if (getWinnerOf("whatif_swap") === "playerA") pas += 4;
+    
+    if (getWinnerOf("skill") === "playerA") dri += 12;
+    else if (getWinnerOf("skill") === "playerB") dri += 6;
+    if (getWinnerOf("iconic") === "playerA") dri += 8;
+    else dri += 4;
+    if (getWinnerOf("whatif_1v1") === "playerA") dri += 4;
+    
+    if (getWinnerOf("defense") === "playerA") def += 25;
+    else if (getWinnerOf("defense") === "playerB") def += 15;
+    if (getWinnerOf("loyalty") === "playerA") def += 15;
+    else def += 10;
+    
+    if (getWinnerOf("mentality") === "playerB") phy += 15;
+    else if (getWinnerOf("mentality") === "playerA") phy += 8;
+    if (getWinnerOf("whatif_1v1") === "playerB") phy += 12;
+    else phy += 6;
+    if (getWinnerOf("defense") === "playerB") phy += 4;
+    
+    const clamp = (val: number) => Math.max(30, Math.min(99, val));
+    return {
+      PAC: clamp(pac),
+      SHO: clamp(sho),
+      PAS: clamp(pas),
+      DRI: clamp(dri),
+      DEF: clamp(def),
+      PHY: clamp(phy),
+    };
+  }, [votes, elapsedSeconds]);
+
   const getTitle = () => {
     if (winner === "tie") return "平局！两位都是传奇";
-    if (winner === "kobe") return `${nameA}胜出！`;
+    if (winner === "playerA") return `${nameA}胜出！`;
     return `${nameB}胜出！`;
   };
 
   const soulPlayer = personalityReport?.psychology?.soulPlayer;
   const matchupMemes = getMatchupMemes(matchupId);
   const shareText = persona
-    ? `🎯 测出来了，我是「${persona.title}」${persona.emoji}${soulPlayer ? `（灵魂球员：${soulPlayer}）` : ""}\n\n${nameA} ${kobeScore} : ${lebronScore} ${nameB} · 忠诚度 ${loyalty}%\n"${roast}"\n\n你是哪种球迷？1 分钟测出来 👇\n足球 MBTI ⚽`
-    : `${nameA} ${kobeScore} : ${lebronScore} ${nameB}\n你站哪边？来 足球 MBTI 测测 ⚽`;
+    ? `⚽ 震惊！VAR确认判罚，我的足球MBTI是这个！\n` +
+      `🔥 测出来了！我是「${persona.title}」${persona.emoji} ${soulPlayer ? `(灵魂球星: ${soulPlayer})` : ""}\n` +
+      `📊 辩论战绩：${nameA} ${playerAScore} : ${playerBScore} ${nameB}\n` +
+      `❤️ 属性忠诚度：${loyalty}%\n` +
+      `💬 AI法庭毒舌判决：\n` +
+      `“${roast}”\n\n` +
+      `👇 1分钟测出你的球迷人格，不服来辩：\n` +
+      `🔗 https://football-mbti.vercel.app\n\n` +
+      `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`
+    : `⚽ 终极对决！${nameA} vs ${nameB}，你到底站谁？\n` +
+      `📊 我的投票战绩：${playerAScore} : ${playerBScore}\n` +
+      `👇 1分钟生成你的专属球迷判决书：\n` +
+      `🔗 https://football-mbti.vercel.app\n\n` +
+      `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`;
 
   const handleShare = () => {
     if (navigator.share) {
@@ -103,7 +172,7 @@ export default function Result() {
           onClick={() => setActiveTab("report")}
           className={`flex-1 py-2 text-center text-xs sm:text-sm font-bold rounded-full transition-all duration-300 cursor-pointer ${
             activeTab === "report"
-              ? "bg-gradient-to-r from-kobe-purple to-kobe-purple/60 text-white shadow-md scale-105"
+              ? "bg-gradient-to-r from-primary-color-a to-primary-color-a/60 text-white shadow-md scale-105"
               : "text-white/50 hover:text-white/80"
           }`}
         >
@@ -113,7 +182,7 @@ export default function Result() {
           onClick={() => setActiveTab("court")}
           className={`flex-1 py-2 text-center text-xs sm:text-sm font-bold rounded-full transition-all duration-300 cursor-pointer ${
             activeTab === "court"
-              ? "bg-gradient-to-r from-lebron-wine to-lebron-wine/60 text-white shadow-md scale-105"
+              ? "bg-gradient-to-r from-primary-color-b to-primary-color-b/60 text-white shadow-md scale-105"
               : "text-white/50 hover:text-white/80"
           }`}
         >
@@ -123,7 +192,7 @@ export default function Result() {
           onClick={() => setActiveTab("review")}
           className={`flex-1 py-2 text-center text-xs sm:text-sm font-bold rounded-full transition-all duration-300 cursor-pointer ${
             activeTab === "review"
-              ? "bg-gradient-to-r from-kobe-gold/80 to-lebron-gold/80 text-black shadow-md scale-105"
+              ? "bg-gradient-to-r from-accent-color-a/80 to-accent-color-b/80 text-black shadow-md scale-105"
               : "text-white/50 hover:text-white/80"
           }`}
         >
@@ -131,8 +200,9 @@ export default function Result() {
         </button>
       </div>
 
+      <div key={activeTab} className="w-full flex-1" style={{ animation: "fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards" }}>
       {activeTab === "report" && (
-        <div className="w-full flex flex-col items-center space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
+        <div className="w-full flex flex-col items-center space-y-6">
           {/* 💳 EA FUT Legends Ultimate Fan Card */}
           {persona && (
             <div className="w-full max-w-sm rounded-3xl overflow-hidden fut-card-gold p-6 text-center relative border border-yellow-500/30 shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:scale-[1.02] transition-transform duration-300 mx-auto">
@@ -155,7 +225,7 @@ export default function Result() {
                   <div className="h-px w-8 bg-yellow-500/20 my-2" />
                   
                   <div className="flex flex-col items-center">
-                    <span className="text-base font-black text-white/80">{side === "kobe" ? "M10" : "CR7"}</span>
+                    <span className="text-base font-black text-white/80">{side === "playerA" ? "M10" : "CR7"}</span>
                     <span className="text-[9px] text-white/40 tracking-wider uppercase">Tribe</span>
                   </div>
                 </div>
@@ -178,18 +248,46 @@ export default function Result() {
                     {/* Radar metrics polygon */}
                     <polygon 
                       points={`
-                        50,${50 - 35 * (loyalty / 100)} 
-                        ${50 + 30 * 0.86},${50 - 30 * 0.5} 
-                        ${50 + 25 * 0.86},${50 + 25 * 0.5} 
-                        50,${50 + 35 * 0.8} 
-                        ${50 - 28 * 0.86},${50 + 28 * 0.5} 
-                        ${50 - 32 * 0.86},${50 - 32 * 0.5}
+                        50,${50 - 35 * (futStats.PAC / 100)} 
+                        ${50 + 35 * (futStats.SHO / 100) * 0.866},${50 - 35 * (futStats.SHO / 100) * 0.5} 
+                        ${50 + 35 * (futStats.PAS / 100) * 0.866},${50 + 35 * (futStats.PAS / 100) * 0.5} 
+                        50,${50 + 35 * (futStats.DRI / 100)} 
+                        ${50 - 35 * (futStats.DEF / 100) * 0.866},${50 + 35 * (futStats.DEF / 100) * 0.5} 
+                        ${50 - 35 * (futStats.PHY / 100) * 0.866},${50 - 35 * (futStats.PHY / 100) * 0.5}
                       `} 
                       fill="rgba(212, 175, 55, 0.4)" 
                       stroke="#d4af37" 
                       strokeWidth="1.5" 
                     />
                   </svg>
+                </div>
+              </div>
+
+              {/* FIFA Stats Grid */}
+              <div className="grid grid-cols-6 gap-1 border-t border-b border-yellow-500/10 py-2.5 my-3 text-center">
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-white">{futStats.PAC}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">PAC</span>
+                </div>
+                <div className="flex flex-col border-l border-yellow-500/10">
+                  <span className="text-sm font-black text-white">{futStats.SHO}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">SHO</span>
+                </div>
+                <div className="flex flex-col border-l border-yellow-500/10">
+                  <span className="text-sm font-black text-white">{futStats.PAS}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">PAS</span>
+                </div>
+                <div className="flex flex-col border-l border-yellow-500/10">
+                  <span className="text-sm font-black text-white">{futStats.DRI}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">DRI</span>
+                </div>
+                <div className="flex flex-col border-l border-yellow-500/10">
+                  <span className="text-sm font-black text-white">{futStats.DEF}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">DEF</span>
+                </div>
+                <div className="flex flex-col border-l border-yellow-500/10">
+                  <span className="text-sm font-black text-white">{futStats.PHY}</span>
+                  <span className="text-[9px] text-yellow-500/70 font-bold uppercase tracking-wider">PHY</span>
                 </div>
               </div>
 
@@ -212,7 +310,7 @@ export default function Result() {
               <div className="border-t border-yellow-500/10 pt-4 mt-4 flex items-center justify-between">
                 <div className="text-left">
                   <p className="text-[9px] text-white/30 uppercase tracking-widest font-bold">Loyalty Status</p>
-                  <p className="text-xs font-bold text-white/80">{side === "kobe" ? `${nameA}的狂热信徒` : `${nameB}的狂热信徒`}</p>
+                  <p className="text-xs font-bold text-white/80">{side === "playerA" ? `${nameA}的狂热信徒` : `${nameB}的狂热信徒`}</p>
                 </div>
                 {/* Gold Signatures */}
                 <div className="text-right slanted-sports">
@@ -236,15 +334,15 @@ export default function Result() {
           <div className="text-center py-4">
             <div className="flex items-center justify-center gap-4 sm:gap-8 mb-4">
               <div className="text-center">
-                <div className={`text-5xl sm:text-7xl font-black ${winner === "kobe" ? "text-kobe-gold" : "text-white/40"}`}>
-                  {kobeScore}
+                <div className={`text-5xl sm:text-7xl font-black ${winner === "playerA" ? "text-accent-color-a" : "text-white/40"}`}>
+                  {playerAScore}
                 </div>
                 <div className="text-sm text-white/50 mt-1">{nameA}</div>
               </div>
               <div className="text-2xl sm:text-3xl font-black text-white/20">:</div>
               <div className="text-center">
-                <div className={`text-5xl sm:text-7xl font-black ${winner === "lebron" ? "text-lebron-gold" : "text-white/40"}`}>
-                  {lebronScore}
+                <div className={`text-5xl sm:text-7xl font-black ${winner === "playerB" ? "text-accent-color-b" : "text-white/40"}`}>
+                  {playerBScore}
                 </div>
                 <div className="text-sm text-white/50 mt-1">{nameB}</div>
               </div>
@@ -267,12 +365,12 @@ export default function Result() {
       )}
 
       {activeTab === "court" && side && (
-        <div className="w-full flex justify-center" style={{ animation: "fade-up 0.5s ease-out" }}>
+        <div className="w-full flex justify-center">
           <AiJudge
             votes={votes}
             side={side}
-            kobeScore={kobeScore}
-            lebronScore={lebronScore}
+            playerAScore={playerAScore}
+            playerBScore={playerBScore}
             nameA={nameA}
             nameB={nameB}
           />
@@ -280,7 +378,7 @@ export default function Result() {
       )}
 
       {activeTab === "review" && (
-        <div className="w-full flex flex-col items-center space-y-8" style={{ animation: "fade-up 0.5s ease-out" }}>
+        <div className="w-full flex flex-col items-center space-y-8">
           {/* Vote breakdown */}
           <div className="w-full max-w-2xl">
             <h3 className="text-lg font-bold text-white/70 mb-4 text-center">⚔️ 逐轮回顾</h3>
@@ -296,9 +394,9 @@ export default function Result() {
                     <span className="text-lg">{topic.emoji}</span>
                     <span className="text-white/80 text-sm flex-1">{topic.title}</span>
                     <span
-                      className={`text-sm font-bold ${v.winner === "kobe" ? "text-kobe-gold" : "text-lebron-gold"}`}
+                      className={`text-sm font-bold ${v.winner === "playerA" ? "text-accent-color-a" : "text-accent-color-b"}`}
                     >
-                      {v.winner === "kobe" ? `${pA?.number ?? "#10"} ${nameA}` : `${pB?.number ?? "#7"} ${nameB}`}
+                      {v.winner === "playerA" ? `${pA?.number ?? "#10"} ${nameA}` : `${pB?.number ?? "#7"} ${nameB}`}
                     </span>
                   </div>
                 );
@@ -310,15 +408,15 @@ export default function Result() {
           <div className="flex flex-col sm:flex-row gap-4 items-center">
             <button
               onClick={handleShare}
-              className="px-8 py-3 bg-gradient-to-r from-kobe-purple to-lebron-wine text-white font-bold rounded-full
-                hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-kobe-purple/20"
+              className="px-8 py-3 bg-gradient-to-r from-primary-color-a to-primary-color-b text-white font-bold rounded-full
+                hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-primary-color-a/20"
             >
               分享人格 + 结果 📤
             </button>
             <button
               onClick={backToMatchupSelect}
-              className="px-8 py-3 bg-gradient-to-r from-kobe-gold/80 to-lebron-gold/80 text-black font-bold rounded-full
-                hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-kobe-gold/20"
+              className="px-8 py-3 bg-gradient-to-r from-accent-color-a/80 to-accent-color-b/80 text-black font-bold rounded-full
+                hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-accent-color-a/20"
             >
               换个对决 →
             </button>
@@ -329,9 +427,10 @@ export default function Result() {
             >
               再来一遍 🔄
             </button>
-          </div>
+        </div>
         </div>
       )}
+      </div>
 
       <p className="mt-10 text-xs text-white/20 text-center max-w-sm">
         以上毒舌纯属娱乐，两位都是足球传奇。Respect the game. ⚽

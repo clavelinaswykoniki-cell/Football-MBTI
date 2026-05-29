@@ -1,17 +1,13 @@
-"use client";
-
-import { useGame } from "./GameProvider";
+import LandingButtons from "./LandingButtons";
 
 export default function Landing() {
-  const { startGame, openFbtiEntry } = useGame();
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-[#030c06]">
       {/* Premium Aurora Glow Background with Pixel Grid Mesh */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Radial Aurora Glows */}
-        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full bg-kobe-purple/20 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-lebron-wine/25 blur-[120px]" />
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full bg-primary-color-a/20 blur-[120px]" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-primary-color-b/25 blur-[120px]" />
         {/* Modern Dot Mesh Overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -23,7 +19,7 @@ export default function Landing() {
       </div>
 
       {/* 🏟️ Tactical Pitch Line Watermark Overlay */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.035] pointer-events-none z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg className="absolute inset-0 w-full h-full opacity-[0.035] pointer-events-none z-0" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ transform: "perspective(1000px) rotateX(30deg) scale(1.2)", animation: "draw-pitch 3s ease-out forwards" }}>
         {/* Pitch outer boundary */}
         <rect x="2" y="2" width="96" height="96" fill="none" stroke="white" strokeWidth="0.4" />
         {/* Half-way line */}
@@ -44,7 +40,7 @@ export default function Landing() {
         {/* 🏆 Slanted Neon Scoreboard VS Block */}
         <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8 slanted-sports">
           <div className="px-5 py-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span className="text-5xl sm:text-7xl font-black text-kobe-gold tracking-tighter">
+            <span className="text-5xl sm:text-7xl font-black text-accent-color-a tracking-tighter">
               #10
             </span>
             <span className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-bold">Player A</span>
@@ -55,18 +51,18 @@ export default function Landing() {
           </div>
 
           <div className="px-5 py-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span className="text-5xl sm:text-7xl font-black text-lebron-gold tracking-tighter">
+            <span className="text-5xl sm:text-7xl font-black text-accent-color-b tracking-tighter">
               #7
             </span>
             <span className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-bold">Player B</span>
           </div>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-black mb-4 bg-gradient-to-r from-kobe-gold via-white to-lebron-gold bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-5xl font-black mb-4 bg-gradient-to-r from-accent-color-a via-white to-accent-color-b bg-clip-text text-transparent">
           GOAT FOOTBALL DEBATE
         </h1>
         <p className="text-lg sm:text-xl text-white/60 mb-2">
-          足球史上最大争议对决，你来投票
+          Are you a Tap-in Merchant or a System Player? Settle the eternal debate. Pick your GOAT and let the VAR (AI) judge your ball knowledge.
         </p>
         <p className="text-sm text-white/40 mb-5">
           8 组传奇对决 · 12 轮辩论 · AI 深度人格分析
@@ -88,21 +84,7 @@ export default function Landing() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={startGame}
-            className="px-10 py-4 bg-gradient-to-r from-kobe-purple via-black to-lebron-wine text-white text-xl font-bold rounded-full border border-accent-green/30 hover:border-accent-green shadow-[0_0_15px_rgba(57,255,20,0.1)] hover:shadow-[0_0_25px_rgba(57,255,20,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-          >
-            ⚽ 开始辩论
-          </button>
-          <button
-            onClick={openFbtiEntry}
-            className="px-10 py-4 bg-white/5 border border-white/15 text-white text-xl font-bold rounded-full
-              hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-          >
-            📋 测足球 MBTI
-          </button>
-        </div>
+        <LandingButtons />
 
         <p className="mt-8 text-xs text-white/30">
           纯粹为了好玩 · 拒绝上纲上线 · 每位都是传奇

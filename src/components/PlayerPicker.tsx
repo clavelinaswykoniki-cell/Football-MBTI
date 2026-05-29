@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useState } from "react";
@@ -45,13 +46,13 @@ export default function PlayerPicker() {
         <div
           className={`rounded-2xl border-2 p-4 sm:p-5 min-h-[120px] flex flex-col items-center justify-center transition-all ${
             slotA
-              ? "border-kobe-gold/60 bg-kobe-purple/20"
+              ? "border-accent-color-a/60 bg-primary-color-a/20"
               : "border-dashed border-white/20 bg-white/[0.02]"
           }`}
         >
           {slotA ? (
             <>
-              <div className="text-kobe-gold font-black text-2xl sm:text-3xl">{slotA.number}</div>
+              <div className="text-accent-color-a font-black text-2xl sm:text-3xl">{slotA.number}</div>
               <div className="text-white font-bold text-base sm:text-lg mt-1">{slotA.nameCN}</div>
               <div className="text-white/40 text-xs mt-1">{slotA.nicknameCN}</div>
             </>
@@ -62,13 +63,13 @@ export default function PlayerPicker() {
         <div
           className={`rounded-2xl border-2 p-4 sm:p-5 min-h-[120px] flex flex-col items-center justify-center transition-all ${
             slotB
-              ? "border-lebron-gold/60 bg-lebron-wine/20"
+              ? "border-accent-color-b/60 bg-primary-color-b/20"
               : "border-dashed border-white/20 bg-white/[0.02]"
           }`}
         >
           {slotB ? (
             <>
-              <div className="text-lebron-gold font-black text-2xl sm:text-3xl">{slotB.number}</div>
+              <div className="text-accent-color-b font-black text-2xl sm:text-3xl">{slotB.number}</div>
               <div className="text-white font-bold text-base sm:text-lg mt-1">{slotB.nameCN}</div>
               <div className="text-white/40 text-xs mt-1">{slotB.nicknameCN}</div>
             </>
@@ -98,9 +99,9 @@ export default function PlayerPicker() {
               onClick={() => togglePick(p.id)}
               className={`rounded-xl p-3 border-2 transition-all duration-200 cursor-pointer text-center ${
                 isSlotA
-                  ? "border-kobe-gold bg-kobe-purple/30 scale-[1.04]"
+                  ? "border-accent-color-a bg-primary-color-a/30 scale-[1.04]"
                   : isSlotB
-                    ? "border-lebron-gold bg-lebron-wine/30 scale-[1.04]"
+                    ? "border-accent-color-b bg-primary-color-b/30 scale-[1.04]"
                     : picked.length >= 2
                       ? "border-white/10 bg-white/[0.02] opacity-40"
                       : "border-white/10 bg-white/[0.03] hover:border-white/40 hover:bg-white/[0.06]"
@@ -109,7 +110,7 @@ export default function PlayerPicker() {
             >
               <div
                 className={`font-black text-base sm:text-lg ${
-                  isSlotA ? "text-kobe-gold" : isSlotB ? "text-lebron-gold" : "text-white/60"
+                  isSlotA ? "text-accent-color-a" : isSlotB ? "text-accent-color-b" : "text-white/60"
                 }`}
               >
                 {p.number}

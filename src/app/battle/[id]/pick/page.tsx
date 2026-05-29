@@ -1,22 +1,41 @@
-// @ts-nocheck
 "use client";
 
-import { useGame } from "./GameProvider";
+import { useRouter, useParams } from "next/navigation";
+import { useGameStore } from "@/store/gameStore";
+import { getMatchupById } from "@/data/matchups";
+import Link from "next/link";
+import { useEffect } from "react";
 
-export default function PickSide() {
-  const { pickSide, currentMatchup, backToMatchupSelect } = useGame();
+export default function PickSidePage() {
+  const router = useRouter();
+  const params = useParams();
+  const id = params.id as string;
+  const matchup = getMatchupById(id);
+  const { restart, pickSide } = useGameStore();
 
-  const pA = currentMatchup?.playerA ?? { name: "Lionel Messi", nameZh: "梅西", number: "#10", nickname: "La Pulga" };
-  const pB = currentMatchup?.playerB ?? { name: "Cristiano Ronaldo", nameZh: "C罗", number: "#7", nickname: "CR7" };
+  useEffect(() => {
+    // Reset game state on pick side
+    restart();
+  }, [restart]);
+
+  if (!matchup) return <div className="text-white p-10">Matchup not found</div>;
+
+  const pA = matchup.playerA;
+  const pB = matchup.playerB;
+
+  const handlePick = (side: "playerA" | "playerB") => {
+    pickSide(side, id);
+    router.push(`/battle/${id}`);
+  };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 relative">
-      <button
-        onClick={backToMatchupSelect}
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 relative bg-[#030c06]">
+      <Link
+        href="/matchups"
         className="absolute top-4 left-4 sm:top-6 sm:left-6 text-xs sm:text-sm text-white/40 hover:text-white/80 transition-colors cursor-pointer"
       >
         ← 换个对决
-      </button>
+      </Link>
       <h2 className="text-2xl sm:text-4xl font-black mb-2 text-white text-center">
         选择你的立场
       </h2>
@@ -26,7 +45,7 @@ export default function PickSide() {
 
       <div className="flex flex-col sm:flex-row gap-6 w-full max-w-3xl">
         <button
-          onClick={() => pickSide("playerA")}
+          onClick={() => handlePick("playerA")}
           className="flex-1 group relative overflow-hidden rounded-2xl border-2 border-accent-color-a/30
             hover:border-accent-color-a transition-all duration-300 cursor-pointer"
         >
@@ -52,7 +71,7 @@ export default function PickSide() {
         </div>
 
         <button
-          onClick={() => pickSide("playerB")}
+          onClick={() => handlePick("playerB")}
           className="flex-1 group relative overflow-hidden rounded-2xl border-2 border-accent-color-b/30
             hover:border-accent-color-b transition-all duration-300 cursor-pointer"
         >

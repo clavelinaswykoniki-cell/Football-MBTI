@@ -1,5 +1,5 @@
 // Messi vs Cristiano Ronaldo 辩论数据
-// 注意：kobe 字段装的是梅西的内容，lebron 字段装的是 C罗 的内容（保持接口签名兼容上游）
+// 注意：playerA 字段装的是梅西的内容，playerB 字段装的是 C罗 的内容（保持接口签名兼容上游）
 
 export interface DebateSide {
   claim: string;
@@ -11,8 +11,8 @@ export interface DebateTopic {
   id: string;
   title: string;
   emoji: string;
-  kobe: DebateSide;    // 梅西
-  lebron: DebateSide;  // C罗
+  playerA: DebateSide;    // 梅西
+  playerB: DebateSide;  // C罗
 }
 
 export const debates: DebateTopic[] = [
@@ -21,7 +21,7 @@ export const debates: DebateTopic[] = [
     id: 'rings',
     title: '国家队荣誉：世界杯 vs 欧洲杯',
     emoji: '🏆',
-    kobe: {
+    playerA: {
       claim: '一座大力神杯，足以让所有 C 吹闭嘴。',
       points: [
         '2022 卡塔尔世界杯冠军——足球世界唯一的「加冕仪式」，含金量地球第一，没有之一',
@@ -30,7 +30,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: '别跟我聊欧洲杯，足球的山顶叫世界杯，C 罗一辈子没登顶。',
     },
-    lebron: {
+    playerB: {
       claim: '2016 欧洲杯 + 2019 欧国联，葡萄牙队史从零到二，是 CR7 一个人扛起来的。',
       points: [
         '2016 法国本土欧洲杯夺冠，决赛带伤离场仍在场边咆哮指挥，葡萄牙队史首座大赛冠军',
@@ -46,7 +46,7 @@ export const debates: DebateTopic[] = [
     id: 'clutch',
     title: '关键时刻：谁才是大场面先生',
     emoji: '🗡️',
-    kobe: {
+    playerA: {
       claim: '世界杯决赛点球 + 加时进球，最大舞台他没怂过。',
       points: [
         '2022 世界杯决赛对法国，120 分钟内梅开二度，点球大战首罚命中——压力地球最大的那一脚',
@@ -55,7 +55,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: '决赛进球数：梅西世界杯决赛 2 球，C 罗欧冠决赛运动战才 1 球——大场面，数字说话。',
     },
-    lebron: {
+    playerB: {
       claim: '欧冠淘汰赛 67 球、曼联绝杀车、皇马 BBC 大旗、葡萄牙救世主，关键球教科书。',
       points: [
         '欧冠淘汰赛进球数 67 个历史第一，2017 对拜仁、对马竞连续上演帽子戏法，并在决赛对尤文梅开二度',
@@ -71,7 +71,7 @@ export const debates: DebateTopic[] = [
     id: 'skill',
     title: '技术美感：左脚画家 vs 全能机器',
     emoji: '🎨',
-    kobe: {
+    playerA: {
       claim: '左脚是上帝亲自雕的，盘带是这项运动的天花板。',
       points: [
         '2007 国王杯半决赛对赫塔菲连过 6 人进球——复刻马拉多纳「世纪进球」，左脚一条龙地表最强',
@@ -80,7 +80,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗那叫举重运动员踢球，梅西才是真正用脚作画的足球艺术家。',
     },
-    lebron: {
+    playerB: {
       claim: '左脚右脚头球任意球速度力量——CR7 是足球史上最完整的进攻武器库。',
       points: [
         '头球能跳 2 米 60、空中滞空 0.7 秒——皇马时期场均高点对抗胜率 90%，头球进球 145+',
@@ -96,7 +96,7 @@ export const debates: DebateTopic[] = [
     id: 'mvp',
     title: '金球奖与个人荣誉',
     emoji: '🏆',
-    kobe: {
+    playerA: {
       claim: '8 座金球，足球史上从来没有人摸到过这个数字。',
       points: [
         '2009 / 10 / 11 / 12 / 15 / 19 / 21 / 23 八夺金球奖——史上唯一 8 金球，4 连冠至今没人复制',
@@ -105,7 +105,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: '8 vs 5，差三个金球还想 GOAT？数学不及格吧。',
     },
-    lebron: {
+    playerB: {
       claim: '5 金球 + 欧冠 7 次金靴 + 多届世俱杯 MVP，硬荣誉一抓一大把。',
       points: [
         '2008 / 13 / 14 / 16 / 17 五夺金球奖，跨曼联+皇马两个时代，证明他不是某个体系的产物',
@@ -121,7 +121,7 @@ export const debates: DebateTopic[] = [
     id: 'mentality',
     title: '心态与职业精神',
     emoji: '🔥',
-    kobe: {
+    playerA: {
       claim: '沉默杀手——14 年三连败 + 一度退出国家队，最后还是抗住了。',
       points: [
         '2014/15/16 三连决赛输球 + 16 年宣布退出国家队，44 天后回归——心理重建能力地表最强',
@@ -130,7 +130,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗每次落选金球就甩锅、每次输球就拉脸——这叫心态？这叫巨婴。',
     },
-    lebron: {
+    playerB: {
       claim: '40 岁还在踢顶级比赛、健身狂魔自律到变态——CR7 是职业精神的代名词。',
       points: [
         '体脂率常年 7%、生物年龄被检测为 23 岁——40 岁还能踢满 90 分钟 + 冲刺 33km/h',
@@ -146,7 +146,7 @@ export const debates: DebateTopic[] = [
     id: 'defense',
     title: '无球贡献与团队作用',
     emoji: '🛡️',
-    kobe: {
+    playerA: {
       claim: '回撤组织 + 穿透性直塞，梅西是会进球的 10 号 + 8 号 + 前腰复合体。',
       points: [
         '生涯助攻 380+、英超没踢过但西甲 + 法甲 + 美职联都拿过助攻王——这叫团队球员',
@@ -155,7 +155,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗只会站桩抢点，梅西是把整支球队拎起来踢——格局差一个维度。',
     },
-    lebron: {
+    playerB: {
       claim: '高位压迫 + 禁区抢点 + 空中支点，CR7 是体系里最务实的「得分机器」。',
       points: [
         '皇马时期场均跑动 10.5km、压迫触发 6 次/场——不是只会进球，无球跑位 + 反越位是看家本事',
@@ -171,7 +171,7 @@ export const debates: DebateTopic[] = [
     id: 'finals',
     title: '大场面：决赛舞台谁更稳',
     emoji: '🏟️',
-    kobe: {
+    playerA: {
       claim: '世界杯决赛 + 美洲杯决赛 + 欧冠决赛——梅西决赛进球分布最广。',
       points: [
         '2022 世界杯决赛对法国梅开二度 + 点球——120 分钟最大舞台 2 球 1 点，决赛 MVP',
@@ -180,7 +180,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: '欧冠决赛我和你打两次都赢了，世界杯决赛我赢了你没去——决赛舞台你不如我硬。',
     },
-    lebron: {
+    playerB: {
       claim: '欧冠决赛 5 次出场 4 次夺冠 + 多次进球——决赛先生不是吹的。',
       points: [
         '2008 莫斯科 vs 切尔西决赛进球夺曼联首冠；2014 里斯本对马竞加时赛打入锁定胜局的点球，斩获单赛季第17球刷新历史纪录',
@@ -196,7 +196,7 @@ export const debates: DebateTopic[] = [
     id: 'teammates',
     title: '队友质量与夺冠环境',
     emoji: '🤝',
-    kobe: {
+    playerA: {
       claim: 'CR7 的冠军全部来自顶级豪门 + 顶级队友，别装「独狼」。',
       points: [
         '皇马时期：本泽马 + 贝尔 + 莫德里奇 + 克罗斯 + 拉莫斯——这阵容随便谁来当大腿都拿欧冠',
@@ -205,7 +205,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: '让 C 罗去 2010 年阿根廷踢一下试试，他能把自己急哭。',
     },
-    lebron: {
+    playerB: {
       claim: '梅西巴萨时期那阵容地表最强——哈维 + 伊涅斯塔 + 布斯克茨 + 苏亚雷斯 + 内马尔，闭眼都赢。',
       points: [
         '巴萨梦三：哈维 + 伊涅斯塔的传控体系——任何前锋丢进去都能进 30 球，梅西也是受益者',
@@ -221,7 +221,7 @@ export const debates: DebateTopic[] = [
     id: 'era',
     title: '时代影响力与商业价值',
     emoji: '🌍',
-    kobe: {
+    playerA: {
       claim: '梅西重新定义了中前场踢法，影响了整整一代足球艺术家。',
       points: [
         '「伪 9 号」 + 短传渗透革命——瓜迪奥拉的 tiki-taka 因他成型，影响了整个欧洲足坛战术',
@@ -230,7 +230,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗的影响力靠 IG 粉丝数堆出来，梅西的影响力是把整个足球战术都改写了。',
     },
-    lebron: {
+    playerB: {
       claim: 'IG 6.4 亿粉丝史上第一、全球品牌价值 17 亿美元——CR7 就是足球这项运动的全球代言人。',
       points: [
         'IG 粉丝 6.4 亿地球第一、单条 ins 报价 350 万美元——所有项目运动员里商业价值绝对 No.1',
@@ -246,7 +246,7 @@ export const debates: DebateTopic[] = [
     id: 'iconic',
     title: '经典时刻：那些被反复回放的瞬间',
     emoji: '⚡',
-    kobe: {
+    playerA: {
       claim: '梅西的经典时刻是被钉在足球史册上的「画作」。',
       points: [
         '2009 罗马欧冠决赛对曼联头球破门——1m70 的他跳起来比埃弗拉还高，封神时刻',
@@ -255,7 +255,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗的经典时刻全是个人秀，梅西的经典时刻每一个都改写了历史走向。',
     },
-    lebron: {
+    playerB: {
       claim: 'CR7 的经典时刻是给整个体育圈共享的「meme」。',
       points: [
         '2018 欧冠 1/4 决赛对尤文倒钩破门——尤文球迷集体起立鼓掌，全世界足坛震惊',
@@ -271,7 +271,7 @@ export const debates: DebateTopic[] = [
     id: 'loyalty',
     title: '忠诚：一队终老 vs 浪迹天涯',
     emoji: '💜',
-    kobe: {
+    playerA: {
       claim: '13 岁加盟拉玛西亚到 34 岁离队，21 年只穿一件 10 号——这叫真·一人一城。',
       points: [
         '2000 年 13 岁加盟巴萨青训，2004 年首秀到 2021 年含泪离队——巴萨踢了 778 球 17 个赛季',
@@ -280,7 +280,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'CR7 一辈子 6 家俱乐部，每次都是为更高薪水跳槽——忠诚？字典里压根没这个词。',
     },
-    lebron: {
+    playerB: {
       claim: '「忠诚」是没本事跳槽的人的遮羞布——CR7 每到一处都是冠军 + 金靴，这是真本事。',
       points: [
         '里斯本→曼联→皇马→尤文→曼联→利雅得，4 个顶级联赛都拿到联赛冠军——史上独一份',
@@ -296,7 +296,7 @@ export const debates: DebateTopic[] = [
     id: 'goat',
     title: '历史地位：谁才是足球 GOAT',
     emoji: '🐐',
-    kobe: {
+    playerA: {
       claim: '8 金球 + 世界杯 + 778 球——足球史上唯一拿满所有最高荣誉的人。',
       points: [
         '「球王」标准 = 世界杯 + 金球 + 俱乐部统治 + 技术革新——贝利/马拉多纳后他是唯一全勾选的',
@@ -305,7 +305,7 @@ export const debates: DebateTopic[] = [
       ],
       punchline: 'C 罗是有史以来最伟大的「得分手」之一，但球王是梅西，没有讨论空间。',
     },
-    lebron: {
+    playerB: {
       claim: '900+ 球 + 5 欧冠 + 4 联赛冠军 + 欧洲杯——CR7 的简历广度史上无人能及。',
       points: [
         '俱乐部 + 国家队总进球 920+ 地球第一、欧冠 140+ 球第一、国家队 137 球第一——三个第一谁能复制',
@@ -323,7 +323,7 @@ export const bonusDebates: DebateTopic[] = [
     id: 'whatif_swap',
     title: 'What-If：梅西去皇马，C 罗去巴萨',
     emoji: '🔄',
-    kobe: {
+    playerA: {
       claim: '梅西去皇马照样金球大满贯——他的体系适应性比 CR7 强。',
       points: [
         '皇马欧冠 BBC 时代的中场是莫德里奇 + 克罗斯——给梅西踢，组织传球只会更通畅',
@@ -332,7 +332,7 @@ export const bonusDebates: DebateTopic[] = [
       ],
       punchline: 'CR7 进巴萨第一个月就被瓜迪奥拉换下场，梅西去皇马依然金球收割机。',
     },
-    lebron: {
+    playerB: {
       claim: 'CR7 去巴萨能进 100 球，梅西去皇马欧冠淘汰赛照样消失。',
       points: [
         'CR7 是体系适应大师——曼联 + 皇马 + 尤文 3 联赛都金靴，巴萨那套传控对他就是喂饼',
@@ -348,7 +348,7 @@ export const bonusDebates: DebateTopic[] = [
     id: 'whatif_era',
     title: 'What-If：放到 80/90 年代踢',
     emoji: '⏳',
-    kobe: {
+    playerA: {
       claim: '梅西穿越到马拉多纳时代，会成为新世纪的球王 2.0。',
       points: [
         '80 年代后卫犯规可以踢断腿——但梅西重心和变向比马拉多纳更低，过人成功率反而更高',
@@ -357,7 +357,7 @@ export const bonusDebates: DebateTopic[] = [
       ],
       punchline: 'CR7 那身板在 80 年代会被意大利后卫铲到职业生涯报销，梅西那身高反而铲不到。',
     },
-    lebron: {
+    playerB: {
       claim: 'CR7 那身体素质放到任何时代都降维打击——80/90 年代踢出 1000 球。',
       points: [
         '80 年代防守粗野，但身体对抗的天花板是 CR7——1m87 + 垂直起跳 78cm，那个时代根本没人盯得住',
@@ -373,7 +373,7 @@ export const bonusDebates: DebateTopic[] = [
     id: 'whatif_1v1',
     title: 'What-If：1v1 单挑 / 点球大战',
     emoji: '🥊',
-    kobe: {
+    playerA: {
       claim: '点球大战 + 1v1 街头球，梅西左脚秀死 CR7。',
       points: [
         '梅西点球命中率 79%、世界杯决赛点球大战首罚命中——心理素质硬核',
@@ -382,7 +382,7 @@ export const bonusDebates: DebateTopic[] = [
       ],
       punchline: '街头球场上 CR7 跑不开 + 起不来，梅西闭眼能赢 10-2。',
     },
-    lebron: {
+    playerB: {
       claim: '1v1 单挑要的是身体 + 技术 + 心态，CR7 三项都吊打。',
       points: [
         'CR7 任意球 + 电梯球 + 头球 + 左右脚均衡——单挑场景他工具箱比梅西大一倍',

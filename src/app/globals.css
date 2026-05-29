@@ -5,21 +5,21 @@
   --foreground: #ededed;
   /* Token names preserved for slot-based theming.
      Values rebranded to football: Messi (Argentina/Barça) vs Ronaldo (Portugal/Real Madrid). */
-  --kobe-purple: #2C3E8C;   /* Barça deep blue — Messi accent dark */
-  --kobe-gold:   #75AADB;   /* Argentina sky blue — Messi primary */
-  --lebron-wine: #8B0000;   /* Portugal red / Real Madrid base — Ronaldo accent dark */
-  --lebron-gold: #FFD700;   /* Real Madrid gold — Ronaldo primary */
-  --laker-purple: #2C3E8C;  /* mirrors kobe-purple */
+  --primary-color-a: #2C3E8C;   /* Barça deep blue — Messi accent dark */
+  --accent-color-a:   #75AADB;   /* Argentina sky blue — Messi primary */
+  --primary-color-b: #8B0000;   /* Portugal red / Real Madrid base — Ronaldo accent dark */
+  --accent-color-b: #FFD700;   /* Real Madrid gold — Ronaldo primary */
+  --laker-purple: #2C3E8C;  /* mirrors primary-color-a */
   --accent-green: #39FF14;  /* Stadium Neon Lime Green */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-kobe-purple: var(--kobe-purple);
-  --color-kobe-gold: var(--kobe-gold);
-  --color-lebron-wine: var(--lebron-wine);
-  --color-lebron-gold: var(--lebron-gold);
+  --color-primary-color-a: var(--primary-color-a);
+  --color-accent-color-a: var(--accent-color-a);
+  --color-primary-color-b: var(--primary-color-b);
+  --color-accent-color-b: var(--accent-color-b);
   --color-accent-green: var(--accent-green);
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -185,4 +185,30 @@ body {
   font-family: 'Outfit', 'Arial Black', sans-serif;
   transform: skewX(-10deg);
   text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+@keyframes draw-pitch {
+  0% {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+@keyframes flash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes particle-burst-anim {
+  0% { transform: scale(1) translate(0, 0); opacity: 1; }
+  100% { transform: scale(2) translate(var(--tx), var(--ty)); opacity: 0; }
+}
+.particle-burst {
+  --tx: calc((Math.random() - 0.5) * 100px);
+  --ty: calc((Math.random() - 0.5) * 100px);
+  animation: particle-burst-anim 0.5s ease-out forwards;
 }

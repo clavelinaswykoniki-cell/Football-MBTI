@@ -2,86 +2,85 @@
 
 import { useEffect, useState } from "react";
 
-type Side = "kobe" | "lebron";
+type Side = "playerA" | "playerB";
 
 interface Vote {
   topicId: string;
   winner: Side;
 }
 
-interface PersonalityProfile {
-  type: string;
-  emoji: string;
-  traits: string[];
-  decisionStyle: string;
-  inRelationship: string;
-  atWork: string;
-  spiritAnimal: string;
-}
 
-interface JudgeResult {
-  verdict: string;
-  analysis: string;
-  confidence: number;
-  prescription: string;
-  challenge: string;
-  fanFiction: string;
-  personality: PersonalityProfile;
-}
 
 interface AiJudgeProps {
   votes: Vote[];
   side: Side;
-  kobeScore: number;
-  lebronScore: number;
+  playerAScore: number;
+  playerBScore: number;
   nameA?: string;
   nameB?: string;
 }
 
-export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, nameB }: AiJudgeProps) {
-  const [result, setResult] = useState<JudgeResult | null>(null);
+import { generateVerdict, type JudgeResponse } from "@/lib/judge";
+
+const loadingTexts = [
+  "正在测量越位体毛级差距...",
+  "AI 正在学习如何双标...",
+  "正在翻阅《如何优雅地证明点球没跳水》..."
+];
+
+export default function AiJudge({ votes, side, playerAScore, playerBScore, nameA, nameB }: AiJudgeProps) {
+  const [result, setResult] = useState<JudgeResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-
-    fetch("/api/judge", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ votes, side, kobeScore, lebronScore, nameA, nameB }),
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("judge failed");
-        return res.json();
-      })
-      .then((data: JudgeResult) => {
+    
+    // Simulate a short delay to keep the VAR effect engaging
+    const timer = setTimeout(() => {
+      try {
+        const data = generateVerdict({ votes, side, playerAScore, playerBScore, nameA, nameB });
         if (!cancelled) {
           setResult(data);
           setLoading(false);
         }
-      })
-      .catch(() => {
+      } catch {
         if (!cancelled) {
           setError(true);
           setLoading(false);
         }
-      });
+      }
+    }, 1500);
 
-    return () => { cancelled = true; };
-  }, [votes, side, kobeScore, lebronScore]);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [votes, side, playerAScore, playerBScore, nameA, nameB]);
 
   const toggle = (key: string) => {
     setExpandedSection((prev) => (prev === key ? null : key));
   };
 
-  const accentColor = side === "kobe" ? "text-kobe-gold" : "text-lebron-gold";
-  const accentBorder = side === "kobe" ? "border-kobe-gold/20" : "border-lebron-gold/20";
+  const accentColor = side === "playerA" ? "text-accent-color-a" : "text-accent-color-b";
+  const accentBorder = side === "playerA" ? "border-accent-color-a/20" : "border-accent-color-b/20";
   const borderGlow =
-    side === "kobe"
-      ? "border-kobe-gold/30 shadow-[0_0_20px_rgba(253,185,39,0.15)]"
-      : "border-lebron-gold/30 shadow-[0_0_20px_rgba(253,187,48,0.15)]";
+    side === "playerA"
+      ? "border-accent-color-a/30 shadow-[0_0_20px_rgba(253,185,39,0.15)]"
+      : "border-accent-color-b/30 shadow-[0_0_20px_rgba(253,187,48,0.15)]";
+
+
+  const [loadingText, setLoadingText] = useState(loadingTexts[0]);
+
+  useEffect(() => {
+    let idx = 0;
+    const interval = setInterval(() => {
+      idx = (idx + 1) % loadingTexts.length;
+      setLoadingText(loadingTexts[idx]);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (loading) {
     return (
@@ -94,10 +93,10 @@ export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, na
 
         <div className="flex items-center justify-center gap-2 mb-3 bg-black/40 border border-accent-green/20 py-2 px-4 rounded-full max-w-xs mx-auto">
           <span className="w-2.5 h-2.5 rounded-full bg-red-600 var-dot-flash shrink-0" />
-          <span className="text-xs font-black text-white tracking-widest uppercase">● VAR REVIEW IN PROGRESS</span>
+          <span className="text-xs font-black text-white tracking-widest uppercase">● VAR 盲人裁判组正在连线</span>
         </div>
 
-        <h3 className="text-lg font-bold text-accent-green/90 mb-4 slanted-sports">VAR 视频助理裁判介入</h3>
+        <h3 className="text-lg font-bold text-accent-green/90 mb-4 slanted-sports">主裁正在观看回放...</h3>
 
         {/* Fake Heartrate waveform animation */}
         <div className="flex items-end justify-center gap-1.5 h-10 mb-5">
@@ -114,8 +113,8 @@ export default function AiJudge({ votes, side, kobeScore, lebronScore, nameA, na
           ))}
         </div>
 
-        <p className="text-xs text-white/40 leading-relaxed max-w-sm mx-auto">
-          正在扫描您的投票 DNA 组合、核准专家数据仓库，准备起草终极判决书，这需要 0.003 秒...
+        <p className="text-xs text-white/40 leading-relaxed max-w-sm mx-auto min-h-[40px]">
+          {loadingText}
         </p>
       </div>
     );

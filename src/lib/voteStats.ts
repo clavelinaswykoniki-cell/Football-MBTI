@@ -14,8 +14,8 @@ const SEED_VERSION = 1;
 // ── Types ──────────────────────────────────────────────────────────────
 
 export interface TopicVotes {
-  kobe: number;
-  lebron: number;
+  playerA: number;
+  playerB: number;
 }
 
 interface StoredData {
@@ -24,40 +24,40 @@ interface StoredData {
 }
 
 export interface TopicStats {
-  kobeCount: number;
-  lebronCount: number;
+  playerACount: number;
+  playerBCount: number;
   total: number;
-  kobePercent: number;
-  lebronPercent: number;
+  playerAPercent: number;
+  playerBPercent: number;
 }
 
 export interface GlobalStats {
-  totalKobe: number;
-  totalLebron: number;
+  totalPlayerA: number;
+  totalPlayerB: number;
   total: number;
-  kobePercent: number;
-  lebronPercent: number;
+  playerAPercent: number;
+  playerBPercent: number;
 }
 
 // ── Baseline seed data ─────────────────────────────────────────────────
 // Each topic has a plausible split (2 000 – 5 000 total votes).
-// Some lean playerA (kobe slot), some lean playerB (lebron slot) — keeps it spicy.
-// Slot names "kobe"/"lebron" are legacy identifiers; in this fork they map to
+// Some lean playerA (playerA slot), some lean playerB (playerB slot) — keeps it spicy.
+// Slot names "playerA"/"playerB" are legacy identifiers; in this fork they map to
 // playerA (e.g. Messi) and playerB (e.g. Ronaldo).
 
 const BASELINE: Record<string, TopicVotes> = {
-  rings:     { kobe: 1680, lebron: 2120 },  // 44 vs 56 — playerB edge (trophy argument)
-  clutch:    { kobe: 2728, lebron: 1672 },  // 62 vs 38 — playerA dominant
-  skill:     { kobe: 2340, lebron: 1860 },  // 56 vs 44 — playerA edge
-  mvp:       { kobe: 1044, lebron: 2556 },  // 29 vs 71 — playerB dominant
-  mentality: { kobe: 3185, lebron: 1215 },  // 72 vs 28 — mentality crushes
-  defense:   { kobe: 1920, lebron: 1680 },  // 53 vs 47 — close, slight playerA
-  finals:    { kobe: 1260, lebron: 2340 },  // 35 vs 65 — playerB data advantage
-  teammates: { kobe: 2640, lebron: 1760 },  // 60 vs 40 — loyalty narrative
-  era:       { kobe: 2860, lebron: 1540 },  // 65 vs 35 — playerA cultural icon
-  iconic:    { kobe: 2475, lebron: 2025 },  // 55 vs 45 — close
-  goat:      { kobe: 1890, lebron: 2310 },  // 45 vs 55 — playerB edge
-  loyalty:   { kobe: 2912, lebron: 1288 },  // 69 vs 31 — one-club loyalty resonates
+  rings:     { playerA: 1680, playerB: 2120 },  // 44 vs 56 — playerB edge (trophy argument)
+  clutch:    { playerA: 2728, playerB: 1672 },  // 62 vs 38 — playerA dominant
+  skill:     { playerA: 2340, playerB: 1860 },  // 56 vs 44 — playerA edge
+  mvp:       { playerA: 1044, playerB: 2556 },  // 29 vs 71 — playerB dominant
+  mentality: { playerA: 3185, playerB: 1215 },  // 72 vs 28 — mentality crushes
+  defense:   { playerA: 1920, playerB: 1680 },  // 53 vs 47 — close, slight playerA
+  finals:    { playerA: 1260, playerB: 2340 },  // 35 vs 65 — playerB data advantage
+  teammates: { playerA: 2640, playerB: 1760 },  // 60 vs 40 — loyalty narrative
+  era:       { playerA: 2860, playerB: 1540 },  // 65 vs 35 — playerA cultural icon
+  iconic:    { playerA: 2475, playerB: 2025 },  // 55 vs 45 — close
+  goat:      { playerA: 1890, playerB: 2310 },  // 45 vs 55 — playerB edge
+  loyalty:   { playerA: 2912, playerB: 1288 },  // 69 vs 31 — one-club loyalty resonates
 };
 
 // ── Internal helpers ───────────────────────────────────────────────────
@@ -104,10 +104,10 @@ function save(data: StoredData): void {
 /**
  * Record a vote for a topic.  Increments the count for the chosen side.
  */
-export function recordVote(topicId: string, winner: "kobe" | "lebron"): void {
+export function recordVote(topicId: string, winner: "playerA" | "playerB"): void {
   const data = load();
   if (!data.topics[topicId]) {
-    data.topics[topicId] = { kobe: 0, lebron: 0 };
+    data.topics[topicId] = { playerA: 0, playerB: 0 };
   }
   data.topics[topicId][winner] += 1;
   save(data);
@@ -118,14 +118,14 @@ export function recordVote(topicId: string, winner: "kobe" | "lebron"): void {
  */
 export function getTopicStats(topicId: string): TopicStats {
   const data = load();
-  const topic = data.topics[topicId] ?? { kobe: 0, lebron: 0 };
-  const total = topic.kobe + topic.lebron;
+  const topic = data.topics[topicId] ?? { playerA: 0, playerB: 0 };
+  const total = topic.playerA + topic.playerB;
   return {
-    kobeCount: topic.kobe,
-    lebronCount: topic.lebron,
+    playerACount: topic.playerA,
+    playerBCount: topic.playerB,
     total,
-    kobePercent: total > 0 ? Math.round((topic.kobe / total) * 100) : 50,
-    lebronPercent: total > 0 ? Math.round((topic.lebron / total) * 100) : 50,
+    playerAPercent: total > 0 ? Math.round((topic.playerA / total) * 100) : 50,
+    playerBPercent: total > 0 ? Math.round((topic.playerB / total) * 100) : 50,
   };
 }
 
@@ -135,25 +135,25 @@ export function getTopicStats(topicId: string): TopicStats {
  */
 export function getGlobalStats(): GlobalStats {
   const data = load();
-  let totalKobe = 0;
-  let totalLebron = 0;
+  let totalPlayerA = 0;
+  let totalPlayerB = 0;
 
   // Only aggregate the 12 main topics for the "war" banner
   const mainTopicIds = Object.keys(BASELINE);
   for (const id of mainTopicIds) {
     const t = data.topics[id];
     if (t) {
-      totalKobe += t.kobe;
-      totalLebron += t.lebron;
+      totalPlayerA += t.playerA;
+      totalPlayerB += t.playerB;
     }
   }
 
-  const total = totalKobe + totalLebron;
+  const total = totalPlayerA + totalPlayerB;
   return {
-    totalKobe,
-    totalLebron,
+    totalPlayerA,
+    totalPlayerB,
     total,
-    kobePercent: total > 0 ? Math.round((totalKobe / total) * 100) : 50,
-    lebronPercent: total > 0 ? Math.round((totalLebron / total) * 100) : 50,
+    playerAPercent: total > 0 ? Math.round((totalPlayerA / total) * 100) : 50,
+    playerBPercent: total > 0 ? Math.round((totalPlayerB / total) * 100) : 50,
   };
 }

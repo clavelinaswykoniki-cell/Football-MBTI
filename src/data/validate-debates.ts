@@ -74,24 +74,24 @@ for (const mId of matchups) {
       failed = true;
     }
 
-    // Check kobe structure (player A)
-    if (!topic.kobe || !topic.kobe.claim || !topic.kobe.points || !topic.kobe.punchline) {
-      console.error(`❌ Topic ${topic.id} is missing kobe/Player A structure`);
+    // Check playerA structure (player A)
+    if (!topic.playerA || !topic.playerA.claim || !topic.playerA.points || !topic.playerA.punchline) {
+      console.error(`❌ Topic ${topic.id} is missing playerA/Player A structure`);
       failed = true;
     } else {
-      if (topic.kobe.points.length !== 3) {
-        console.error(`❌ Topic ${topic.id} kobe points length is not exactly 3`);
+      if (topic.playerA.points.length !== 3) {
+        console.error(`❌ Topic ${topic.id} playerA points length is not exactly 3`);
         failed = true;
       }
     }
 
-    // Check lebron structure (player B)
-    if (!topic.lebron || !topic.lebron.claim || !topic.lebron.points || !topic.lebron.punchline) {
-      console.error(`❌ Topic ${topic.id} is missing lebron/Player B structure`);
+    // Check playerB structure (player B)
+    if (!topic.playerB || !topic.playerB.claim || !topic.playerB.points || !topic.playerB.punchline) {
+      console.error(`❌ Topic ${topic.id} is missing playerB/Player B structure`);
       failed = true;
     } else {
-      if (topic.lebron.points.length !== 3) {
-        console.error(`❌ Topic ${topic.id} lebron points length is not exactly 3`);
+      if (topic.playerB.points.length !== 3) {
+        console.error(`❌ Topic ${topic.id} playerB points length is not exactly 3`);
         failed = true;
       }
     }

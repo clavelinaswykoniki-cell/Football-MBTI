@@ -53,22 +53,22 @@ export interface FbtiType {
 // ---------------------------------------------------------------------------
 
 export const fbtiQuestions: FbtiQuestion[] = [
-{
+  {
     id: 1,
     type: "binary",
     dimension: "HT",
     core: true,
-    question: "上帝塞给你一项足球超能力，你选哪个？",
-    optionA: { text: "巅峰罗纳尔多式的盘带，三人包夹也能蹚出条路", pole: "H" },
-    optionB: { text: "哈维式的传球视野，闭眼都能找到队友脚下", pole: "T" },
+    question: "球队 0-2 落后，作为当家球星你会怎么做？",
+    optionA: { text: "低头散步找化石，等队友把球传到脚下", pole: "H" },
+    optionB: { text: "下场通道重拳拍碎小球迷手机出气", pole: "T" },
   },
 {
     id: 2,
     type: "binary",
     dimension: "DF",
     core: true,
-    question: "朋友说\"梅西就是 GOAT\"，你的第一反应是？",
-    optionA: { text: "打开 Transfermarkt，8 个金球 / 672 球巴萨纪录甩脸上", pole: "D" },
+    question: "朋友发朋友圈说\"梅西就是真正的 GOAT\"，你的第一反应是？",
+    optionA: { text: "火速回复「Factos👍👀」，并附上 5 座欧冠的奖杯图", pole: "D" },
     optionB: { text: "不用查，加迪夫那球、卡塔尔那晚就够了", pole: "F" },
   },
 {
@@ -76,9 +76,9 @@ export const fbtiQuestions: FbtiQuestion[] = [
     type: "binary",
     dimension: "GP",
     core: true,
-    question: "最后一分钟点球，你最想看谁站上点球点？",
-    optionA: { text: "齐祖式勺子，优雅得像在喝下午茶", pole: "G" },
-    optionB: { text: "C 罗式抡圆了爆射，球网都给他打穿", pole: "P" },
+    question: "最后一分钟，你准备主罚绝杀任意球，你的前摇动作是？",
+    optionA: { text: "深吸一口气，拨弄一下发胶储备量充足的大背头，摆出圆规站姿", pole: "G" },
+    optionB: { text: "低调退后几步，摸摸胡子，一脚贴地斩直钻死角", pole: "P" },
   },
 {
     id: 4,
@@ -229,9 +229,9 @@ export const fbtiQuestions: FbtiQuestion[] = [
     type: "binary",
     dimension: "DF",
     core: false,
-    question: "你和朋友吵 C 罗 vs 梅西，你最常掏出来的论据是？",
-    optionA: { text: "金球数、欧冠数、国家队大赛奖杯一字排开", pole: "D" },
-    optionB: { text: "加迪夫倒钩、卡塔尔之夜、SIUUU 那种画面感", pole: "F" },
+    question: "评价球王的最终标准，你认为什么是硬通货？",
+    optionA: { text: "发胶厚度、跑动距离、以及能在沙特联赛拿金靴的自律", pole: "D" },
+    optionB: { text: "不需要数据，天天在球场散步也能靠体系拿金球", pole: "F" },
   },
 {
     id: 24,

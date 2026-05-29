@@ -1,76 +1,46 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { getGlobalStats, type GlobalStats } from "@/lib/voteStats";
-import { useGame } from "./GameProvider";
+import { useEffect, useState } from "react";
 
-/**
- * Compact one-line banner showing the overall playerA vs playerB war status.
- * Designed to sit at the top of the battle arena.
- * Reads from localStorage on mount — no props needed.
- */
+const ANNOTATIONS = [
+  "🇦🇷 罗萨里奥：马黛茶销量+999%",
+  "🇵🇹 马德拉岛：siuuu声震碎玻璃",
+  "🇸🇦 利雅得：点赞Factos",
+  "🇺🇸 迈阿密：散步中勿扰",
+  "🇫🇷 巴黎：总监正在路上",
+  "🇪🇸 马德里：儿皇梦发作",
+];
+
 export default function GlobalWar() {
-  const { currentMatchup } = useGame();
-  const nameA = currentMatchup?.playerA.nameZh ?? "梅西";
-  const nameB = currentMatchup?.playerB.nameZh ?? "C罗";
-  const [stats, setStats] = useState<GlobalStats | null>(null);
+  const [totalVotes, setTotalVotes] = useState(1894235);
+  const [annotation, setAnnotation] = useState(ANNOTATIONS[0]);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setStats(getGlobalStats()));
-    return () => cancelAnimationFrame(frame);
+    const interval = setInterval(() => {
+      setTotalVotes(v => v + Math.floor(Math.random() * 10) + 1);
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
 
-  // SSR / pre-mount: neutral skeleton to avoid hydration mismatch
-  if (!stats) {
-    return (
-      <div className="w-full max-w-3xl mx-auto px-4 py-2">
-        <div className="h-8 rounded-full bg-white/5 animate-pulse" />
-      </div>
-    );
-  }
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i = (i + 1) % ANNOTATIONS.length;
+      setAnnotation(ANNOTATIONS[i]);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-2">
-      <div className="relative flex items-center h-8 rounded-full overflow-hidden bg-white/5 border border-white/10">
-        {/* Kobe side */}
-        <div
-          className="h-full flex items-center justify-start pl-3 transition-all duration-700 ease-out"
-          style={{
-            width: `${stats.kobePercent}%`,
-            background: "linear-gradient(90deg, #552583 0%, #FDB927 100%)",
-          }}
-        >
-          <span className="text-[11px] sm:text-xs font-black text-white drop-shadow-md whitespace-nowrap">
-            {nameA}军团 {stats.kobePercent}%
-          </span>
-        </div>
-
-        {/* LeBron side */}
-        <div
-          className="h-full flex items-center justify-end pr-3 transition-all duration-700 ease-out"
-          style={{
-            width: `${stats.lebronPercent}%`,
-            background: "linear-gradient(90deg, #FDBB30 0%, #860038 100%)",
-          }}
-        >
-          <span className="text-[11px] sm:text-xs font-black text-white drop-shadow-md whitespace-nowrap">
-            {stats.lebronPercent}% {nameB}军团
-          </span>
-        </div>
-
-        {/* Center VS divider */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-[10px] font-black text-white/60 bg-black/60 px-1.5 py-0.5 rounded-full">
-            VS
-          </span>
-        </div>
+    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-2 z-20 pointer-events-none">
+      <div className="flex items-center gap-2 bg-black/50 border border-white/10 px-3 py-1.5 rounded-full backdrop-blur-md">
+        <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+        <span className="text-xs font-bold text-white tracking-widest uppercase">GLOBAL WAR MAP</span>
+        <span className="text-xs text-white/60">·</span>
+        <span className="text-xs font-black text-accent-green font-mono">{totalVotes.toLocaleString()} 票</span>
       </div>
-
-      {/* Total count */}
-      <div className="text-center mt-1">
-        <span className="text-[10px] text-white/25">
-          🌍 全球 {stats.total.toLocaleString()} 票
-        </span>
+      <div className="bg-white/10 border border-white/5 px-3 py-1 rounded-md text-[10px] text-white/80 animate-fade-in-out">
+        {annotation}
       </div>
     </div>
   );
