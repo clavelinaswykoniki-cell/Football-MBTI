@@ -1,5 +1,56 @@
 # Handoff
 
+## 2026-06-19 GitHub + Railway Release
+
+Current public football MBTI release is complete.
+
+### Live State
+
+- GitHub remote: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
+- Branch: `main`
+- Release commit: `058d81c` (`Ship football MBTI Railway-ready release`)
+- Public URL: https://fbti-web-production.up.railway.app/
+- Railway project/service: `fbti-football-mbti` / `fbti-web`
+- Railway deployment: `2bb77942-b55a-4749-a837-1bfbb2ce9c83`
+- Deployment status checked with `railway deployment list --json`: `SUCCESS`
+- Public HTTP check: `HTTP/2 200`
+- Public page title checked: `足球 MBTI`
+
+### Rollback Point
+
+- Backup branch pushed before this release: `origin/backup/pre-football-current-push-20260619-153749`
+- Backup branch points to the previous remote `main` commit: `231f886`
+- Prefer testing rollback with:
+
+```bash
+git switch -c rollback-test-football origin/backup/pre-football-current-push-20260619-153749
+```
+
+- If production needs rollback while preserving Git history, revert the runtime release commit and redeploy:
+
+```bash
+git switch main
+git revert 058d81c
+git push origin main
+railway up --detach --message "Rollback football release"
+```
+
+### Verification Used
+
+```bash
+npm run lint
+npm run build
+railway deployment list --json
+curl -sS -D - https://fbti-web-production.up.railway.app/ -o /tmp/fbti-current.html
+rg -n "<title>|足球|FBTI|MBTI|世界杯|点球" /tmp/fbti-current.html | head -30
+```
+
+### Notes For Next Session
+
+- Do not create a duplicate Railway service; continue using `fbti-football-mbti` / `fbti-web`.
+- The app is configured for Railway standalone serving with `output: "standalone"` and `npm run start`.
+- A preserved local untracked file from before the rebase was moved to `/tmp/football-refactor-local-20260619-153906.py`.
+
 ## Current Owner
 Next executor: `反重力` or next primary agent.
 

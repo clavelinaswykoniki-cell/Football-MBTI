@@ -65,7 +65,7 @@
 - **TypeScript**
 - **Tailwind CSS v4**
 - **localStorage** 投票种子数据（全球战况栏）
-- 部署：Railway（计划中）
+- 部署：Railway（已上线）
 
 ## 本地开发
 
@@ -73,7 +73,41 @@
 npm install
 npm run dev      # localhost:3000
 npm run build    # 生产打包
+npm run start    # standalone production server, Railway uses $PORT
 npm run lint
+```
+
+## 线上发布与回滚
+
+- GitHub: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
+- Public URL: https://fbti-web-production.up.railway.app/
+- Railway service: `fbti-football-mbti` / `fbti-web`
+- 2026-06-19 release commit: `058d81c` (`Ship football MBTI Railway-ready release`)
+- 2026-06-19 Railway deployment: `2bb77942-b55a-4749-a837-1bfbb2ce9c83`
+- Pre-release backup branch: `origin/backup/pre-football-current-push-20260619-153749`
+
+Validation chain used for the public release:
+
+```bash
+npm run lint
+npm run build
+railway deployment list --json
+curl -sS -D - https://fbti-web-production.up.railway.app/ -o /tmp/fbti-current.html
+```
+
+Rollback preference: preserve history. Create a test branch from the backup first:
+
+```bash
+git switch -c rollback-test-football origin/backup/pre-football-current-push-20260619-153749
+```
+
+If production must be rolled back on `main`, prefer reverting the release commit and redeploying rather than force-pushing:
+
+```bash
+git switch main
+git revert 058d81c
+git push origin main
+railway up --detach --message "Rollback football release"
 ```
 
 ## 项目结构
