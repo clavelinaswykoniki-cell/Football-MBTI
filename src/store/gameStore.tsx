@@ -66,7 +66,7 @@ const initialState: GameState = {
 
 export const useGameStore = create<GameStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
 
       vote: (topicId, winner) => set((state) => {
@@ -77,7 +77,7 @@ export const useGameStore = create<GameStore>()(
           playerBScore: nextVotes.filter((v) => v.winner === 'playerB').length,
         };
       }),
-      
+
       pickSide: (side, matchupId) => {
         const matchup = getMatchupById(matchupId);
         const { main, bonus } = getDebatesForMatchup(matchupId);
@@ -102,9 +102,9 @@ export const useGameStore = create<GameStore>()(
       nextRound: () => set((state) => ({
         currentRound: state.currentRound + 1
       })),
-      
+
       restart: () => set(initialState),
-      
+
       setGameStartTime: () => set({ gameStartTime: Date.now(), elapsedSeconds: 0 }),
       setElapsedSeconds: (seconds) => set({ elapsedSeconds: seconds }),
     }),

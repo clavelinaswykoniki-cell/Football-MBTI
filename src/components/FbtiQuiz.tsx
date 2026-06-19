@@ -9,19 +9,33 @@ import {
 } from "../data/fbti";
 
 interface FbtiQuizProps {
-  mode: "quick" | "full"; // 30 or 50 questions
+  mode: "blitz" | "quick" | "full";
   onComplete: (result: { code: string; answers: FbtiAnswer[] }) => void;
   onExit: () => void;
+}
+
+const BLITZ_QUESTION_IDS = [1, 2, 3, 4, 13, 6, 11, 8, 21, 18, 23, 16];
+const QUICK_EXTRA_QUESTION_IDS = [5, 7, 10, 15];
+
+function byIds(source: FbtiQuestion[], ids: number[]): FbtiQuestion[] {
+  return ids
+    .map((id) => source.find((question) => question.id === id))
+    .filter((question): question is FbtiQuestion => Boolean(question));
 }
 
 // ────────────────────────────────────────────────────────────
 export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
   // Filter questions once based on mode
   const questions: FbtiQuestion[] = useMemo(
-    () =>
-      (fbtiQuestions ?? []).filter(
-        (q: FbtiQuestion) => mode === "full" || q.core,
-      ),
+    () => {
+      const allQuestions = [...(fbtiQuestions ?? [])].sort((a, b) => a.id - b.id);
+      if (mode === "full") return allQuestions;
+      if (mode === "blitz") return byIds(allQuestions, BLITZ_QUESTION_IDS);
+
+      const coreQuestions = allQuestions.filter((q: FbtiQuestion) => q.core);
+      const quickExtras = byIds(allQuestions, QUICK_EXTRA_QUESTION_IDS);
+      return [...coreQuestions, ...quickExtras].sort((a, b) => a.id - b.id);
+    },
     [mode],
   );
 
@@ -45,7 +59,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
   );
 
   const q = questions[current] as FbtiQuestion | undefined;
-  const progress = total > 0 ? (current / total) * 100 : 0;
+  const progress = total > 0 ? ((current + 1) / total) * 100 : 0;
   const isLast = current + 1 >= total;
 
   // ── Advance to next question or finish ────────────────────
@@ -164,7 +178,7 @@ export default function FbtiQuiz({ mode, onComplete, onExit }: FbtiQuizProps) {
       {/* ─── Progress bar ───────────────────────────────── */}
       <div className="w-full max-w-xl mb-8">
         <div className="flex justify-between text-xs text-white/30 mb-2">
-          <span>FBTI 足球人格测试</span>
+          <span>{mode === "blitz" ? "FBTI 点球大战" : "FBTI 足球人格测试"}</span>
           <span>第 {current + 1}/{total} 题</span>
         </div>
         <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">

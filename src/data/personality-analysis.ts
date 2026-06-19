@@ -52,17 +52,11 @@ export interface PhilosophyReport {
 }
 
 /**
- * Basketball-native psychology report — two-layer system.
+ * Football-native psychology report — two-layer system.
  *
- * Layer 1: a 4-letter code in BASKETBALL semantics (not MBTI). Letters:
- *   pos 1: O (Offense进攻派) / D (Defense防守派)
- *   pos 2: T (Talent天赋派) / W (Work努力派)
- *   pos 3: S (Super-team转会派) / L (Loyalty一城派)
- *   pos 4: N (Numbers数据党) / E (Eye-test直觉党)
- *
- * Layer 2: each of the 16 codes maps to a named fan archetype with a
- * 灵魂球员 (soul player), emoji, tagline, and basketball-language
- * description / lifestyle sections.
+ * Layer 1: a 4-letter code in football-fan semantics (not MBTI).
+ * Layer 2: each code maps to a named fan archetype with a soul player,
+ * emoji, tagline, and football-language lifestyle sections.
  */
 export interface PsychologyReport {
   /** 4-letter code, e.g. "OTSE" — the wow-factor headline */
@@ -76,7 +70,7 @@ export interface PsychologyReport {
     value: string;      // chosen end e.g. "进攻派 (Offense)"
     explanation: string;
   }[];
-  /** Memorable basketball archetype name, e.g. "好莱坞之子" */
+  /** Memorable football archetype name */
   name: string;
   /** Emoji anchor for the card */
   emoji: string;
@@ -84,13 +78,13 @@ export interface PsychologyReport {
   soulPlayer: string;
   /** 1-line tagline for the type */
   tagline: string;
-  /** 3-5 basketball-flavored trait tags citing real votes where possible */
+  /** 3-5 football-flavored trait tags citing real votes where possible */
   traits: string[];
   /** 3-4 specific behavioral patterns concatenated */
   decisionStyle: string;
-  /** 恋爱中的你 — basketball-language */
+  /** 恋爱中的你 — football-language */
   inRelationship: string;
-  /** 职场中的你 — basketball-language */
+  /** 职场中的你 — football-language */
   atWork: string;
   /** Spirit-animal-style aside (not the soul player) */
   spiritAnimal: string;
@@ -951,16 +945,15 @@ function analyzePhilosophy(input: PhiloInput): PhilosophyReport {
 }
 
 // ---------------------------------------------------------------------------
-// Dimension 2: Psychology (心理画像) — 4-letter basketball code (NOT MBTI)
+// Dimension 2: Psychology (心理画像) — 4-axis football fan code (NOT MBTI)
 // ---------------------------------------------------------------------------
 
 /**
- * 4 axes, each one binary letter. Letters chosen because they actually
- * mean something in basketball:
- *   pos 1  O (Offense)     vs  D (Defense)
- *   pos 2  T (Talent)      vs  W (Work)
- *   pos 3  S (Super-team)  vs  L (Loyalty)
- *   pos 4  N (Numbers)     vs  E (Eye-test)
+ * 4 axes, each one binary football-fan tendency:
+ *   pos 1  持球大核 vs 角色球员
+ *   pos 2  数据党   vs 情怀党
+ *   pos 3  头条派   vs 冷门派
+ *   pos 4  一城派   vs 冠军派
  *
  * 16 combinations → 16 named archetypes with 灵魂球员 + emoji.
  */
@@ -970,7 +963,7 @@ type AxisB = "数据党" | "情怀党";
 type AxisC = "头条派" | "冷门派";
 type AxisD = "一城派" | "冠军派";
 
-interface BasketballType {
+interface FootballType {
   name: string;
   emoji: string;
   soulPlayer: string;
@@ -981,7 +974,7 @@ interface BasketballType {
  * Lookup key format: `${A}-${B}-${C}-${D}`
  * 16 total combinations — each maps to a distinct fan archetype.
  */
-const TYPE_TABLE: Record<string, BasketballType> = {
+const TYPE_TABLE: Record<string, FootballType> = {
   // 持球大核 × 数据党 × ...
   "持球大核-数据党-头条派-一城派": {
     name: "潘帕斯神之子",
@@ -1082,7 +1075,7 @@ const TYPE_TABLE: Record<string, BasketballType> = {
   },
 };
 
-const FALLBACK_TYPE: BasketballType = {
+const FALLBACK_TYPE: FootballType = {
   name: "薛定谔球迷",
   emoji: "🌀",
   soulPlayer: "汉斯·克兰克尔（你听都没听过的奥地利锋霸）",

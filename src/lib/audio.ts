@@ -32,7 +32,7 @@ class AudioPlayer {
       gain.connect(this.ctx.destination);
       osc.start();
       osc.stop(this.ctx.currentTime + 0.05);
-    } catch (e) {
+    } catch {
       // Ignore audio errors
     }
   }
@@ -52,7 +52,7 @@ class AudioPlayer {
       gain.connect(this.ctx.destination);
       osc.start();
       osc.stop(this.ctx.currentTime + 0.3);
-    } catch (e) {
+    } catch {
       // Ignore audio errors
     }
   }

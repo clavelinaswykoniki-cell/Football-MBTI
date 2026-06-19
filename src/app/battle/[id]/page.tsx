@@ -9,18 +9,10 @@ import { getMatchupById } from "@/data/matchups";
 import VoteReveal from "@/components/VoteReveal";
 import GlobalWar from "@/components/GlobalWar";
 import { useTilt } from "@/lib/useTilt";
-import { audio } from "@/lib/audio";
 import Link from "next/link";
 
 export default function BattlePage() {
   const { currentRound } = useGameStore();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
 
   return <BattleArenaRound key={currentRound} />;
 }
@@ -111,7 +103,7 @@ function BattleArenaRound() {
     if (votingLockedRef.current) return;
     votingLockedRef.current = true;
     setIsTransitioning(true); // Lock clicking!
-    
+
     // Add particle burst
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -121,7 +113,7 @@ function BattleArenaRound() {
     setAnimKey((k) => k + 1);
     setVoted(winner);
     setVarChecking(true);
-    
+
     const varDelay = isBonus ? 1500 : 800;
     varCheckingTimeoutRef.current = setTimeout(() => {
       setVarChecking(false);
@@ -131,7 +123,7 @@ function BattleArenaRound() {
         setIsTransitioning(false); // Unlock here!
       }, 300);
     }, varDelay);
-    
+
     setCountdown(5);
     vote(currentTopic.id, winner);
   };
@@ -145,7 +137,7 @@ function BattleArenaRound() {
       >
         ✕ 退出对决
       </Link>
-      
+
       <GlobalWar />
 
       <div className="flex items-center justify-between mb-4 sm:mb-6 slanted-sports">

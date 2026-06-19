@@ -1,9 +1,9 @@
 /**
- * Fake "global vote" stats system.
+ * Local fan-heat vote stats system.
  *
  * Stores per-topic vote counts in localStorage.
  * On first load, seeds realistic-looking baseline data so the numbers
- * feel like thousands of people have already voted.
+ * feel like a live stadium poll without claiming to be a real global backend.
  *
  * Every real user vote is added on top of the baseline.
  */
