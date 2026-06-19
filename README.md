@@ -82,8 +82,8 @@ npm run lint
 - GitHub: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
 - Public URL: https://fbti-web-production.up.railway.app/
 - Railway service: `fbti-football-mbti` / `fbti-web`
-- 2026-06-19 UI/game-loop release commit: `89ceb3b` (`Repair FBTI game loop and custom matchup flow`)
-- 2026-06-19 Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5`
+- 2026-06-19 current runtime commit: `adbe327` (`Fix battle auto-advance runtime warning`)
+- 2026-06-19 Railway deployment: `e6c8d467-2c77-4838-b890-2d6ce40c2da0`
 - Pre-release backup branch: `origin/backup/pre-football-current-push-20260619-153749`
 
 Validation chain used for the public release:
@@ -98,6 +98,7 @@ curl -sS -D - https://fbti-web-production.up.railway.app/ -o /tmp/fbti-current.h
 # /matchups, /battle/messi-vs-ronaldo/pick, /matchups/custom no horizontal overflow at 375/768/1360 px.
 # Direct battle/result route guards pass.
 # Custom Messi vs C罗 5-question flow reaches the result page.
+# Production browser smoke also covers first-round auto-advance and result-page console checks.
 ```
 
 Rollback preference: preserve history. Create a test branch from the backup first:
@@ -110,9 +111,17 @@ If production must be rolled back on `main`, prefer reverting the release commit
 
 ```bash
 git switch main
-git revert 89ceb3b
+git revert adbe327
 git push origin main
 railway up --detach --message "Rollback football release"
+```
+
+To roll back the full UI/game-loop repair, revert newest-to-oldest runtime commits:
+
+```bash
+git revert adbe327 89ceb3b
+git push origin main
+railway up --detach --message "Rollback FBTI UI game-loop repair"
 ```
 
 ## 项目结构

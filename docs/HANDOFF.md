@@ -88,10 +88,10 @@ The screenshot-driven UI/function/bug pass is implemented, pushed, deployed, and
 
 - GitHub remote: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
 - Branch: `main`
-- Runtime release commit: `89ceb3b` (`Repair FBTI game loop and custom matchup flow`)
+- Runtime release commit: `adbe327` (`Fix battle auto-advance runtime warning`)
 - Public URL: https://fbti-web-production.up.railway.app/
 - Railway project/service: `fbti-football-mbti` / `fbti-web`
-- Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5`
+- Railway deployment: `e6c8d467-2c77-4838-b890-2d6ce40c2da0`
 - Deployment status checked with `railway deployment list --json`: `SUCCESS`
 - Public HTTP check: `HTTP/2 200`
 
@@ -123,6 +123,7 @@ Production browser smoke passed:
 - Direct clean `/battle/messi-vs-ronaldo/result` redirects to `/matchups`.
 - Custom Messi vs C罗 can be selected, played through 5 generated rounds, and reaches the result page.
 - Result page does not leak the old `football-mbti.vercel.app` URL.
+- First-round auto-advance runs without React `setState`/hydration console errors.
 
 ### Remaining Risks
 

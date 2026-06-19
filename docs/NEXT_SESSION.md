@@ -17,8 +17,8 @@ FBTI has a repaired and deployed game loop:
 - C罗 / 大罗 custom display names are disambiguated.
 - Result confetti is deterministic to avoid hydration mismatch warnings.
 - Production is live at `https://fbti-web-production.up.railway.app/`.
-- Runtime release commit: `89ceb3b`.
-- Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5` (`SUCCESS`).
+- Runtime release commit: `adbe327`.
+- Railway deployment: `e6c8d467-2c77-4838-b890-2d6ce40c2da0` (`SUCCESS`).
 
 ## Verification Already Run
 
@@ -45,6 +45,7 @@ Production browser automation verified:
 - Clean direct `/battle/messi-vs-ronaldo/result` redirects to `/matchups`.
 - Custom Messi vs C罗 can be selected, played through 5 generated rounds, and reaches the result page.
 - The old `football-mbti.vercel.app` URL does not appear on the result page.
+- First-round auto-advance and result-page rendering have no React `setState`/hydration console errors in the smoke path.
 
 ## Highest Priority Next Step
 
