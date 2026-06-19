@@ -82,8 +82,8 @@ npm run lint
 - GitHub: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
 - Public URL: https://fbti-web-production.up.railway.app/
 - Railway service: `fbti-football-mbti` / `fbti-web`
-- 2026-06-19 release commit: `058d81c` (`Ship football MBTI Railway-ready release`)
-- 2026-06-19 Railway deployment: `2bb77942-b55a-4749-a837-1bfbb2ce9c83`
+- 2026-06-19 UI/game-loop release commit: `89ceb3b` (`Repair FBTI game loop and custom matchup flow`)
+- 2026-06-19 Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5`
 - Pre-release backup branch: `origin/backup/pre-football-current-push-20260619-153749`
 
 Validation chain used for the public release:
@@ -91,8 +91,13 @@ Validation chain used for the public release:
 ```bash
 npm run lint
 npm run build
+git diff --check
 railway deployment list --json
 curl -sS -D - https://fbti-web-production.up.railway.app/ -o /tmp/fbti-current.html
+# Production browser smoke:
+# /matchups, /battle/messi-vs-ronaldo/pick, /matchups/custom no horizontal overflow at 375/768/1360 px.
+# Direct battle/result route guards pass.
+# Custom Messi vs C罗 5-question flow reaches the result page.
 ```
 
 Rollback preference: preserve history. Create a test branch from the backup first:
@@ -105,7 +110,7 @@ If production must be rolled back on `main`, prefer reverting the release commit
 
 ```bash
 git switch main
-git revert 058d81c
+git revert 89ceb3b
 git push origin main
 railway up --detach --message "Rollback football release"
 ```

@@ -60,7 +60,7 @@ Local browser automation passed:
 
 ### Next Recommended Step
 
-After explicit user approval, deploy to Railway and repeat the same critical live checks against `https://fbti-web-production.up.railway.app/`.
+Deployment is complete. Next useful check is a manual Safari pass with the sidebar open, because the original screenshot came from Safari and may include browser chrome/sidebar constraints that clean Chromium does not reproduce.
 
 ## 2026-06-19 User Feedback Review
 
@@ -80,9 +80,59 @@ Recommended next implementation pass:
 4. Fix share URL source.
 5. Run responsive browser checks on `/matchups`, `/battle/[id]/pick`, `/battle/[id]`, `/battle/[id]/result`, and `/fbti`.
 
-## 2026-06-19 GitHub + Railway Release
+## 2026-06-19 FBTI UI/Game Loop Repair Release
 
-Current public football MBTI release is complete.
+The screenshot-driven UI/function/bug pass is implemented, pushed, deployed, and smoke-tested on production.
+
+### Live State
+
+- GitHub remote: `git@github.com:clavelinaswykoniki-cell/Football-MBTI.git`
+- Branch: `main`
+- Runtime release commit: `89ceb3b` (`Repair FBTI game loop and custom matchup flow`)
+- Public URL: https://fbti-web-production.up.railway.app/
+- Railway project/service: `fbti-football-mbti` / `fbti-web`
+- Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5`
+- Deployment status checked with `railway deployment list --json`: `SUCCESS`
+- Public HTTP check: `HTTP/2 200`
+
+### What Changed
+
+- Rebuilt `/matchups` as a clear fixture selector with fixed cards plus a working custom matchup entry.
+- Added `/matchups/custom` for searchable two-player custom debates.
+- Restored a responsive large-card `/battle/[id]/pick` experience matching the user's desired direction.
+- Added atomic battle start/reset state via `startBattle(matchupId, side)`.
+- Guarded battle/result routes against missing or stale persisted state.
+- Fixed result share URL to use current origin instead of the old Vercel host.
+- Reworded fake global heat into local fan-heat sample language backed by local vote stats.
+- Fixed custom-topic persona lookup and C罗 / 大罗 display-name ambiguity.
+
+### Verification Used
+
+```bash
+npm run lint
+npm run build
+git diff --check
+railway deployment list --json
+curl -sS -D - https://fbti-web-production.up.railway.app/ -o /tmp/fbti-current.html
+```
+
+Production browser smoke passed:
+
+- `/matchups`, `/battle/messi-vs-ronaldo/pick`, and `/matchups/custom` have no horizontal overflow at 375, 768, and 1360 px.
+- Direct clean `/battle/messi-vs-ronaldo` redirects to `/battle/messi-vs-ronaldo/pick`.
+- Direct clean `/battle/messi-vs-ronaldo/result` redirects to `/matchups`.
+- Custom Messi vs C罗 can be selected, played through 5 generated rounds, and reaches the result page.
+- Result page does not leak the old `football-mbti.vercel.app` URL.
+
+### Remaining Risks
+
+- The original screenshot's exact source is still not identified. It did not match the live HTML or searchable Git history at review time.
+- Custom matchups intentionally use generated 4+1 quick debates, not handcrafted 12+3 fixed-matchup content.
+- Browser automation used clean Chromium. If Safari sidebar layout is the critical target, manually recheck Safari.
+
+## Previous 2026-06-19 GitHub + Railway Release
+
+The earlier Railway-ready release is superseded by the UI/game-loop repair release above.
 
 ### Live State
 
@@ -92,7 +142,7 @@ Current public football MBTI release is complete.
 - Public URL: https://fbti-web-production.up.railway.app/
 - Railway project/service: `fbti-football-mbti` / `fbti-web`
 - Railway deployment: `2bb77942-b55a-4749-a837-1bfbb2ce9c83`
-- Deployment status checked with `railway deployment list --json`: `SUCCESS`
+- Deployment status after latest release: `REMOVED`
 - Public HTTP check: `HTTP/2 200`
 - Public page title checked: `足球 MBTI`
 
@@ -161,4 +211,4 @@ All tests and compilation suites passed completely:
 None. All factual issues highlighted in `FACT_RULES.md` are 100% avoided and verified through both rigorous manual drafting and precise automated script validations.
 
 ## Next Recommended Step
-- Deploy to Railway (the primary web target) and verify the interactive voting flow on live matchups.
+- Run a manual Safari check with the sidebar open if the original screenshot layout is the final target device/browser state.

@@ -2,7 +2,7 @@
 
 ## Current State
 
-FBTI has a repaired local game loop:
+FBTI has a repaired and deployed game loop:
 
 - `/matchups` has fixed matchup cards plus a working custom matchup entry.
 - `/matchups/custom` lets users pick two players and launches a generated custom debate.
@@ -16,6 +16,9 @@ FBTI has a repaired local game loop:
 - Local fan-heat sample wording and banner now use localStorage vote stats, not a fake global counter.
 - C罗 / 大罗 custom display names are disambiguated.
 - Result confetti is deterministic to avoid hydration mismatch warnings.
+- Production is live at `https://fbti-web-production.up.railway.app/`.
+- Runtime release commit: `89ceb3b`.
+- Railway deployment: `65968809-1159-4f7c-9a67-dbb5b16121f5` (`SUCCESS`).
 
 ## Verification Already Run
 
@@ -35,9 +38,17 @@ Local browser automation verified:
 - `同场再来` and stale result guards work after replay.
 - Focused post-review regression also passed for custom copy, C罗 short name, heat wording, result sharing, and result overflow.
 
+Production browser automation verified:
+
+- No horizontal overflow on `/matchups`, `/battle/messi-vs-ronaldo/pick`, and `/matchups/custom` at 375, 768, and 1360 px.
+- Clean direct `/battle/messi-vs-ronaldo` redirects to `/battle/messi-vs-ronaldo/pick`.
+- Clean direct `/battle/messi-vs-ronaldo/result` redirects to `/matchups`.
+- Custom Messi vs C罗 can be selected, played through 5 generated rounds, and reaches the result page.
+- The old `football-mbti.vercel.app` URL does not appear on the result page.
+
 ## Highest Priority Next Step
 
-Deploy to Railway only after explicit user approval, then verify the live URL with the same critical flows.
+Run a manual Safari check with the sidebar open if reproducing the user's exact screenshot environment is required.
 
 ## Residual Risks
 
