@@ -47,6 +47,7 @@ function BattleArenaRound() {
   const votingLockedRef = useRef(false);
   const varCheckingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const flashTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const autoAdvanceQueuedRef = useRef(false);
 
   // useTilt hooks
   const tiltA = useTilt(10);
@@ -78,19 +79,25 @@ function BattleArenaRound() {
   }, []);
 
   useEffect(() => {
-    if (!voted) return;
-    const interval = setInterval(() => {
-      setCountdown((c) => {
-        if (c === null || c <= 1) {
-          clearInterval(interval);
-          handleNextRound();
-          return null;
-        }
-        return c - 1;
-      });
+    autoAdvanceQueuedRef.current = false;
+  }, [currentTopic?.id]);
+
+  useEffect(() => {
+    if (!voted || countdown === null) return;
+    if (countdown <= 0) {
+      if (!autoAdvanceQueuedRef.current) {
+        autoAdvanceQueuedRef.current = true;
+        handleNextRound();
+      }
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setCountdown((c) => (c === null ? null : Math.max(0, c - 1)));
     }, 1000);
-    return () => clearInterval(interval);
-  }, [voted, handleNextRound]);
+
+    return () => clearTimeout(timer);
+  }, [countdown, handleNextRound, voted, currentTopic?.id]);
 
   const statBomb = useMemo(() => {
     if (!voted || !currentTopic) return null;
