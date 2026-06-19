@@ -1,5 +1,85 @@
 # Handoff
 
+## 2026-06-19 Gameplay/UI/Bug Fix Pass
+
+Current local implementation is repaired and verified.
+
+### Completed
+
+- Added project workflow entry files: `CODEX.md` and `docs/NEXT_SESSION.md`.
+- Added atomic battle start in `src/store/gameStore.tsx`.
+- Guarded direct `/battle/[id]` and `/battle/[id]/result` against stale or missing persisted state.
+- Rebuilt `/matchups` into a stronger fixture-selection screen and added a working custom matchup entry.
+- Added `/matchups/custom` with a searchable player picker and explicit custom battle launch.
+- Reworked `/battle/[id]/pick` into a responsive large-card stand-selection screen.
+- Added explicit `下一题` / `查看判决书` actions after voting.
+- Connected vote recording to local fan-heat stats and changed copy away from fake "global" certainty.
+- Changed the heat banner to read local aggregate vote stats instead of randomly incrementing a large number.
+- Fixed result-page actions:
+  - `同场再来` returns to the same matchup pick page.
+  - `换一场对决` clears state and returns to matchup selection.
+- Fixed share copy in debate result and FBTI result to use the current origin instead of the old Vercel URL.
+- Made persona/roast/FUT stats more matchup-aware through semantic and suffix matching.
+- Clarified custom matchup as a 4+1 / 5-question quick flow in UI and README.
+- Fixed custom short names for C罗 / 大罗 ambiguity.
+- Replaced randomized result confetti with deterministic pieces to avoid hydration mismatch warnings.
+- Removed `@ts-nocheck` from `Result.tsx`.
+- Removed stale missing-store calls from legacy `MatchupSelect` and `PickSide`.
+
+### Verification
+
+Commands passed:
+
+```bash
+npm run lint
+npm run build
+git diff --check
+```
+
+Local browser automation passed:
+
+- `/matchups`, `/battle/messi-vs-ronaldo/pick`, `/matchups/custom` at 375, 768, 1024, and 1360 px: no horizontal overflow.
+- Direct `/battle/messi-vs-ronaldo`: redirects to pick side.
+- Direct `/battle/messi-vs-ronaldo/result`: redirects to matchups.
+- Custom matchup path: select two players -> pick side -> complete 5 generated rounds -> result page.
+- Custom votes write into `goat-debate-global-votes`.
+- `同场再来` returns to pick side.
+- Stale result after replay redirects to `/matchups`.
+- Focused regression after reviewer feedback:
+  - custom page copy says 4+1 quick flow
+  - selected custom Messi vs Cristiano displays `梅西` and `C罗`
+  - custom pick side shows `我站梅西` and `我站C罗`
+  - heat display uses `LOCAL FAN HEAT` and `球迷热度样本`, with no `全球投票` / `全网`
+  - result share view has no old Vercel URL and no horizontal overflow
+
+### Remaining Risks
+
+- The original screenshot's exact source is still not identified. It did not match current live HTML or searchable Git history at review time.
+- Custom matchups are quick generated 4+1 debates, not handcrafted 12+3 fixed-matchup content.
+- Browser automation used clean Chromium. Before public redeploy, manually check Safari with the sidebar open if that is the target failure mode.
+
+### Next Recommended Step
+
+After explicit user approval, deploy to Railway and repeat the same critical live checks against `https://fbti-web-production.up.railway.app/`.
+
+## 2026-06-19 User Feedback Review
+
+Created `docs/UX_FEEDBACK_2026-06-19.md` from the user's screenshot and a live/public-source check.
+
+Key findings:
+- The screenshot UI ("选择你的赛前立场", "CHOOSE YOUR STAND", "LEFT WING") does not match current live HTML or searchable Git history. Treat this as a P0 source/deployment/cache mismatch before editing UI.
+- Current live `/battle/messi-vs-ronaldo/pick` has no horizontal overflow at a 1360px viewport, but the screenshot's large-card version would need tighter responsive constraints if restored.
+- `/matchups` advertises "自选对比", while the current route only renders 8 fixed matchups. Stale custom matchup components call store methods not present in `gameStore.tsx`.
+- New battle/reselect behavior should be made atomic in the store rather than split between route `useEffect` reset and `pickSide()`.
+- FBTI result share copy points to `football-mbti.vercel.app`; production is currently `fbti-web-production.up.railway.app`.
+
+Recommended next implementation pass:
+1. Confirm screenshot source: exact URL path, Safari cache state, and Railway deployment id.
+2. Fix the battle start/reset contract with a single store action and route guard.
+3. Ship or remove custom matchup UI.
+4. Fix share URL source.
+5. Run responsive browser checks on `/matchups`, `/battle/[id]/pick`, `/battle/[id]`, `/battle/[id]/result`, and `/fbti`.
+
 ## 2026-06-19 GitHub + Railway Release
 
 Current public football MBTI release is complete.

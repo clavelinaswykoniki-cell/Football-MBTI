@@ -1,7 +1,7 @@
-// @ts-nocheck
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { useGame } from "./GameProvider";
 import { getDebatesForMatchup } from "@/data/debate-loader";
 import { getPersona, getRoast } from "@/data/personas";
@@ -11,19 +11,18 @@ import AiJudge from "./AiJudge";
 import PersonalityReportCard from "./PersonalityReport";
 
 const CONFETTI_COLORS = ["#FFD700", "#A50044", "#FFFFFF", "#0052B4", "#E32119", "#85B3D1", "#6CABDD"];
+const CONFETTI_PIECES = Array.from({ length: 60 }, (_, i) => ({
+  id: i,
+  left: (i * 37) % 100,
+  delay: (i % 12) / 10,
+  duration: 2.5 + (i % 5) * 0.4,
+  color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+  rotate: (i * 53) % 360,
+}));
 
 function Confetti() {
-  const [pieces] = useState(() =>
-    Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 1.2,
-      duration: 2.5 + Math.random() * 2,
-      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
-      rotate: Math.random() * 360,
-    })),
-  );
   const [visible, setVisible] = useState(true);
+
   useEffect(() => {
     const t = setTimeout(() => setVisible(false), 5000);
     return () => clearTimeout(t);
@@ -31,7 +30,7 @@ function Confetti() {
   if (!visible) return null;
   return (
     <div aria-hidden className="pointer-events-none">
-      {pieces.map((p) => (
+      {CONFETTI_PIECES.map((p) => (
         <span
           key={p.id}
           className="confetti-piece"
@@ -49,11 +48,24 @@ function Confetti() {
 }
 
 export default function Result() {
-  const { playerAScore, playerBScore, votes, side, restart, backToMatchupSelect, totalRounds, elapsedSeconds, matchupId, currentMatchup } = useGame();
+  const router = useRouter();
+  const params = useParams();
+  const routeMatchupId = params?.id ? decodeURIComponent(params.id as string) : null;
+  const { playerAScore, playerBScore, votes, side, restart, totalRounds, elapsedSeconds, matchupId, currentMatchup } = useGame();
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const pA = currentMatchup?.playerA;
   const pB = currentMatchup?.playerB;
   const nameA = pA?.nameZh ?? "梅西";
   const nameB = pB?.nameZh ?? "C罗";
+  const publicUrl = typeof window !== "undefined" ? window.location.origin : "https://fbti-web-production.up.railway.app";
+  const shareUrl = typeof window !== "undefined" ? window.location.href : publicUrl;
+
+  useEffect(() => {
+    if (!side || votes.length < totalRounds || !matchupId || (routeMatchupId && routeMatchupId !== matchupId)) {
+      router.replace("/matchups");
+    }
+  }, [matchupId, routeMatchupId, router, side, totalRounds, votes.length]);
 
   const { main: debates, bonus: bonusDebates } = useMemo(
     () => getDebatesForMatchup(matchupId),
@@ -72,7 +84,35 @@ export default function Result() {
   );
 
   const futStats = useMemo(() => {
-    const getWinnerOf = (id: string) => votes.find((v) => v.topicId === id)?.winner;
+    const aliases: Record<string, string[]> = {
+      rings: ["honors"],
+      mvp: ["individual", "honors"],
+      finals: ["club", "status"],
+      clutch: ["clutch"],
+      skill: ["style", "peak-vs-peak"],
+      mentality: ["peak", "regrets", "injuries", "choices", "scandals"],
+      defense: ["tactics"],
+      teammates: ["teammates"],
+      era: ["influence", "legacy", "impact"],
+      iconic: ["influence", "legacy", "impact"],
+      goat: ["goat", "status", "honors"],
+      loyalty: ["longevity", "choices"],
+      whatif_1v1: ["1v1", "peak-vs-peak"],
+      whatif_swap: ["swap"],
+    };
+
+    const getWinnerOf = (id: string) => {
+      const ids = [id, ...(aliases[id] ?? [])];
+      for (const candidate of ids) {
+        const exact = votes.find((v) => v.topicId === candidate)?.winner;
+        if (exact) return exact;
+        const suffixed = votes.find((v) => v.topicId.endsWith(`_${candidate}`))?.winner;
+        if (suffixed) return suffixed;
+        const custom = votes.find((v) => v.topicId.includes(`-${candidate}-`) || v.topicId.endsWith(`-${candidate}`))?.winner;
+        if (custom) return custom;
+      }
+      return undefined;
+    };
     
     let pac = 75;
     let sho = 75;
@@ -84,36 +124,36 @@ export default function Result() {
     if (getWinnerOf("clutch") === "playerB") pac += 12;
     else if (getWinnerOf("clutch") === "playerA") pac += 8;
     if (getWinnerOf("whatif_1v1") === "playerB") pac += 8;
-    else pac += 4;
+    else if (getWinnerOf("whatif_1v1") === "playerA") pac += 4;
     if (elapsedSeconds && elapsedSeconds < 90) pac += 4;
     
     if (getWinnerOf("finals") === "playerB") sho += 12;
     else if (getWinnerOf("finals") === "playerA") sho += 8;
     if (getWinnerOf("mvp") === "playerB") sho += 8;
-    else sho += 5;
+    else if (getWinnerOf("mvp") === "playerA") sho += 5;
     if (getWinnerOf("clutch") === "playerB") sho += 4;
     
     if (getWinnerOf("skill") === "playerA") pas += 12;
     else if (getWinnerOf("skill") === "playerB") pas += 6;
     if (getWinnerOf("teammates") === "playerA") pas += 8;
-    else pas += 4;
+    else if (getWinnerOf("teammates") === "playerB") pas += 4;
     if (getWinnerOf("whatif_swap") === "playerA") pas += 4;
     
     if (getWinnerOf("skill") === "playerA") dri += 12;
     else if (getWinnerOf("skill") === "playerB") dri += 6;
     if (getWinnerOf("iconic") === "playerA") dri += 8;
-    else dri += 4;
+    else if (getWinnerOf("iconic") === "playerB") dri += 4;
     if (getWinnerOf("whatif_1v1") === "playerA") dri += 4;
     
     if (getWinnerOf("defense") === "playerA") def += 25;
     else if (getWinnerOf("defense") === "playerB") def += 15;
     if (getWinnerOf("loyalty") === "playerA") def += 15;
-    else def += 10;
+    else if (getWinnerOf("loyalty") === "playerB") def += 10;
     
     if (getWinnerOf("mentality") === "playerB") phy += 15;
     else if (getWinnerOf("mentality") === "playerA") phy += 8;
     if (getWinnerOf("whatif_1v1") === "playerB") phy += 12;
-    else phy += 6;
+    else if (getWinnerOf("whatif_1v1") === "playerA") phy += 6;
     if (getWinnerOf("defense") === "playerB") phy += 4;
     
     const clamp = (val: number) => Math.max(30, Math.min(99, val));
@@ -135,6 +175,8 @@ export default function Result() {
 
   const soulPlayer = personalityReport?.psychology?.soulPlayer;
   const matchupMemes = getMatchupMemes(matchupId);
+  const sideTribe = side === "playerA" ? `${nameA}派` : `${nameB}派`;
+  const tags = `#足球MBTI #足球辩论 #${nameA.replace(/\s+/g, "")} #${nameB.replace(/\s+/g, "")} #懂球帝`;
   const shareText = persona
     ? `⚽ 震惊！VAR确认判罚，我的足球MBTI是这个！\n` +
       `🔥 测出来了！我是「${persona.title}」${persona.emoji} ${soulPlayer ? `(灵魂球星: ${soulPlayer})` : ""}\n` +
@@ -143,21 +185,45 @@ export default function Result() {
       `💬 AI法庭毒舌判决：\n` +
       `“${roast}”\n\n` +
       `👇 1分钟测出你的球迷人格，不服来辩：\n` +
-      `🔗 https://football-mbti.vercel.app\n\n` +
-      `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`
+      `🔗 ${publicUrl}\n\n` +
+      tags
     : `⚽ 终极对决！${nameA} vs ${nameB}，你到底站谁？\n` +
       `📊 我的投票战绩：${playerAScore} : ${playerBScore}\n` +
       `👇 1分钟生成你的专属球迷判决书：\n` +
-      `🔗 https://football-mbti.vercel.app\n\n` +
-      `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`;
+      `🔗 ${publicUrl}\n\n` +
+      tags;
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({ title: "足球 MBTI · 我的球迷人格", text: shareText, url: window.location.href });
+      navigator.share({ title: "足球 MBTI · 我的球迷人格", text: shareText, url: shareUrl });
     } else {
-      navigator.clipboard.writeText(shareText + "\n" + window.location.href);
-      alert("已复制到剪贴板！分享给你的球友看看");
+      navigator.clipboard.writeText(shareText + "\n" + shareUrl).then(
+        () => {
+          setCopied(true);
+          setCopyFailed(false);
+          setTimeout(() => setCopied(false), 2000);
+        },
+        () => {
+          setCopied(false);
+          setCopyFailed(true);
+          setTimeout(() => setCopyFailed(false), 2000);
+        },
+      );
     }
+  };
+
+  const replayMatchup = () => {
+    if (!matchupId) {
+      router.push("/matchups");
+      return;
+    }
+    const next = encodeURIComponent(matchupId);
+    router.push(`/battle/${next}/pick`);
+  };
+
+  const changeMatchup = () => {
+    restart();
+    router.push("/matchups");
   };
 
   const [activeTab, setActiveTab] = useState<"report" | "court" | "review">("report");
@@ -225,7 +291,7 @@ export default function Result() {
                   <div className="h-px w-8 bg-yellow-500/20 my-2" />
                   
                   <div className="flex flex-col items-center">
-                    <span className="text-base font-black text-white/80">{side === "playerA" ? "M10" : "CR7"}</span>
+                    <span className="text-base font-black text-white/80">{side === "playerA" ? (pA?.number ?? "#10") : (pB?.number ?? "#7")}</span>
                     <span className="text-[9px] text-white/40 tracking-wider uppercase">Tribe</span>
                   </div>
                 </div>
@@ -310,7 +376,7 @@ export default function Result() {
               <div className="border-t border-yellow-500/10 pt-4 mt-4 flex items-center justify-between">
                 <div className="text-left">
                   <p className="text-[9px] text-white/30 uppercase tracking-widest font-bold">Loyalty Status</p>
-                  <p className="text-xs font-bold text-white/80">{side === "playerA" ? `${nameA}的狂热信徒` : `${nameB}的狂热信徒`}</p>
+                  <p className="text-xs font-bold text-white/80">{sideTribe} · {side === "playerA" ? `${nameA}的狂热信徒` : `${nameB}的狂热信徒`}</p>
                 </div>
                 {/* Gold Signatures */}
                 <div className="text-right slanted-sports">
@@ -411,22 +477,24 @@ export default function Result() {
               className="px-8 py-3 bg-gradient-to-r from-primary-color-a to-primary-color-b text-white font-bold rounded-full
                 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-primary-color-a/20"
             >
-              分享人格 + 结果 📤
+              分享判决书
             </button>
             <button
-              onClick={backToMatchupSelect}
+              onClick={changeMatchup}
               className="px-8 py-3 bg-gradient-to-r from-accent-color-a/80 to-accent-color-b/80 text-black font-bold rounded-full
                 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-accent-color-a/20"
             >
-              换个对决 →
+              换一场对决 →
             </button>
             <button
-              onClick={restart}
+              onClick={replayMatchup}
               className="px-6 py-2 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white/90 text-sm font-bold rounded-full
                 transition-all duration-200 cursor-pointer"
             >
-              再来一遍 🔄
+              同场再来
             </button>
+            {copied && <span className="text-xs font-bold text-accent-green">已复制分享文案</span>}
+            {copyFailed && <span className="text-xs font-bold text-red-300">复制失败，请手动分享链接</span>}
         </div>
         </div>
       )}

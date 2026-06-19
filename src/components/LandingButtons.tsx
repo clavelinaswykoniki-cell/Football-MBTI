@@ -13,13 +13,13 @@ export default function LandingButtons() {
         onClick={startGame}
         className="px-10 py-4 bg-gradient-to-r from-primary-color-a via-black to-primary-color-b text-white text-xl font-bold rounded-full border border-accent-green/30 hover:border-accent-green shadow-[0_0_15px_rgba(57,255,20,0.1)] hover:shadow-[0_0_25px_rgba(57,255,20,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
       >
-        ⚽ Submit to VAR
+        开始足球辩论
       </button>
       <button
         onClick={openFbtiEntry}
         className="px-10 py-4 bg-white/5 border border-white/15 text-white text-xl font-bold rounded-full hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
       >
-        📋 测足球 MBTI
+        测足球人格
       </button>
     </div>
   );

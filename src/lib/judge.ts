@@ -332,7 +332,7 @@ export function generateVerdict(data: JudgeRequest): JudgeResponse {
     confidence = pick([98, 99, 100]);
   } else if (loyalty <= 0.3 && totalRounds >= 5) {
     verdict = pick([
-      `选了站队${sideName}，票却全投给${otherName}——你是内鬼吧？本AI已将你的IP发送给全球反黑站。`,
+      `选了站队${sideName}，票却全投给${otherName}——你是内鬼吧？本AI已将你的IP发送给球迷反黑站。`,
       `忠诚度 ${loyaltyPct}%，这叛变速度比当年菲戈转会皇马还要丝滑。`,
     ]);
     analysis = `你口口声声说自己是 ${sideName} 的拥趸，但实际投票中却在疯狂给 ${otherName} 上分。本AI的反串黑检测雷达已经爆表。结论很明确：你是一个披着羊皮的狼，在赛博绿茵场上疯狂进行无间道表演。`;

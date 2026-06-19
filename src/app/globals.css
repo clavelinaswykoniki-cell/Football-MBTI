@@ -208,7 +208,7 @@ body {
   100% { transform: scale(2) translate(var(--tx), var(--ty)); opacity: 0; }
 }
 .particle-burst {
-  --tx: calc((Math.random() - 0.5) * 100px);
-  --ty: calc((Math.random() - 0.5) * 100px);
+  --tx: 0px;
+  --ty: 0px;
   animation: particle-burst-anim 0.5s ease-out forwards;
 }

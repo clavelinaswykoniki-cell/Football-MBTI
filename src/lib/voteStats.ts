@@ -130,22 +130,17 @@ export function getTopicStats(topicId: string): TopicStats {
 }
 
 /**
- * Get the aggregate vote breakdown across ALL seeded topics.
- * (Bonus / unknown topics are excluded so the global war stays clean.)
+ * Get the aggregate local heat breakdown across all stored topics.
+ * Includes seeded baseline topics plus any votes recorded in this browser.
  */
 export function getGlobalStats(): GlobalStats {
   const data = load();
   let totalPlayerA = 0;
   let totalPlayerB = 0;
 
-  // Only aggregate the 12 main topics for the "war" banner
-  const mainTopicIds = Object.keys(BASELINE);
-  for (const id of mainTopicIds) {
-    const t = data.topics[id];
-    if (t) {
-      totalPlayerA += t.playerA;
-      totalPlayerB += t.playerB;
-    }
+  for (const t of Object.values(data.topics)) {
+    totalPlayerA += t.playerA;
+    totalPlayerB += t.playerB;
   }
 
   const total = totalPlayerA + totalPlayerB;

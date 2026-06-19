@@ -29,9 +29,9 @@ function getCallout(
   if (myPercent <= 20) {
     return deterministicPick(
       [
-        `全球只有 ${myPercent}% 的人同意你——你的脑回路上是不是刻着 'Factos👍'？`,
+        `样本里只有 ${myPercent}% 支持你——你的脑回路上是不是刻着 'Factos👍'？`,
         `${myPercent}%？恭喜你，你的观点比大熊猫还稀有。`,
-        `${myPercent}% 同意你——另外 ${100 - myPercent}% 在笑。`,
+        `${myPercent}% 支持你——另外 ${100 - myPercent}% 正在摊手。`,
       ],
       topicId,
       votedFor
@@ -41,9 +41,9 @@ function getCallout(
   if (myPercent <= 30) {
     return deterministicPick(
       [
-        `只有 ${myPercent}% 的人同意你——你确定？`,
-        `${myPercent}% 的人站你这边。剩下 ${100 - myPercent}% 觉得你需要看眼科。`,
-        `全网 ${100 - myPercent}% 的人觉得你离谱——截图发群让他们评评理？`,
+        `样本里只有 ${myPercent}% 同意你——你确定？`,
+        `样本里 ${myPercent}% 站你这边。剩下 ${100 - myPercent}% 觉得你需要看眼科。`,
+        `这组样本里 ${100 - myPercent}% 觉得你离谱——截图发群让他们评评理？`,
       ],
       topicId,
       votedFor
@@ -53,9 +53,9 @@ function getCallout(
   if (myPercent <= 40) {
     return deterministicPick(
       [
-        `${myPercent}% 的人和你一样——少数派，但不孤单。`,
+        `${myPercent}% 的样本和你一样——少数派，但不孤单。`,
         `只有 ${myPercent}% 站你这边——要不要截图证明你的勇气？`,
-        `${100 - myPercent}% 的人不同意你。这是勇敢还是固执？`,
+        `${100 - myPercent}% 的样本不同意你。这是勇敢还是固执？`,
       ],
       topicId,
       votedFor
@@ -69,7 +69,7 @@ function getCallout(
   if (myPercent <= 70) {
     return deterministicPick(
       [
-        `${myPercent}% 的人和你一样——主流意见，但少数派不服。`,
+        `${myPercent}% 的样本和你一样——主流意见，但少数派不服。`,
         `你站在 ${myPercent}% 这边。安全牌？还是你真懂球？`,
       ],
       topicId,
@@ -81,8 +81,8 @@ function getCallout(
   return deterministicPick(
     [
       `${myPercent}% 压倒性支持——这还用辩？`,
-      `${myPercent}% 同意你。剩下那 ${100 - myPercent}% 建议回去补补课。`,
-      `你和 ${myPercent}% 的人想法一致——但真理不总在多数手中哦。`,
+      `${myPercent}% 支持你。剩下那 ${100 - myPercent}% 建议回去补补课。`,
+      `你和 ${myPercent}% 的样本想法一致——但真理不总在多数手中哦。`,
     ],
     topicId,
     votedFor
@@ -139,7 +139,7 @@ export default function VoteReveal({ topicId, votedFor, playerAName, playerBName
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <span className="text-xs font-bold text-white/40 tracking-wider uppercase">
-          🌍 全球投票
+          📊 球迷热度样本
         </span>
         <span className="text-xs text-white/30">
           {stats.total.toLocaleString()} 票

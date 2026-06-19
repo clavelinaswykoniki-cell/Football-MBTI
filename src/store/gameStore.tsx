@@ -43,6 +43,7 @@ interface GameState {
 
 interface GameStore extends GameState {
   vote: (topicId: string, winner: Side) => void;
+  startBattle: (matchupId: string, side: Side) => void;
   pickSide: (side: Side, matchupId: string) => void;
   backToMatchupSelect: () => void;
   nextRound: () => void;
@@ -70,7 +71,10 @@ export const useGameStore = create<GameStore>()(
       ...initialState,
 
       vote: (topicId, winner) => set((state) => {
-        const nextVotes = [...state.votes, { topicId, winner }];
+        const nextVotes = [
+          ...state.votes.filter((vote) => vote.topicId !== topicId),
+          { topicId, winner },
+        ];
         return {
           votes: nextVotes,
           playerAScore: nextVotes.filter((v) => v.winner === 'playerA').length,
@@ -78,25 +82,35 @@ export const useGameStore = create<GameStore>()(
         };
       }),
 
-      pickSide: (side, matchupId) => {
+      startBattle: (matchupId, side) => {
         const matchup = getMatchupById(matchupId);
         const { main, bonus } = getDebatesForMatchup(matchupId);
         const totalRounds = main.length + bonus.length;
         set({
+          ...initialState,
           side,
           matchupId,
-          currentMatchup: matchup,
+          currentMatchup: matchup ?? null,
           totalRounds,
           gameStartTime: Date.now(),
-          elapsedSeconds: 0,
+        });
+      },
+
+      pickSide: (side, matchupId) => {
+        const matchup = getMatchupById(matchupId);
+        const { main, bonus } = getDebatesForMatchup(matchupId);
+        set({
+          ...initialState,
+          side,
+          matchupId,
+          currentMatchup: matchup ?? null,
+          totalRounds: main.length + bonus.length,
+          gameStartTime: Date.now(),
         });
       },
 
       backToMatchupSelect: () => {
         set(initialState);
-        if (typeof window !== 'undefined') {
-          window.location.href = '/matchups';
-        }
       },
 
       nextRound: () => set((state) => ({

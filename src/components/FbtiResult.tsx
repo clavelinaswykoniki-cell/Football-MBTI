@@ -149,13 +149,14 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
 
   const letters = code.split("");
 
+  const publicUrl = typeof window !== "undefined" ? window.location.origin : "https://fbti-web-production.up.railway.app";
   const shareText = `⚽ 真的爆了！测完我的【足球MBTI】人傻了……\n` +
     `🤖 FBTI测出来我是：【${code}】${type.emoji}「${type.name}」\n` +
     `💬 “${type.tagline}”\n` +
     `⚡ 灵魂球星：${type.spiritPlayer}\n` +
     `😭 发到球迷群里直接炸锅，但也太准了吧！\n\n` +
     `👇 1分钟测出你的专属足球人格，不服来辩：\n` +
-    `🔗 https://football-mbti.vercel.app\n\n` +
+    `🔗 ${publicUrl}\n\n` +
     `#足球MBTI #球迷 #足球辩论 #梅西 #C罗 #懂球帝`;
 
   const handleShare = () => {
@@ -458,7 +459,7 @@ export default function FbtiResult({ code, answers, onRestart, onSwitchToDebate 
           className="flex-1 px-6 py-3 min-h-[48px] bg-gradient-to-r from-accent-color-a/80 to-accent-color-b/80 text-black font-bold rounded-full
             hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
         >
-          试试辩论模式
+          进入足球辩论
         </button>
       </div>
 

@@ -10,6 +10,7 @@ import VoteReveal from "@/components/VoteReveal";
 import GlobalWar from "@/components/GlobalWar";
 import { useTilt } from "@/lib/useTilt";
 import Link from "next/link";
+import { recordVote } from "@/lib/voteStats";
 
 export default function BattlePage() {
   const { currentRound } = useGameStore();
@@ -20,11 +21,11 @@ export default function BattlePage() {
 function BattleArenaRound() {
   const router = useRouter();
   const params = useParams();
-  const id = params.id as string;
+  const id = decodeURIComponent(params.id as string);
   const matchup = getMatchupById(id);
   const { main: d, bonus: bd } = getDebatesForMatchup(id);
   const allTopics = [...d, ...bd];
-  const { currentRound, vote, nextRound, playerAScore, playerBScore, elapsedSeconds, gameStartTime, setElapsedSeconds } = useGameStore();
+  const { currentRound, vote, nextRound, playerAScore, playerBScore, elapsedSeconds, gameStartTime, setElapsedSeconds, side, matchupId } = useGameStore();
 
   const isBonus = currentRound >= d.length;
   const currentTopic = allTopics[currentRound] ?? null;
@@ -41,7 +42,7 @@ function BattleArenaRound() {
   const [animKey, setAnimKey] = useState(0);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [varChecking, setVarChecking] = useState(false);
-  const [particles, setParticles] = useState<{ x: number, y: number, id: number }[]>([]);
+  const [particles, setParticles] = useState<{ x: number, y: number, tx: string, ty: string, id: number }[]>([]);
   const [flash, setFlash] = useState(false);
   const votingLockedRef = useRef(false);
   const varCheckingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -56,11 +57,18 @@ function BattleArenaRound() {
     if (next >= totalRounds) {
       const elapsed = gameStartTime ? Math.round((Date.now() - gameStartTime) / 1000) : elapsedSeconds;
       setElapsedSeconds(elapsed);
-      router.push(`/battle/${id}/result`);
+      router.push(`/battle/${encodeURIComponent(id)}/result`);
     } else {
       nextRound();
     }
   }, [currentRound, totalRounds, gameStartTime, elapsedSeconds, id, nextRound, router, setElapsedSeconds]);
+
+  useEffect(() => {
+    if (!matchup) return;
+    if (!side || matchupId !== id) {
+      router.replace(`/battle/${encodeURIComponent(id)}/pick`);
+    }
+  }, [id, matchup, matchupId, router, side]);
 
   useEffect(() => {
     return () => {
@@ -92,6 +100,17 @@ function BattleArenaRound() {
     return opposing || bombs[0];
   }, [voted, currentTopic, id]);
 
+  if (!matchup) {
+    return (
+      <div className="min-h-screen bg-[#030c06] px-4 py-10 text-white">
+        <Link href="/matchups" className="text-sm text-white/50 hover:text-white">
+          ← 返回对决列表
+        </Link>
+      </div>
+    );
+  }
+
+  if (!side || matchupId !== id) return null;
   if (!currentTopic) return null;
 
   const handleCardClick = (e: React.MouseEvent, winner: "playerA" | "playerB") => {
@@ -108,7 +127,13 @@ function BattleArenaRound() {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setParticles(p => [...p, { x, y, id: Date.now() }]);
+    setParticles(p => [...p, {
+      x,
+      y,
+      tx: `${Math.round((Math.random() - 0.5) * 90)}px`,
+      ty: `${Math.round((Math.random() - 0.5) * 90)}px`,
+      id: Date.now(),
+    }]);
 
     setAnimKey((k) => k + 1);
     setVoted(winner);
@@ -126,10 +151,11 @@ function BattleArenaRound() {
 
     setCountdown(5);
     vote(currentTopic.id, winner);
+    recordVote(currentTopic.id, winner);
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-4 py-4 sm:py-10 max-w-5xl mx-auto relative bg-[#030c06]" key={animKey}>
+    <div className="min-h-screen flex flex-col px-4 py-4 sm:py-8 max-w-5xl mx-auto relative bg-[#030c06]" key={animKey}>
       {flash && <div className="fixed inset-0 bg-white/10 backdrop-blur-[2px] z-[9999] pointer-events-none" style={{ animation: 'flash 0.3s ease-out' }} />}
       <Link
         href="/matchups"
@@ -194,7 +220,7 @@ function BattleArenaRound() {
             style={{ animation: "slide-in-left 0.6s ease-out", ...tiltA.style }}
           >
             {voted === "playerA" && particles.map(p => (
-              <div key={p.id} className="absolute w-2 h-2 bg-white rounded-full pointer-events-none particle-burst" style={{ left: p.x, top: p.y }} />
+              <div key={p.id} className="absolute w-2 h-2 bg-white rounded-full pointer-events-none particle-burst" style={{ left: p.x, top: p.y, "--tx": p.tx, "--ty": p.ty } as React.CSSProperties} />
             ))}
             <div className="flex items-center gap-2 mb-4">
               <span className="text-accent-color-a font-black text-lg">{pA?.number ?? "#10"}</span>
@@ -242,7 +268,7 @@ function BattleArenaRound() {
             style={{ animation: "slide-in-right 0.6s ease-out", ...tiltB.style }}
           >
             {voted === "playerB" && particles.map(p => (
-              <div key={p.id} className="absolute w-2 h-2 bg-white rounded-full pointer-events-none particle-burst" style={{ left: p.x, top: p.y }} />
+              <div key={p.id} className="absolute w-2 h-2 bg-white rounded-full pointer-events-none particle-burst" style={{ left: p.x, top: p.y, "--tx": p.tx, "--ty": p.ty } as React.CSSProperties} />
             ))}
             <div className="flex items-center gap-2 mb-4">
               <span className="text-accent-color-b font-black text-lg">{pB?.number ?? "#7"}</span>
@@ -301,9 +327,18 @@ function BattleArenaRound() {
       )}
 
       {voted && (
-        <p className="text-center text-white/25 text-xs mt-6" style={{ animation: "fade-up 0.6s ease-out" }}>
-          点击任意卡片进入下一题 · {countdown !== null ? `${countdown}s 后自动继续` : ""}
-        </p>
+        <div className="mt-6 flex flex-col items-center gap-2" style={{ animation: "fade-up 0.6s ease-out" }}>
+          <button
+            onClick={handleNextRound}
+            disabled={isTransitioning}
+            className="min-h-[46px] rounded-full bg-gradient-to-r from-accent-color-a to-accent-color-b px-7 text-sm font-black text-black transition-all enabled:hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-45 cursor-pointer"
+          >
+            {currentRound + 1 >= totalRounds ? "查看判决书" : "下一题"}
+          </button>
+          <p className="text-center text-white/25 text-xs">
+            也可以点击任意卡片继续 · {countdown !== null ? `${countdown}s 后自动继续` : ""}
+          </p>
+        </div>
       )}
 
       {!voted && (

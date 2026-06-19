@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getGlobalStats } from "@/lib/voteStats";
 
 const ANNOTATIONS = [
   "🇦🇷 罗萨里奥：马黛茶销量+999%",
@@ -12,12 +13,16 @@ const ANNOTATIONS = [
 ];
 
 export default function GlobalWar() {
-  const [totalVotes, setTotalVotes] = useState(1894235);
+  const [totalVotes, setTotalVotes] = useState<number | null>(null);
   const [annotation, setAnnotation] = useState(ANNOTATIONS[0]);
 
   useEffect(() => {
+    const syncStats = () => {
+      setTotalVotes(getGlobalStats().total);
+    };
+    syncStats();
     const interval = setInterval(() => {
-      setTotalVotes(v => v + Math.floor(Math.random() * 10) + 1);
+      syncStats();
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -32,12 +37,12 @@ export default function GlobalWar() {
   }, []);
 
   return (
-    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-2 z-20 pointer-events-none">
+    <div className="mb-4 flex flex-col gap-2 z-20 pointer-events-none sm:mb-6">
       <div className="flex items-center gap-2 bg-black/50 border border-white/10 px-3 py-1.5 rounded-full backdrop-blur-md">
         <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-        <span className="text-xs font-bold text-white tracking-widest uppercase">GLOBAL WAR MAP</span>
+        <span className="text-xs font-bold text-white tracking-widest uppercase">LOCAL FAN HEAT</span>
         <span className="text-xs text-white/60">·</span>
-        <span className="text-xs font-black text-accent-green font-mono">{totalVotes.toLocaleString()} 票</span>
+        <span className="text-xs font-black text-accent-green font-mono">{(totalVotes ?? 0).toLocaleString()} 票</span>
       </div>
       <div className="bg-white/10 border border-white/5 px-3 py-1 rounded-md text-[10px] text-white/80 animate-fade-in-out">
         {annotation}

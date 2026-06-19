@@ -17,6 +17,34 @@ const EMOTIONAL_IDS = ["mentality", "loyalty", "clutch", "iconic"];
 // Stats / resume topics
 const STATS_IDS = ["mvp", "finals", "rings", "goat"];
 
+const TOPIC_ALIASES: Record<string, string[]> = {
+  rings: ["honors"],
+  mvp: ["individual", "honors"],
+  finals: ["club", "status"],
+  skill: ["style", "peak-vs-peak"],
+  mentality: ["peak", "regrets", "injuries", "choices", "scandals"],
+  defense: ["tactics"],
+  teammates: ["teammates"],
+  era: ["influence", "legacy", "impact"],
+  iconic: ["influence", "legacy", "impact"],
+  goat: ["goat", "status", "honors"],
+  loyalty: ["longevity", "choices"],
+  clutch: ["clutch"],
+};
+
+function winnerFor(votes: Vote[], semanticId: string): Side | undefined {
+  const aliases = [semanticId, ...(TOPIC_ALIASES[semanticId] ?? [])];
+  for (const id of aliases) {
+    const exact = votes.find((vote) => vote.topicId === id)?.winner;
+    if (exact) return exact;
+    const suffixed = votes.find((vote) => vote.topicId.endsWith(`_${id}`))?.winner;
+    if (suffixed) return suffixed;
+    const custom = votes.find((vote) => vote.topicId.includes(`-${id}-`) || vote.topicId.endsWith(`-${id}`))?.winner;
+    if (custom) return custom;
+  }
+  return undefined;
+}
+
 export function getPersona(
   side: Side, 
   votes: Vote[], 
@@ -28,7 +56,7 @@ export function getPersona(
   const loyalty = ownVotes / totalRounds;
   const otherSide: Side = side === "playerA" ? "playerB" : "playerA";
 
-  const v = (id: string) => votes.find((x) => x.topicId === id)?.winner;
+  const v = (id: string) => winnerFor(votes, id);
 
   const votedForClutch = v("clutch");
   const votedForSkill = v("skill");
@@ -350,7 +378,7 @@ export function getRoast(
 ): string {
   const patterns: string[] = [];
 
-  const v = (id: string) => votes.find((x) => x.topicId === id)?.winner;
+  const v = (id: string) => winnerFor(votes, id);
 
   // --- Trash-talk patterns ---
 

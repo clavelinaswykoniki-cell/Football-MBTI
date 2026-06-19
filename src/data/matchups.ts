@@ -1,4 +1,4 @@
-import { getPlayerById } from "./player-database";
+import { getPlayerById, type Player } from "./player-database";
 
 export interface MatchupPlayer {
   name: string;
@@ -192,6 +192,22 @@ export const matchups: Matchup[] = [
 const CUSTOM_PREFIX = "custom:";
 const CUSTOM_SEP = "__vs__";
 
+const CUSTOM_DISPLAY_NAMES: Record<string, string> = {
+  "ronaldo-cr7": "C罗",
+  "ronaldo-r9": "大罗",
+  ronaldinho: "小罗",
+  ibrahimovic: "伊布",
+  beckham: "小贝",
+  modric: "魔笛",
+  iniesta: "小白",
+  pirlo: "睡皮",
+  buffon: "布冯",
+};
+
+export function getPlayerDisplayName(player: Player): string {
+  return CUSTOM_DISPLAY_NAMES[player.id] ?? player.nameCN.split("·").slice(-1)[0] ?? player.nameCN;
+}
+
 function buildCustomMatchup(id: string): Matchup | undefined {
   if (!id.startsWith(CUSTOM_PREFIX)) return undefined;
   const body = id.slice(CUSTOM_PREFIX.length);
@@ -202,21 +218,23 @@ function buildCustomMatchup(id: string): Matchup | undefined {
   let a, b;
   try { a = getPlayerById(aId); } catch { return undefined; }
   try { b = getPlayerById(bId); } catch { return undefined; }
+  const nameA = getPlayerDisplayName(a);
+  const nameB = getPlayerDisplayName(b);
   return {
     id,
-    title: `${a.nameCN.split("·").slice(-1)[0]} vs ${b.nameCN.split("·").slice(-1)[0]}`,
-    subtitle: "自选对决",
+    title: `${nameA} vs ${nameB}`,
+    subtitle: "自选 5 题快局",
     emoji: "⚔️",
     playerA: {
       name: a.name,
-      nameZh: a.nameCN.split("·").slice(-1)[0],
+      nameZh: nameA,
       number: a.number,
       nickname: a.nickname,
       color: "accent-color-a",
     },
     playerB: {
       name: b.name,
-      nameZh: b.nameCN.split("·").slice(-1)[0],
+      nameZh: nameB,
       number: b.number,
       nickname: b.nickname,
       color: "accent-color-b",

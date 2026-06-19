@@ -1,7 +1,6 @@
-// @ts-nocheck
 "use client";
 
-import { useGame } from "./GameProvider";
+import { useRouter } from "next/navigation";
 import { matchups } from "@/data/matchups";
 
 // Map color token names to CSS variable values so Tailwind JIT isn't needed
@@ -16,7 +15,7 @@ function playerColor(token: string): string {
 }
 
 export default function MatchupSelect() {
-  const { selectMatchup, startCustomPicker } = useGame();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
@@ -31,7 +30,7 @@ export default function MatchupSelect() {
         {matchups.map((matchup) => (
           <button
             key={matchup.id}
-            onClick={() => selectMatchup(matchup.id)}
+            onClick={() => router.push(`/battle/${matchup.id}/pick`)}
             className="group relative overflow-hidden rounded-2xl border-2 border-white/10
               hover:border-accent-color-a/60 transition-all duration-300 cursor-pointer
               hover:scale-[1.03] active:scale-[0.98]"
@@ -85,7 +84,7 @@ export default function MatchupSelect() {
 
         {/* Custom matchup card */}
         <button
-          onClick={startCustomPicker}
+          onClick={() => router.push("/matchups/custom")}
           className="group relative overflow-hidden rounded-2xl border-2 border-dashed border-white/20
             hover:border-white/50 transition-all duration-300 cursor-pointer
             hover:scale-[1.03] active:scale-[0.98] group-hover:fut-card-gold hover:fut-card-gold"
@@ -104,7 +103,7 @@ export default function MatchupSelect() {
 
             {/* Subtitle */}
             <p className="text-white/30 text-sm group-hover:text-white/50 transition-colors duration-300">
-              选你心中的对决
+              选 2 位球星打 5 题快局
             </p>
 
             {/* CTA */}
@@ -116,7 +115,7 @@ export default function MatchupSelect() {
       </div>
 
       <p className="mt-10 text-xs text-white/30">
-        每场都有独立辩题 &middot; 自选对比已上线（30 位足球传奇）
+        固定对决 12+3 轮 &middot; 自选对决 5 题快局
       </p>
     </div>
   );

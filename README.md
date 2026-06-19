@@ -48,7 +48,7 @@
 | 🦊🦁 亨利 vs 伊布 | 顶级中锋之争 |
 | 🤖🚀 哈兰德 vs 姆巴佩 | 谁是下一个 GOAT |
 
-外加 **自选对决**——从球员数据库里挑任意两位捉对厮杀。
+外加 **自选对决快局**——从球员数据库里挑任意两位捉对厮杀，当前为 4 轮正赛 + 1 道巅峰假设题。
 
 ## 设计哲学
 
@@ -64,7 +64,7 @@
 - **React 19**
 - **TypeScript**
 - **Tailwind CSS v4**
-- **localStorage** 投票种子数据（全球战况栏）
+- **localStorage** 投票种子数据（本地球迷热度样本）
 - 部署：Railway（已上线）
 
 ## 本地开发
@@ -121,8 +121,8 @@ src/
 │   ├── PlayerPicker.tsx      # 自选对决
 │   ├── PickSide.tsx          # 选边
 │   ├── BattleArena.tsx       # 辩论投票主战场
-│   ├── VoteReveal.tsx        # 全球投票揭晓
-│   ├── GlobalWar.tsx         # 全球战况横幅
+│   ├── VoteReveal.tsx        # 球迷热度样本揭晓
+│   ├── GlobalWar.tsx         # 本地热度样本横幅
 │   ├── BonusIntro.tsx        # bonus 题入口
 │   ├── AiJudge.tsx           # AI 裁判
 │   ├── PersonalityReport.tsx # 深度人格报告

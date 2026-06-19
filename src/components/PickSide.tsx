@@ -1,21 +1,33 @@
-// @ts-nocheck
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useGame } from "./GameProvider";
 
 export default function PickSide() {
+  const router = useRouter();
   const { pickSide, currentMatchup, backToMatchupSelect } = useGame();
 
   const pA = currentMatchup?.playerA ?? { name: "Lionel Messi", nameZh: "梅西", number: "#10", nickname: "La Pulga" };
   const pB = currentMatchup?.playerB ?? { name: "Cristiano Ronaldo", nameZh: "C罗", number: "#7", nickname: "CR7" };
+  const matchupId = currentMatchup?.id ?? "messi-vs-ronaldo";
+
+  const handleBack = () => {
+    backToMatchupSelect();
+    router.push("/matchups");
+  };
+
+  const handlePick = (side: "playerA" | "playerB") => {
+    pickSide(side, matchupId);
+    router.push(`/battle/${encodeURIComponent(matchupId)}`);
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative">
       <button
-        onClick={backToMatchupSelect}
+        onClick={handleBack}
         className="absolute top-4 left-4 sm:top-6 sm:left-6 text-xs sm:text-sm text-white/40 hover:text-white/80 transition-colors cursor-pointer"
       >
-        ← 换个对决
+        ← 返回对决列表
       </button>
       <h2 className="text-2xl sm:text-4xl font-black mb-2 text-white text-center">
         选择你的立场
@@ -26,7 +38,7 @@ export default function PickSide() {
 
       <div className="flex flex-col sm:flex-row gap-6 w-full max-w-3xl">
         <button
-          onClick={() => pickSide("playerA")}
+          onClick={() => handlePick("playerA")}
           className="flex-1 group relative overflow-hidden rounded-2xl border-2 border-accent-color-a/30
             hover:border-accent-color-a transition-all duration-300 cursor-pointer"
         >
@@ -52,7 +64,7 @@ export default function PickSide() {
         </div>
 
         <button
-          onClick={() => pickSide("playerB")}
+          onClick={() => handlePick("playerB")}
           className="flex-1 group relative overflow-hidden rounded-2xl border-2 border-accent-color-b/30
             hover:border-accent-color-b transition-all duration-300 cursor-pointer"
         >
